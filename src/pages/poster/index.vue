@@ -1,19 +1,48 @@
 <template>
   <div id="fullpage">
     <div class="section">
-      活动介绍
+      <div class="content" ref="content-1">
+        <div v-for="(item, index) in 100">活动介绍{{index}}</div>
+      </div>
     </div>
     <div class="section">
-      作品征集
+      <div class="content" ref="content-2">
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+        <div>作品征集</div>
+      </div>
     </div>
     <div class="section">
-      作品展示
+      <div class="content" ref="content-3">
+        作品展示
+      </div>
     </div>
     <div class="section">
-      顾问团队
+      <div class="content" ref="content-4">
+        顾问团队
+      </div>
     </div>
     <div class="section">
-      合作支持
+      <div class="content" ref="content-5">
+        合作支持
+      </div>
     </div>
   </div>
   <div class="cells">
@@ -42,19 +71,28 @@ export default {
     const viewportHeight2 = document.body.clientHeight - 56 * 4
     const viewportHeight3 = document.body.clientHeight - 56 * 3
     const viewportHeight4 = document.body.clientHeight - 56 * 2
+    const viewportHeight5 = document.body.clientHeight - 56
+
+
+    this.$refs['content-1'].style = `height: ${viewportHeight1}px`
+    this.$refs['content-2'].style = `height: ${viewportHeight2}px`
+    this.$refs['content-3'].style = `height: ${viewportHeight3}px`
+    this.$refs['content-4'].style = `height: ${viewportHeight4}px`
+    this.$refs['content-5'].style = `height: ${viewportHeight5}px`
+
 
     this.$refs['cell-1'].style = `top: 0`;
     this.$refs['cell-2'].style = `top: ${viewportHeight1 + 56}px`;
     this.$refs['cell-3'].style = `top: ${viewportHeight2 + 56}px`;
     this.$refs['cell-4'].style = `top: ${viewportHeight3 + 56}px`;
     this.$refs['cell-5'].style = `top: ${viewportHeight4 + 56}px`;
-    
 
     const fullpage = window.fullpage
     new fullpage('#fullpage', {
-      // verticalCentered: false,
+      verticalCentered: false,
       autoScrolling: true,
       scrollHorizontally: true,
+      scrollOverflow: true,
       onLeave: (origin, destination, direction, trigger) => {
         switch (origin.index + 1) {
           case 1:
@@ -135,7 +173,13 @@ export default {
     text-align: left;
 
     position: fixed;
-    transition: all 700ms ease-in-out;
+    transition: all 500ms ease-in-out;
   }
+}
+
+.content {
+  border: 10px red solid;
+  margin-top: 56px;
+  overflow-y: hidden;
 }
 </style>
