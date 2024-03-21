@@ -48,10 +48,7 @@ export default {
     }
   },
   mounted() {
-    const viewportHeight1 = document.body.clientHeight - 56 * 5
-    const viewportHeight2 = document.body.clientHeight - 56 * 4
-    const viewportHeight3 = document.body.clientHeight - 56 * 3
-    const viewportHeight4 = document.body.clientHeight - 56 * 2
+    const clientHeight = document.body.clientHeight
 
     this.$refs['content-1'].style = `padding-top: 56px;padding-bottom: 224px`
     this.$refs['content-2'].style = `padding-top: 56px;padding-bottom: 168px`
@@ -61,10 +58,10 @@ export default {
 
 
     this.$refs['cell-1'].style = `top: 0`;
-    this.$refs['cell-2'].style = `top: ${viewportHeight1 + 56}px`;
-    this.$refs['cell-3'].style = `top: ${viewportHeight2 + 56}px`;
-    this.$refs['cell-4'].style = `top: ${viewportHeight3 + 56}px`;
-    this.$refs['cell-5'].style = `top: ${viewportHeight4 + 56}px`;
+    this.$refs['cell-2'].style = `top: ${clientHeight - 56 * 4}px`;
+    this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
+    this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
+    this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
 
     const fullpage = window.fullpage
     new fullpage('#fullpage', {
@@ -84,7 +81,7 @@ export default {
             break;
           case 2:
             if(direction === 'up') {
-              this.$refs['cell-2'].style = `top: ${viewportHeight1 + 56}px`;
+              this.$refs['cell-2'].style = `top: ${clientHeight - 56 * 4}px`;
             }
             if(direction === 'down') {
               this.$refs['cell-3'].style = 'top: 0';
@@ -92,7 +89,7 @@ export default {
             break;
           case 3:
             if(direction === 'up') {
-              this.$refs['cell-3'].style = `top: ${viewportHeight2 + 56}px`;
+              this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
             }
             if(direction === 'down') {
               this.$refs['cell-4'].style = 'top: 0';
@@ -100,7 +97,7 @@ export default {
             break;
           case 4:
             if(direction === 'up') {
-              this.$refs['cell-4'].style = `top: ${viewportHeight3 + 56}px`;
+              this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
             }
             if(direction === 'down') {
               this.$refs['cell-5'].style = 'top: 0';
@@ -108,7 +105,7 @@ export default {
             break;
           case 5:
             if(direction === 'up') {
-              this.$refs['cell-5'].style = `top: ${viewportHeight4 + 56}px`;
+              this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
             }
             if(direction === 'down') {
               // 不存在
