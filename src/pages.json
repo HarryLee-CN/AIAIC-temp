@@ -5,22 +5,10 @@
       "path": "pages/index/index",
       "style": {}
     },
-    {
-      "path": "pages/message/index",
-      "style": {}
-    },
-    {
-      "path": "pages/poster/index",
-      "style": {}
-    },
-    {
-      "path": "pages/error/index",
-      "style": {}
-    }
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "晚安2023",
+    "navigationBarTitleText": "AIAIC",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
