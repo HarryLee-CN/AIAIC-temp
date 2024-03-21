@@ -7,41 +7,22 @@
     </div>
     <div class="section">
       <div class="content" ref="content-2">
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
-        <div>作品征集</div>
+        <div v-for="(item, index) in 100">作品征集{{index}}</div>
       </div>
     </div>
     <div class="section">
       <div class="content" ref="content-3">
-        作品展示
+        <div v-for="(item, index) in 100">作品展示{{index}}</div>
       </div>
     </div>
     <div class="section">
       <div class="content" ref="content-4">
-        顾问团队
+        <div v-for="(item, index) in 100">顾问团队{{index}}</div>
       </div>
     </div>
     <div class="section">
       <div class="content" ref="content-5">
-        合作支持
+        <div v-for="(item, index) in 100">合作支持{{index}}</div>
       </div>
     </div>
   </div>
@@ -71,14 +52,12 @@ export default {
     const viewportHeight2 = document.body.clientHeight - 56 * 4
     const viewportHeight3 = document.body.clientHeight - 56 * 3
     const viewportHeight4 = document.body.clientHeight - 56 * 2
-    const viewportHeight5 = document.body.clientHeight - 56
 
-
-    this.$refs['content-1'].style = `height: ${viewportHeight1}px`
-    this.$refs['content-2'].style = `height: ${viewportHeight2}px`
-    this.$refs['content-3'].style = `height: ${viewportHeight3}px`
-    this.$refs['content-4'].style = `height: ${viewportHeight4}px`
-    this.$refs['content-5'].style = `height: ${viewportHeight5}px`
+    this.$refs['content-1'].style = `padding-top: 56px;padding-bottom: 224px`
+    this.$refs['content-2'].style = `padding-top: 56px;padding-bottom: 168px`
+    this.$refs['content-3'].style = `padding-top: 56px;padding-bottom: 112px`
+    this.$refs['content-4'].style = `padding-top: 56px;padding-bottom: 56px`
+    this.$refs['content-5'].style = `padding-top: 56px;padding-bottom: 0`
 
 
     this.$refs['cell-1'].style = `top: 0`;
@@ -179,7 +158,5 @@ export default {
 
 .content {
   border: 10px red solid;
-  margin-top: 56px;
-  overflow-y: hidden;
 }
 </style>
