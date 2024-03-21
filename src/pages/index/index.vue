@@ -1,15 +1,5 @@
 <template>
   <div class="page-index">
-<!--    <div class="cell">按钮1</div>-->
-<!--    <div class="cell">按钮2</div>-->
-<!--    <div class="cell">按钮3</div>-->
-
-<!--    <div class="scroll-view">-->
-<!--      滚动区域-->
-<!--      <div v-for="item in 100">{{item}}</div>-->
-<!--    </div>-->
-<!--    <div class="cell">按钮4</div>-->
-<!--    <div class="cell" @click="handleClick">按钮5 翻页</div>-->
     <div class="cell cell-1">
       活动介绍
     </div>
@@ -117,36 +107,22 @@ export default {
 
   .A {
     border: 1px red solid;
-    //height: calc(100vh - (56px * 5));
-    //overflow-y: scroll;
   }
 
   .B {
     border: 1px red solid;
-    //height: calc(100vh - (56px * 4));
-    //height: 0;
-    //overflow-y: scroll;
   }
 
   .C {
     border: 1px red solid;
-    //height: calc(100vh - (56px * 3));
-    //height: 0;
-    //overflow-y: scroll;
   }
 
   .D {
     border: 1px red solid;
-    //height: calc(100vh - (56px * 2));
-    //height: 0;
-    //overflow-y: scroll;
   }
 
   .E {
     border: 1px red solid;
-    height: calc(100vh - (56px * 1));
-    //height: 0;
-    //overflow-y: scroll;
   }
 }
 </style>
