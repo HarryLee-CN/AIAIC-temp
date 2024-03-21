@@ -5,6 +5,10 @@
       "path": "pages/index/index",
       "style": {}
     },
+    {
+      "path": "pages/poster/index",
+      "style": {}
+    }
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
