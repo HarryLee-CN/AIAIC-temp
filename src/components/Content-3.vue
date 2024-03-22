@@ -18,7 +18,7 @@ export default defineComponent({
         <img :src="`https://static.thefair.net.cn/activity/AIAIC/display-img${index+1}.png`" alt="">
       </div>
       <div class="bottom">
-        <div class="desc">超级马里奥：惊奇了了两行文字 超级马里奥：惊奇了了两行文字</div>
+        <div class="desc">{{index}}超级马里奥：惊奇了了两行文字 超级马里奥：惊奇了了两行文字</div>
         <div class="name">Patrick</div>
         <img class="next" src="../static/img/icon-arrow-next.svg" alt="arrow">
       </div>
@@ -34,10 +34,26 @@ export default defineComponent({
   column-count: 2;
   column-gap: 5px;
 
+  //display: flex;
+  //flex-direction: column;
+  //flex-wrap: wrap;
+  //justify-content: flex-start;
+
+  //.block:nth-child(2n+1){
+  //  order: 1;
+  //  margin-left: 0;
+  //}
+  //.block:nth-child(2n+2){
+  //  order: 2;
+  //}
+
   .block {
-    width: 100%;
-    margin-bottom: 4px;
-    background-color: rgba(216, 216, 216, 0.36);
+    //margin-left: 5px;
+    //width: 49.3%;
+    height: fit-content;
+    padding-bottom: 4px;
+    display: flex;
+    flex-direction: column;
 
     .top {
       width: 100%;
@@ -51,6 +67,7 @@ export default defineComponent({
     .bottom {
       padding: 11px 9px 18px 9px;
       position: relative;
+      background-color: rgba(216, 216, 216, 0.36);
 
       .desc {
         font-family: Source Han Serif CN;
