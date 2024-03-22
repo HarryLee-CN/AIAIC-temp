@@ -27,17 +27,41 @@
     </div>
   </div>
   <div class="cells">
-    <div class="cell cell-1" @click="handleClick(1)" ref="cell-1">
+    <div class="cell top" @click="handleClick(1)" ref="cell-1">
       <div class="left">
         <div class="title">活动介绍</div>
         <div class="eng">Introduction</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
-    <div class="cell cell-2" @click="handleClick(2)" ref="cell-2">作品征集</div>
-    <div class="cell cell-3" @click="handleClick(3)" ref="cell-3">作品展示</div>
-    <div class="cell cell-4" @click="handleClick(4)" ref="cell-4">顾问团队</div>
-    <div class="cell cell-5" @click="handleClick(5)" ref="cell-5">合作支持</div>
+    <div class="cell" @click="handleClick(2)" ref="cell-2">
+      <div class="left">
+        <div class="title">作品征集</div>
+        <div class="eng">Call for works</div>
+      </div>
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+    </div>
+    <div class="cell" @click="handleClick(3)" ref="cell-3">
+      <div class="left">
+        <div class="title">作品展示</div>
+        <div class="eng">Display</div>
+      </div>
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+    </div>
+    <div class="cell cell-4" @click="handleClick(4)" ref="cell-4">
+      <div class="left">
+        <div class="title">顾问团队</div>
+        <div class="eng">Counselor</div>
+      </div>
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+    </div>
+    <div class="cell cell-5" @click="handleClick(5)" ref="cell-5">
+      <div class="left">
+        <div class="title">合作支持</div>
+        <div class="eng">Support</div>
+      </div>
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+    </div>
   </div>
 </template>
 
@@ -49,7 +73,7 @@ import Content4 from "../../components/Content-4.vue";
 import Content5 from "../../components/Content-5.vue";
 
 export default {
-  components: {Content1, Content2, Content3, Content4, Content5, },
+  components: {Content1, Content2, Content3, Content4, Content5,},
   data() {
     return {}
   },
@@ -89,35 +113,43 @@ export default {
             }
             if (direction === 'down') {
               this.$refs['cell-2'].style = 'top: 0';
+              this.$refs['cell-2'].className = 'cell top';
             }
             break;
           case 2:
             if (direction === 'up') {
               this.$refs['cell-2'].style = `top: ${clientHeight - 56 * 4}px`;
+              this.$refs['cell-2'].className = 'cell';
             }
             if (direction === 'down') {
               this.$refs['cell-3'].style = 'top: 0';
+              this.$refs['cell-3'].className = 'cell top';
             }
             break;
           case 3:
             if (direction === 'up') {
               this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
+              this.$refs['cell-3'].className = 'cell';
             }
             if (direction === 'down') {
               this.$refs['cell-4'].style = 'top: 0';
+              this.$refs['cell-4'].className = 'cell top';
             }
             break;
           case 4:
             if (direction === 'up') {
               this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
+              this.$refs['cell-4'].className = 'cell';
             }
             if (direction === 'down') {
               this.$refs['cell-5'].style = 'top: 0';
+              this.$refs['cell-5'].className = 'cell top';
             }
             break;
           case 5:
             if (direction === 'up') {
               this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
+              this.$refs['cell-5'].className = 'cell';
             }
             if (direction === 'down') {
               // 不存在
@@ -142,14 +174,27 @@ export default {
   left: 0;
   pointer-events: none;
 
+  .top {
+    box-shadow: 0px 2px 11px 0px #00000045 !important;
+    background: #191919 !important;
+
+    .title {
+      color: #FFFFFF !important;
+    }
+
+    .eng {
+      opacity: 0.19;
+    }
+  }
+
   .cell {
     pointer-events: auto;
     width: 100%;
     height: 56px;
-    box-shadow: 0px 2px 11px 0px #00000045;
-    background: #191919;
+    box-shadow: 0px -2px 8px 0px #0000001B;
+    background: #FFFFFF;
 
-    color: #FFFFFF;
+    border-bottom: 0.5px #191919 solid;
 
     position: fixed;
     transition: all 500ms ease-in-out;
@@ -170,6 +215,7 @@ export default {
       letter-spacing: -0.6635649800300598px;
       text-align: left;
 
+      color: #191919;
     }
 
     .eng {
@@ -183,8 +229,6 @@ export default {
       text-align: left;
 
       color: #DEDEDE;
-
-      opacity: 0.19;
     }
 
     .arrow {
