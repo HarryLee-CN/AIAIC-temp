@@ -8,7 +8,6 @@ export default defineComponent({
 
 <template>
 <div class="content-5">
-  <img class="bg1" src="../static/img/bg-introduction-1.png" alt="bg1">
   <div class="text">
     <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">
     <p>
@@ -16,6 +15,7 @@ export default defineComponent({
       作为工具的人，共同探索令人兴奋的新的内容和创意可能。「联合」是重要的，「人的联盟」这个描述，在这个AI快速成长的时代，将是亲密相连的温暖命题。
     </p>
   </div>
+  <img class="bg" src="../static/img/bg-support.png" alt="bg">
 </div>
 </template>
 
@@ -25,10 +25,6 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .bg1 {
-    width: 100%;
-  }
 
   .header {
     width: 327.5px;
@@ -58,6 +54,12 @@ export default defineComponent({
     p {
       margin-bottom: 30px;
     }
+  }
+
+  .bg {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
   }
 }
 </style>
