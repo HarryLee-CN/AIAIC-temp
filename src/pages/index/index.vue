@@ -4,8 +4,8 @@
       <img src="../../static/img/cover.png" alt="cover">
       <div class="tips">
         下滑进入
-        <img src="../../static/img/icon-arrow-down.svg" alt="down">
       </div>
+      <img class="icon-arrow-down" src="../../static/img/icon-arrow-down.svg" alt="down">
     </div>
 
 
@@ -84,6 +84,7 @@ import Content2 from "../../components/Content-2.vue";
 import Content3 from "../../components/Content-3.vue";
 import Content4 from "../../components/Content-4.vue";
 import Content5 from "../../components/Content-5.vue";
+import {animateCSS} from "../../utils/common";
 
 export default {
   components: {Content1, Content2, Content3, Content4, Content5,},
@@ -204,6 +205,9 @@ export default {
   top: 0;
   left: 0;
   z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   img {
     width: 100%;
@@ -214,25 +218,42 @@ export default {
 
   .tips {
     position: absolute;
-    bottom: 50px;
-    width: 100%;
+    bottom: 69px;
     font-family: Source Han Serif CN;
     font-size: 18.4px;
     font-weight: 400;
     line-height: 26.44px;
-    text-align: center;
+    text-align: left;
     color: white;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
 
-    img {
-      width: 26px;
-      height: 12px;
-      object-fit: contain;
-      object-position: center center;
-      margin-top: 5px;
+  .icon-arrow-down {
+    position: absolute;
+    bottom: 50px;
+
+    width: 26px;
+    height: 12px;
+    object-fit: contain;
+    object-position: center center;
+
+    -webkit-animation: up_and_down 1.5s ease-in-out infinite;
+    -o-animation: up_and_down 1.5s ease-in-out infinite;
+    animation: up_and_down 1.5s ease-in-out infinite;
+  }
+
+  @keyframes up_and_down {
+    from {
+      bottom: 50px;
+    }
+    50% {
+      bottom: 30px;
+    }
+    to {
+      bottom: 50px;
     }
   }
 }
