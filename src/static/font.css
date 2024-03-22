@@ -5,6 +5,12 @@
 }
 
 @font-face {
+  font-family: Source Han Serif CN;
+  src: url("https://static-thefair-bj.oss-cn-beijing.aliyuncs.com/activity/AIAIC/SourceHanSerifCN-Regular.otf");
+  font-display: swap;
+}
+
+@font-face {
   font-family: Alibaba PuHuiTi Regular;
   src: url('https://static.thefair.net.cn/eyepetizer/font/Alibaba-PuHuiTi/Alibaba-PuHuiTi-Regular.ttf');
   font-display: swap;
