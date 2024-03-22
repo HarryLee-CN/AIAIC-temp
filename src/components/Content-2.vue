@@ -42,6 +42,7 @@ export default defineComponent({
       5.作品分辨率XXX提交上传文件要求XXXX最终解释权XXXXX
     </p>
   </div>
+  <img class="btn" src="../static/img/btn-sign-up.png" alt="btn">
 </div>
 </template>
 
@@ -80,6 +81,11 @@ export default defineComponent({
 
     p {
     }
+  }
+
+  .btn {
+    width: 329px;
+    margin: 55px auto;
   }
 }
 </style>
