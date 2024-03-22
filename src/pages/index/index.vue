@@ -1,77 +1,67 @@
 <template>
-  <div class="page-index">
-    <div class="cover" @touchmove="handleTouchmove" @touchstart="handleTouchstart" ref="cover">
-      <img src="../../static/img/cover.png" alt="cover">
-      <div class="tips">
-        下滑进入
-      </div>
-      <img class="icon-arrow-down" src="../../static/img/icon-arrow-down.svg" alt="down">
-    </div>
-
-    <div id="fullpage">
-      <div class="section">
-        <div class="content" ref="content-1">
-          <content-1 @touchmove="handleFirstScreenTouchmove" @touchstart="handleFirstScreenTouchstart"/>
-        </div>
-      </div>
-      <div class="section">
-        <div class="content" ref="content-2">
-          <content-2/>
-        </div>
-      </div>
-      <div class="section">
-        <div class="content" ref="content-3">
-          <content-3/>
-        </div>
-      </div>
-      <div class="section">
-        <div class="content" ref="content-4">
-          <content-4/>
-        </div>
-      </div>
-      <div class="section">
-        <div class="content" ref="content-5">
-          <content-5/>
-        </div>
+  <div id="fullpage">
+    <div class="section">
+      <div class="content" ref="content-1">
+        <content-1/>
       </div>
     </div>
+    <div class="section">
+      <div class="content" ref="content-2">
+        <content-2/>
+      </div>
+    </div>
+    <div class="section">
+      <div class="content" ref="content-3">
+        <content-3/>
+      </div>
+    </div>
+    <div class="section">
+      <div class="content" ref="content-4">
+        <content-4/>
+      </div>
+    </div>
+    <div class="section">
+      <div class="content" ref="content-5">
+        <content-5/>
+      </div>
+    </div>
+  </div>
 
-    <div class="cells">
-      <div class="cell top" @click="handleClick(1)" ref="cell-1">
-        <div class="left">
-          <div class="title">活动介绍</div>
-          <div class="eng">Introduction</div>
-        </div>
-        <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+  <div class="cells">
+    <div class="cell top" @click="handleClick(1)" ref="cell-1">
+      <div class="left">
+        <div class="title">活动介绍</div>
+        <div class="eng">Introduction</div>
       </div>
-      <div class="cell" @click="handleClick(2)" ref="cell-2">
-        <div class="left">
-          <div class="title" style="color: #70C6F6 !important;">作品征集</div>
-          <div class="eng">Call for works</div>
-        </div>
-        <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+    </div>
+    <div class="cell" @click="handleClick(2)" ref="cell-2">
+      <div class="left">
+        <div class="title" style="color: #70C6F6 !important;">作品征集</div>
+        <div class="eng">Call for works</div>
       </div>
-      <div class="cell" @click="handleClick(3)" ref="cell-3">
-        <div class="left">
-          <div class="title">作品展示</div>
-          <div class="eng">Display</div>
-        </div>
-        <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+    </div>
+    <div class="cell" @click="handleClick(3)" ref="cell-3">
+      <div class="left">
+        <div class="title">作品展示</div>
+        <div class="eng">Display</div>
       </div>
-      <div class="cell cell-4" @click="handleClick(4)" ref="cell-4">
-        <div class="left">
-          <div class="title">顾问团队</div>
-          <div class="eng">Counselor</div>
-        </div>
-        <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+    </div>
+    <div class="cell cell-4" @click="handleClick(4)" ref="cell-4">
+      <div class="left">
+        <div class="title">顾问团队</div>
+        <div class="eng">Counselor</div>
       </div>
-      <div class="cell cell-5" @click="handleClick(5)" ref="cell-5">
-        <div class="left">
-          <div class="title">合作支持</div>
-          <div class="eng">Support</div>
-        </div>
-        <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+    </div>
+    <div class="cell cell-5" @click="handleClick(5)" ref="cell-5">
+      <div class="left">
+        <div class="title">合作支持</div>
+        <div class="eng">Support</div>
       </div>
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
   </div>
 </template>
@@ -82,47 +72,16 @@ import Content2 from "../../components/Content-2.vue";
 import Content3 from "../../components/Content-3.vue";
 import Content4 from "../../components/Content-4.vue";
 import Content5 from "../../components/Content-5.vue";
-import _ from 'lodash'
 
 export default {
   components: {Content1, Content2, Content3, Content4, Content5,},
   data() {
     return {
-      pageYStart: "",
-      fullPage: {},
-      isReachTop: true,
+      fullPage: {}
     }
   },
   computed: {},
   methods: {
-    handleTouchstart(e) {
-      this.pageYStart = e.touches[0].pageY
-    },
-    handleTouchmove(e) {
-      const pageY = e.touches[0].pageY
-      if (this.pageYStart - pageY > 100) {
-        this.$refs.cover.classList = "cover cover-hide"
-        setTimeout(e => {
-          this.$refs.cover.style = "display: none"
-        }, 600)
-      }
-    },
-
-    handleFirstScreenTouchstart(e) {
-      if (!this.isReachTop) return
-      this.pageYStart = e.touches[0].pageY
-    },
-    handleFirstScreenTouchmove(e) {
-      if (!this.isReachTop) return
-      const pageY = e.touches[0].pageY
-      if (pageY - this.pageYStart > 20) {
-        this.$refs.cover.style = "display: flex;"
-        setTimeout(() => {
-          this.$refs.cover.classList = "cover cover-show"
-        })
-      }
-    },
-
     handleClick(e) {
       this.fullPage.moveTo(e)
     }
@@ -217,10 +176,6 @@ export default {
         }
       },
     });
-
-    document.getElementsByClassName("fp-overflow")[0].addEventListener("scroll",e => {
-      this.isReachTop = e.target.scrollTop <= 0
-    } )
   },
   onLoad(query) {
   }
@@ -289,16 +244,6 @@ export default {
       bottom: 50px;
     }
   }
-}
-
-.cover-hide {
-  top: -300px;
-  opacity: 0;
-}
-
-.cover-show {
-  top: 0;
-  opacity: 1;
 }
 
 .cells {
