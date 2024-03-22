@@ -1,6 +1,11 @@
 <template>
   <div id="fullpage">
     <div class="section">
+      <div class="cover">
+        1234
+      </div>
+    </div>
+    <div class="section">
       <div class="content" ref="content-1">
         <content-1/>
       </div>
@@ -28,35 +33,35 @@
   </div>
 
   <div class="cells">
-    <div class="cell top" @click="handleClick(1)" ref="cell-1">
+    <div class="cell cell-black" @click="handleClick(2)" ref="cell-1">
       <div class="left">
         <div class="title">活动介绍</div>
         <div class="eng">Introduction</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
-    <div class="cell" @click="handleClick(2)" ref="cell-2">
+    <div class="cell" @click="handleClick(3)" ref="cell-2">
       <div class="left">
         <div class="title" style="color: #70C6F6 !important;">作品征集</div>
         <div class="eng">Call for works</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
-    <div class="cell" @click="handleClick(3)" ref="cell-3">
+    <div class="cell" @click="handleClick(4)" ref="cell-3">
       <div class="left">
         <div class="title">作品展示</div>
         <div class="eng">Display</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
-    <div class="cell cell-4" @click="handleClick(4)" ref="cell-4">
+    <div class="cell" @click="handleClick(5)" ref="cell-4">
       <div class="left">
         <div class="title">顾问团队</div>
         <div class="eng">Counselor</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
-    <div class="cell cell-5" @click="handleClick(5)" ref="cell-5">
+    <div class="cell" @click="handleClick(6)" ref="cell-5">
       <div class="left">
         <div class="title">合作支持</div>
         <div class="eng">Support</div>
@@ -95,12 +100,11 @@ export default {
     this.$refs['content-4'].style = `padding-top: 56px;padding-bottom: 56px`
     this.$refs['content-5'].style = `padding-top: 56px;padding-bottom: 0`
 
-
-    this.$refs['cell-1'].style = `top: 0`;
-    this.$refs['cell-2'].style = `top: ${clientHeight - 56 * 4}px`;
-    this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
-    this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
-    this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
+    this.$refs['cell-1'].style = `top: ${clientHeight}px`;
+    this.$refs['cell-2'].style = `top: ${clientHeight * 2 - 56 * 4}px`;
+    this.$refs['cell-3'].style = `top: ${clientHeight * 2 - 56 * 3}px`;
+    this.$refs['cell-4'].style = `top: ${clientHeight * 2 - 56 * 2}px`;
+    this.$refs['cell-5'].style = `top: ${clientHeight * 2 - 56}px`;
 
     this.fullPage = new window.fullpage('#fullpage', {
       verticalCentered: false,
@@ -108,10 +112,22 @@ export default {
       scrollHorizontally: true,
       scrollOverflow: true,
       onLeave: (origin, destination, direction, trigger) => {
-        switch (destination.index + 1) {
+        switch (destination.index) {
+          case 0:
+            this.$refs['cell-1'].style = `top: ${clientHeight}px`;
+            this.$refs['cell-1'].classList = 'cell cell-black';
+            this.$refs['cell-2'].style = `top: ${clientHeight * 2 - 56 * 4}px`;
+            this.$refs['cell-2'].classList = 'cell';
+            this.$refs['cell-3'].style = `top: ${clientHeight * 2 - 56 * 3}px`;
+            this.$refs['cell-3'].classList = 'cell';
+            this.$refs['cell-4'].style = `top: ${clientHeight * 2 - 56 * 2}px`;
+            this.$refs['cell-4'].classList = 'cell';
+            this.$refs['cell-5'].style = `top: ${clientHeight * 2 - 56}px`;
+            this.$refs['cell-5'].classList = 'cell';
+            break;
           case 1:
             this.$refs['cell-1'].style = 'top: 0';
-            this.$refs['cell-1'].classList = 'cell top';
+            this.$refs['cell-1'].classList = 'cell cell-black';
 
             this.$refs['cell-2'].style = `top: ${clientHeight - 56 * 4}px`;
             this.$refs['cell-2'].classList = 'cell';
@@ -124,9 +140,9 @@ export default {
             break;
           case 2:
             this.$refs['cell-1'].style = 'top: 0';
-            this.$refs['cell-1'].classList = 'cell top';
+            this.$refs['cell-1'].classList = 'cell cell-black';
             this.$refs['cell-2'].style = `top: 0`;
-            this.$refs['cell-2'].classList = 'cell top';
+            this.$refs['cell-2'].classList = 'cell cell-black';
 
             this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
             this.$refs['cell-3'].classList = 'cell';
@@ -137,11 +153,11 @@ export default {
             break;
           case 3:
             this.$refs['cell-1'].style = 'top: 0';
-            this.$refs['cell-1'].classList = 'cell top';
+            this.$refs['cell-1'].classList = 'cell cell-black';
             this.$refs['cell-2'].style = `top: 0`;
-            this.$refs['cell-2'].classList = 'cell top';
+            this.$refs['cell-2'].classList = 'cell cell-black';
             this.$refs['cell-3'].style = `top: 0`;
-            this.$refs['cell-3'].classList = 'cell top';
+            this.$refs['cell-3'].classList = 'cell cell-black';
 
             this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
             this.$refs['cell-4'].classList = 'cell';
@@ -150,28 +166,28 @@ export default {
             break;
           case 4:
             this.$refs['cell-1'].style = 'top: 0';
-            this.$refs['cell-1'].classList = 'cell top';
+            this.$refs['cell-1'].classList = 'cell cell-black';
             this.$refs['cell-2'].style = `top: 0`;
-            this.$refs['cell-2'].classList = 'cell top';
+            this.$refs['cell-2'].classList = 'cell cell-black';
             this.$refs['cell-3'].style = `top: 0`;
-            this.$refs['cell-3'].classList = 'cell top';
+            this.$refs['cell-3'].classList = 'cell cell-black';
             this.$refs['cell-4'].style = `top: 0`;
-            this.$refs['cell-4'].classList = 'cell top';
+            this.$refs['cell-4'].classList = 'cell cell-black';
 
             this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
             this.$refs['cell-5'].classList = 'cell';
             break;
           case 5:
             this.$refs['cell-1'].style = 'top: 0';
-            this.$refs['cell-1'].classList = 'cell top';
+            this.$refs['cell-1'].classList = 'cell cell-black';
             this.$refs['cell-2'].style = `top: 0`;
-            this.$refs['cell-2'].classList = 'cell top';
+            this.$refs['cell-2'].classList = 'cell cell-black';
             this.$refs['cell-3'].style = `top: 0`;
-            this.$refs['cell-3'].classList = 'cell top';
+            this.$refs['cell-3'].classList = 'cell cell-black';
             this.$refs['cell-4'].style = `top: 0`;
-            this.$refs['cell-4'].classList = 'cell top';
+            this.$refs['cell-4'].classList = 'cell cell-black';
             this.$refs['cell-5'].style = `top: 0`;
-            this.$refs['cell-5'].classList = 'cell top';
+            this.$refs['cell-5'].classList = 'cell cell-black';
             break;
         }
       },
@@ -254,7 +270,7 @@ export default {
   left: 0;
   pointer-events: none;
 
-  .top {
+  .cell-black {
     box-shadow: 0px 2px 11px 0px #00000045 !important;
     background: #3f3f3f !important;
 
