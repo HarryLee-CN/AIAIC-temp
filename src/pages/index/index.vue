@@ -194,7 +194,7 @@ export default {
 
   .top {
     box-shadow: 0px 2px 11px 0px #00000045 !important;
-    background: #191919 !important;
+    background: #3f3f3f !important;
 
     .title {
       color: #FFFFFF !important;
