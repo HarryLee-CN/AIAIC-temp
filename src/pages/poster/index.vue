@@ -62,7 +62,13 @@
     </div>
   </div>
   <div class="cells">
-    <div class="cell cell-1" @click="handleClick(1)" ref="cell-1">活动介绍</div>
+    <div class="cell cell-1" @click="handleClick(1)" ref="cell-1">
+      <div class="left">
+        <div class="title">活动介绍</div>
+        <div class="eng">Introduction</div>
+      </div>
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+    </div>
     <div class="cell cell-2" @click="handleClick(2)" ref="cell-2">作品征集</div>
     <div class="cell cell-3" @click="handleClick(3)" ref="cell-3">作品展示</div>
     <div class="cell cell-4" @click="handleClick(4)" ref="cell-4">顾问团队</div>
@@ -157,35 +163,6 @@ export default {
 
 <style scoped lang="scss">
 
-.cells {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-
-  .cell {
-    pointer-events: auto;
-    width: 100%;
-    height: 56px;
-    box-shadow: 0px 2px 11px 0px #00000045;
-    background: #191919;
-
-    color: #FFFFFF;
-
-    font-family: Source Han Serif CN;
-    font-size: 16.59px;
-    font-weight: 500;
-    line-height: 23.84px;
-    letter-spacing: -0.6635649800300598px;
-    text-align: left;
-
-    position: fixed;
-    transition: all 500ms ease-in-out;
-  }
-}
-
 .content {
 
 }
@@ -226,6 +203,66 @@ export default {
 
     p {
       margin-bottom: 30px;
+    }
+  }
+}
+
+.cells {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+
+  .cell {
+    pointer-events: auto;
+    width: 100%;
+    height: 56px;
+    box-shadow: 0px 2px 11px 0px #00000045;
+    background: #191919;
+
+    color: #FFFFFF;
+
+    position: fixed;
+    transition: all 500ms ease-in-out;
+
+    display: flex;
+    justify-content: space-between;
+    padding: 19px 11px 0 29px;
+
+    .left {
+      display: flex;
+    }
+
+    .title {
+      font-family: Source Han Serif CN;
+      font-size: 16.59px;
+      font-weight: 500;
+      line-height: 23.84px;
+      letter-spacing: -0.6635649800300598px;
+      text-align: left;
+
+    }
+
+    .eng {
+      margin-left: 15px;
+
+      font-family: Source Han Serif CN;
+      font-size: 16.59px;
+      font-weight: 400;
+      line-height: 23.84px;
+      letter-spacing: -0.6635649800300598px;
+      text-align: left;
+
+      color: #DEDEDE;
+
+      opacity: 0.19;
+    }
+
+    .arrow {
+      margin-top: -6px;
+      width: 28px;
     }
   }
 }
