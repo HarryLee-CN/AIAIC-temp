@@ -1,69 +1,79 @@
 <template>
-  <div id="fullpage">
+  <div class="page-index">
     <div class="cover">
       <img src="../../static/img/cover.png" alt="cover">
-    </div>
-    <div class="section">
-      <div class="content" ref="content-1">
-        <content-1/>
+      <div class="tips">
+        下滑进入
+        <img src="../../static/img/icon-arrow-down.svg" alt="down">
       </div>
     </div>
-    <div class="section">
-      <div class="content" ref="content-2">
-        <content-2/>
+
+
+    <div id="fullpage">
+      <div class="section">
+        <div class="content" ref="content-1">
+          <content-1/>
+        </div>
+      </div>
+      <div class="section">
+        <div class="content" ref="content-2">
+          <content-2/>
+        </div>
+      </div>
+      <div class="section">
+        <div class="content" ref="content-3">
+          <content-3/>
+        </div>
+      </div>
+      <div class="section">
+        <div class="content" ref="content-4">
+          <content-4/>
+        </div>
+      </div>
+      <div class="section">
+        <div class="content" ref="content-5">
+          <content-5/>
+        </div>
       </div>
     </div>
-    <div class="section">
-      <div class="content" ref="content-3">
-        <content-3/>
+
+
+    <div class="cells">
+      <div class="cell top" @click="handleClick(1)" ref="cell-1">
+        <div class="left">
+          <div class="title">活动介绍</div>
+          <div class="eng">Introduction</div>
+        </div>
+        <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
       </div>
-    </div>
-    <div class="section">
-      <div class="content" ref="content-4">
-        <content-4/>
+      <div class="cell" @click="handleClick(2)" ref="cell-2">
+        <div class="left">
+          <div class="title" style="color: #70C6F6 !important;">作品征集</div>
+          <div class="eng">Call for works</div>
+        </div>
+        <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
       </div>
-    </div>
-    <div class="section">
-      <div class="content" ref="content-5">
-        <content-5/>
+      <div class="cell" @click="handleClick(3)" ref="cell-3">
+        <div class="left">
+          <div class="title">作品展示</div>
+          <div class="eng">Display</div>
+        </div>
+        <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
       </div>
-    </div>
-  </div>
-  <div class="cells">
-    <div class="cell top" @click="handleClick(1)" ref="cell-1">
-      <div class="left">
-        <div class="title">活动介绍</div>
-        <div class="eng">Introduction</div>
+      <div class="cell cell-4" @click="handleClick(4)" ref="cell-4">
+        <div class="left">
+          <div class="title">顾问团队</div>
+          <div class="eng">Counselor</div>
+        </div>
+        <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
       </div>
-      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
-    </div>
-    <div class="cell" @click="handleClick(2)" ref="cell-2">
-      <div class="left">
-        <div class="title" style="color: #70C6F6 !important;">作品征集</div>
-        <div class="eng">Call for works</div>
+      <div class="cell cell-5" @click="handleClick(5)" ref="cell-5">
+        <div class="left">
+          <div class="title">合作支持</div>
+          <div class="eng">Support</div>
+        </div>
+        <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
       </div>
-      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
-    </div>
-    <div class="cell" @click="handleClick(3)" ref="cell-3">
-      <div class="left">
-        <div class="title">作品展示</div>
-        <div class="eng">Display</div>
-      </div>
-      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
-    </div>
-    <div class="cell cell-4" @click="handleClick(4)" ref="cell-4">
-      <div class="left">
-        <div class="title">顾问团队</div>
-        <div class="eng">Counselor</div>
-      </div>
-      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
-    </div>
-    <div class="cell cell-5" @click="handleClick(5)" ref="cell-5">
-      <div class="left">
-        <div class="title">合作支持</div>
-        <div class="eng">Support</div>
-      </div>
-      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
   </div>
 </template>
@@ -188,15 +198,42 @@ export default {
 <style scoped lang="scss">
 
 .cover {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+
   img {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     object-position: center center;
     object-fit: cover;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
+  }
+
+  .tips {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    font-family: Source Han Serif CN;
+    font-size: 18.4px;
+    font-weight: 400;
+    line-height: 26.44px;
+    text-align: center;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 26px;
+      height: 12px;
+      object-fit: contain;
+      object-position: center center;
+      margin-top: 5px;
+    }
   }
 }
 
