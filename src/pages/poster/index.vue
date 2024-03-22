@@ -36,7 +36,7 @@
     </div>
     <div class="cell" @click="handleClick(2)" ref="cell-2">
       <div class="left">
-        <div class="title">作品征集</div>
+        <div class="title" style="color: #70C6F6 !important;">作品征集</div>
         <div class="eng">Call for works</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
