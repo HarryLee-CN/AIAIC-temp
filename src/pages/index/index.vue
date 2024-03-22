@@ -234,6 +234,7 @@ export default {
       text-align: left;
 
       color: #191919;
+      transition: all 500ms ease-in-out;
     }
 
     .eng {
@@ -247,6 +248,7 @@ export default {
       text-align: left;
 
       color: #DEDEDE;
+      transition: all 500ms ease-in-out;
     }
 
     .arrow {
