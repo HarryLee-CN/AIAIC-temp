@@ -2,7 +2,13 @@
   <div id="fullpage">
     <div class="section">
       <div class="cover">
-        1234
+        <div class="titles">
+          <img class="text-1" src="../../static/img/cover-text-1.png" alt="text1">
+          <img class="text-2" src="../../static/img/cover-text-2.png" alt="text2">
+        </div>
+        <img class="logo" src="../../static/img/cover-logo.png" alt="logo">
+        <div class="tips">下滑进入</div>
+        <img class="icon-arrow-down" src="../../static/img/icon-arrow-down.svg" alt="down">
       </div>
     </div>
     <div class="section">
@@ -203,21 +209,33 @@ export default {
 .cover {
   width: 100vw;
   height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
+  background: url("../../static/img/cover.png") center center no-repeat;
+  background-size: cover;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 
-  transition: all 0.6s ease-in-out;
-
-  img {
+  .titles {
     width: 100%;
-    height: 100%;
-    object-position: center center;
-    object-fit: cover;
+    display: flex;
+    justify-content: space-between;
+
+    .text-1 {
+      width: 120px;
+    }
+
+    .text-2 {
+      width: 145px;
+    }
+  }
+
+  .logo {
+    width: 248px;
+
+    position: absolute;
+    bottom: 122px;
   }
 
   .tips {
