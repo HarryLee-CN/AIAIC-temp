@@ -11,7 +11,7 @@
     <div id="fullpage">
       <div class="section">
         <div class="content" ref="content-1">
-          <content-1/>
+          <content-1 @touchmove="handleFirstScreenTouchmove" @touchstart="handleFirstScreenTouchstart"/>
         </div>
       </div>
       <div class="section">
@@ -82,20 +82,20 @@ import Content2 from "../../components/Content-2.vue";
 import Content3 from "../../components/Content-3.vue";
 import Content4 from "../../components/Content-4.vue";
 import Content5 from "../../components/Content-5.vue";
+import _ from 'lodash'
 
 export default {
   components: {Content1, Content2, Content3, Content4, Content5,},
   data() {
     return {
       pageYStart: "",
-      fullPage: {}
+      fullPage: {},
+      isReachTop: true,
     }
   },
   computed: {},
   methods: {
     handleTouchstart(e) {
-      console.log('handleTouchstart')
-      console.log(e.touches[0].pageY)
       this.pageYStart = e.touches[0].pageY
     },
     handleTouchmove(e) {
@@ -107,6 +107,22 @@ export default {
         }, 600)
       }
     },
+
+    handleFirstScreenTouchstart(e) {
+      if (!this.isReachTop) return
+      this.pageYStart = e.touches[0].pageY
+    },
+    handleFirstScreenTouchmove(e) {
+      if (!this.isReachTop) return
+      const pageY = e.touches[0].pageY
+      if (pageY - this.pageYStart > 20) {
+        this.$refs.cover.style = "display: flex;"
+        setTimeout(() => {
+          this.$refs.cover.classList = "cover cover-show"
+        })
+      }
+    },
+
     handleClick(e) {
       this.fullPage.moveTo(e)
     }
@@ -133,7 +149,6 @@ export default {
       scrollHorizontally: true,
       scrollOverflow: true,
       onLeave: (origin, destination, direction, trigger) => {
-        console.log(origin, destination, direction, trigger)
         switch (destination.index + 1) {
           case 1:
             this.$refs['cell-1'].style = 'top: 0';
@@ -202,6 +217,10 @@ export default {
         }
       },
     });
+
+    document.getElementsByClassName("fp-overflow")[0].addEventListener("scroll",e => {
+      this.isReachTop = e.target.scrollTop <= 0
+    } )
   },
   onLoad(query) {
   }
@@ -275,6 +294,11 @@ export default {
 .cover-hide {
   top: -300px;
   opacity: 0;
+}
+
+.cover-show {
+  top: 0;
+  opacity: 1;
 }
 
 .cells {
