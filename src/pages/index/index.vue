@@ -1,56 +1,163 @@
 <template>
-  <div class="page-index">
-    <div class="cell cell-1">
-      活动介绍
+  <div id="fullpage">
+    <div class="section">
+      <div class="content" ref="content-1">
+        <content-1/>
+      </div>
     </div>
-    <div class="content A" ref="A">
-      <img src="../../static/img/introduce.jpg" alt="introduce">
+    <div class="section">
+      <div class="content" ref="content-2">
+        <content-2/>
+      </div>
     </div>
-    <div class="cell cell-2">
-      作品征集
+    <div class="section">
+      <div class="content" ref="content-3">
+        <content-3/>
+      </div>
     </div>
-    <div class="content B" ref="B">
-      <img src="../../static/img/call-for-works.jpg" alt="call-for-works">
+    <div class="section">
+      <div class="content" ref="content-4">
+        <content-4/>
+      </div>
     </div>
-    <div class="cell cell-3">
-      作品展示
+    <div class="section">
+      <div class="content" ref="content-5">
+        <content-5/>
+      </div>
     </div>
-    <div class="content C" ref="C">
-      <img src="../../static/img/display-1.jpg" alt="display-1">
-      <img src="../../static/img/display-2.jpg" alt="display-2">
+  </div>
+  <div class="cells">
+    <div class="cell top" @click="handleClick(1)" ref="cell-1">
+      <div class="left">
+        <div class="title">活动介绍</div>
+        <div class="eng">Introduction</div>
+      </div>
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
-    <div class="cell cell-4">
-      顾问团队
+    <div class="cell" @click="handleClick(2)" ref="cell-2">
+      <div class="left">
+        <div class="title" style="color: #70C6F6 !important;">作品征集</div>
+        <div class="eng">Call for works</div>
+      </div>
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
-    <div class="content D" ref="D">
-      <img src="../../static/img/counselor.jpg" alt="counselor">
+    <div class="cell" @click="handleClick(3)" ref="cell-3">
+      <div class="left">
+        <div class="title">作品展示</div>
+        <div class="eng">Display</div>
+      </div>
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
-    <div class="cell cell-5">
-      合作支持
+    <div class="cell cell-4" @click="handleClick(4)" ref="cell-4">
+      <div class="left">
+        <div class="title">顾问团队</div>
+        <div class="eng">Counselor</div>
+      </div>
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
-    <div class="content E" ref="E">
-      <img src="../../static/img/support.jpg" alt="support">
+    <div class="cell cell-5" @click="handleClick(5)" ref="cell-5">
+      <div class="left">
+        <div class="title">合作支持</div>
+        <div class="eng">Support</div>
+      </div>
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
   </div>
 </template>
 
 <script>
+import Content1 from "../../components/Content-1.vue";
+import Content2 from "../../components/Content-2.vue";
+import Content3 from "../../components/Content-3.vue";
+import Content4 from "../../components/Content-4.vue";
+import Content5 from "../../components/Content-5.vue";
 
 export default {
+  components: {Content1, Content2, Content3, Content4, Content5,},
   data() {
-    return {
-    }
+    return {}
   },
-  computed: {
-  },
+  computed: {},
   methods: {
-    handleClick() {
-      uni.navigateTo({
-        url: "/pages/poster/index"
-      })
+    handleClick(e) {
+      alert(e)
     }
   },
   mounted() {
+    const clientHeight = document.body.clientHeight
+
+    this.$refs['content-1'].style = `padding-top: 56px;padding-bottom: 224px`
+    this.$refs['content-2'].style = `padding-top: 56px;padding-bottom: 168px`
+    this.$refs['content-3'].style = `padding-top: 56px;padding-bottom: 112px`
+    this.$refs['content-4'].style = `padding-top: 56px;padding-bottom: 56px`
+    this.$refs['content-5'].style = `padding-top: 56px;padding-bottom: 0`
+
+
+    this.$refs['cell-1'].style = `top: 0`;
+    this.$refs['cell-2'].style = `top: ${clientHeight - 56 * 4}px`;
+    this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
+    this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
+    this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
+
+    const fullpage = window.fullpage
+    new fullpage('#fullpage', {
+      verticalCentered: false,
+      autoScrolling: true,
+      scrollHorizontally: true,
+      scrollOverflow: true,
+      onLeave: (origin, destination, direction, trigger) => {
+        switch (origin.index + 1) {
+          case 1:
+            if (direction === 'up') {
+              // 不存在
+            }
+            if (direction === 'down') {
+              this.$refs['cell-2'].style = 'top: 0';
+              this.$refs['cell-2'].className = 'cell top';
+            }
+            break;
+          case 2:
+            if (direction === 'up') {
+              this.$refs['cell-2'].style = `top: ${clientHeight - 56 * 4}px`;
+              this.$refs['cell-2'].className = 'cell';
+            }
+            if (direction === 'down') {
+              this.$refs['cell-3'].style = 'top: 0';
+              this.$refs['cell-3'].className = 'cell top';
+            }
+            break;
+          case 3:
+            if (direction === 'up') {
+              this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
+              this.$refs['cell-3'].className = 'cell';
+            }
+            if (direction === 'down') {
+              this.$refs['cell-4'].style = 'top: 0';
+              this.$refs['cell-4'].className = 'cell top';
+            }
+            break;
+          case 4:
+            if (direction === 'up') {
+              this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
+              this.$refs['cell-4'].className = 'cell';
+            }
+            if (direction === 'down') {
+              this.$refs['cell-5'].style = 'top: 0';
+              this.$refs['cell-5'].className = 'cell top';
+            }
+            break;
+          case 5:
+            if (direction === 'up') {
+              this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
+              this.$refs['cell-5'].className = 'cell';
+            }
+            if (direction === 'down') {
+              // 不存在
+            }
+            break;
+        }
+      },
+    });
   },
   onLoad(query) {
   }
@@ -58,71 +165,76 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.page-index {
+
+.cells {
   width: 100vw;
   height: 100vh;
-  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
 
-  .cell {
-    width: 100%;
-    height: 56px;
-    border: 1px red solid;
-    box-shadow: 0px 2px 11px 0px #00000045;
-    background: #191919;
+  .top {
+    box-shadow: 0px 2px 11px 0px #00000045 !important;
+    background: #191919 !important;
 
-    color: #FFFFFF;
+    .title {
+      color: #FFFFFF !important;
+    }
 
-    font-family: Source Han Serif CN;
-    font-size: 16.59px;
-    font-weight: 500;
-    line-height: 23.84px;
-    letter-spacing: -0.6635649800300598px;
-    text-align: left;
-
-    position: sticky;
-    top: 0;
-  }
-
-  .cell-2 {
-    bottom: calc(56px * 3);
-  }
-
-  .cell-3 {
-    bottom: calc(56px * 2);
-  }
-
-  .cell-4 {
-    bottom: calc(56px * 1);
-  }
-
-  .cell-5 {
-    bottom: calc(56px * 0);
-  }
-
-  .content {
-    img {
-      width: 100%;
+    .eng {
+      opacity: 0.19;
     }
   }
 
-  .A {
-    border: 1px red solid;
-  }
+  .cell {
+    pointer-events: auto;
+    width: 100%;
+    height: 56px;
+    box-shadow: 0px -2px 8px 0px #0000001B;
+    background: #FFFFFF;
 
-  .B {
-    border: 1px red solid;
-  }
+    border-bottom: 0.5px #191919 solid;
 
-  .C {
-    border: 1px red solid;
-  }
+    position: fixed;
+    transition: all 500ms ease-in-out;
 
-  .D {
-    border: 1px red solid;
-  }
+    display: flex;
+    justify-content: space-between;
+    padding: 19px 11px 0 29px;
 
-  .E {
-    border: 1px red solid;
+    .left {
+      display: flex;
+    }
+
+    .title {
+      font-family: Source Han Serif CN;
+      font-size: 16.59px;
+      font-weight: 500;
+      line-height: 23.84px;
+      letter-spacing: -0.6635649800300598px;
+      text-align: left;
+
+      color: #191919;
+    }
+
+    .eng {
+      margin-left: 15px;
+
+      font-family: Source Han Serif CN;
+      font-size: 16.59px;
+      font-weight: 400;
+      line-height: 23.84px;
+      letter-spacing: -0.6635649800300598px;
+      text-align: left;
+
+      color: #DEDEDE;
+    }
+
+    .arrow {
+      margin-top: -6px;
+      width: 28px;
+    }
   }
 }
 </style>
