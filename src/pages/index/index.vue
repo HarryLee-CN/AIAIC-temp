@@ -1,5 +1,8 @@
 <template>
   <div id="fullpage">
+    <div class="cover">
+      <img src="../../static/img/cover.png" alt="cover">
+    </div>
     <div class="section">
       <div class="content" ref="content-1">
         <content-1/>
@@ -183,6 +186,19 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.cover {
+  img {
+    width: 100vw;
+    height: 100vh;
+    object-position: center center;
+    object-fit: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+  }
+}
 
 .cells {
   width: 100vw;
