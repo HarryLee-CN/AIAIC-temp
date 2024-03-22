@@ -75,12 +75,14 @@ import Content5 from "../../components/Content-5.vue";
 export default {
   components: {Content1, Content2, Content3, Content4, Content5,},
   data() {
-    return {}
+    return {
+      fullPage: {}
+    }
   },
   computed: {},
   methods: {
     handleClick(e) {
-      alert(e)
+      this.fullPage.moveTo(e)
     }
   },
   mounted() {
@@ -99,61 +101,77 @@ export default {
     this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
     this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
 
-    const fullpage = window.fullpage
-    new fullpage('#fullpage', {
+    this.fullPage = new window.fullpage('#fullpage', {
       verticalCentered: false,
       autoScrolling: true,
       scrollHorizontally: true,
       scrollOverflow: true,
       onLeave: (origin, destination, direction, trigger) => {
-        switch (origin.index + 1) {
+        console.log(origin, destination, direction, trigger)
+        switch (destination.index + 1) {
           case 1:
-            if (direction === 'up') {
-              // 不存在
-            }
-            if (direction === 'down') {
-              this.$refs['cell-2'].style = 'top: 0';
-              this.$refs['cell-2'].className = 'cell top';
-            }
+            this.$refs['cell-1'].style = 'top: 0';
+            this.$refs['cell-1'].className = 'cell top';
+
+            this.$refs['cell-2'].style = `top: ${clientHeight - 56 * 4}px`;
+            this.$refs['cell-2'].className = 'cell';
+            this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
+            this.$refs['cell-3'].className = 'cell';
+            this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
+            this.$refs['cell-4'].className = 'cell';
+            this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
+            this.$refs['cell-5'].className = 'cell';
             break;
           case 2:
-            if (direction === 'up') {
-              this.$refs['cell-2'].style = `top: ${clientHeight - 56 * 4}px`;
-              this.$refs['cell-2'].className = 'cell';
-            }
-            if (direction === 'down') {
-              this.$refs['cell-3'].style = 'top: 0';
-              this.$refs['cell-3'].className = 'cell top';
-            }
+            this.$refs['cell-1'].style = 'top: 0';
+            this.$refs['cell-1'].className = 'cell top';
+            this.$refs['cell-2'].style = `top: 0`;
+            this.$refs['cell-2'].className = 'cell top';
+
+            this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
+            this.$refs['cell-3'].className = 'cell';
+            this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
+            this.$refs['cell-4'].className = 'cell';
+            this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
+            this.$refs['cell-5'].className = 'cell';
             break;
           case 3:
-            if (direction === 'up') {
-              this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
-              this.$refs['cell-3'].className = 'cell';
-            }
-            if (direction === 'down') {
-              this.$refs['cell-4'].style = 'top: 0';
-              this.$refs['cell-4'].className = 'cell top';
-            }
+            this.$refs['cell-1'].style = 'top: 0';
+            this.$refs['cell-1'].className = 'cell top';
+            this.$refs['cell-2'].style = `top: 0`;
+            this.$refs['cell-2'].className = 'cell top';
+            this.$refs['cell-3'].style = `top: 0`;
+            this.$refs['cell-3'].className = 'cell top';
+
+            this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
+            this.$refs['cell-4'].className = 'cell';
+            this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
+            this.$refs['cell-5'].className = 'cell';
             break;
           case 4:
-            if (direction === 'up') {
-              this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
-              this.$refs['cell-4'].className = 'cell';
-            }
-            if (direction === 'down') {
-              this.$refs['cell-5'].style = 'top: 0';
-              this.$refs['cell-5'].className = 'cell top';
-            }
+            this.$refs['cell-1'].style = 'top: 0';
+            this.$refs['cell-1'].className = 'cell top';
+            this.$refs['cell-2'].style = `top: 0`;
+            this.$refs['cell-2'].className = 'cell top';
+            this.$refs['cell-3'].style = `top: 0`;
+            this.$refs['cell-3'].className = 'cell top';
+            this.$refs['cell-4'].style = `top: 0`;
+            this.$refs['cell-4'].className = 'cell top';
+
+            this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
+            this.$refs['cell-5'].className = 'cell';
             break;
           case 5:
-            if (direction === 'up') {
-              this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
-              this.$refs['cell-5'].className = 'cell';
-            }
-            if (direction === 'down') {
-              // 不存在
-            }
+            this.$refs['cell-1'].style = 'top: 0';
+            this.$refs['cell-1'].className = 'cell top';
+            this.$refs['cell-2'].style = `top: 0`;
+            this.$refs['cell-2'].className = 'cell top';
+            this.$refs['cell-3'].style = `top: 0`;
+            this.$refs['cell-3'].className = 'cell top';
+            this.$refs['cell-4'].style = `top: 0`;
+            this.$refs['cell-4'].className = 'cell top';
+            this.$refs['cell-5'].style = `top: 0`;
+            this.$refs['cell-5'].className = 'cell top';
             break;
         }
       },
