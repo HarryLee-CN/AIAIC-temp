@@ -1,13 +1,12 @@
 <template>
   <div class="page-index">
-    <div class="cover">
+    <div class="cover" @touchmove="handleTouchmove" @touchstart="handleTouchstart" ref="cover">
       <img src="../../static/img/cover.png" alt="cover">
       <div class="tips">
         下滑进入
       </div>
       <img class="icon-arrow-down" src="../../static/img/icon-arrow-down.svg" alt="down">
     </div>
-
 
     <div id="fullpage">
       <div class="section">
@@ -36,7 +35,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="cells">
       <div class="cell top" @click="handleClick(1)" ref="cell-1">
@@ -84,17 +82,31 @@ import Content2 from "../../components/Content-2.vue";
 import Content3 from "../../components/Content-3.vue";
 import Content4 from "../../components/Content-4.vue";
 import Content5 from "../../components/Content-5.vue";
-import {animateCSS} from "../../utils/common";
 
 export default {
   components: {Content1, Content2, Content3, Content4, Content5,},
   data() {
     return {
+      pageYStart: "",
       fullPage: {}
     }
   },
   computed: {},
   methods: {
+    handleTouchstart(e) {
+      console.log('handleTouchstart')
+      console.log(e.touches[0].pageY)
+      this.pageYStart = e.touches[0].pageY
+    },
+    handleTouchmove(e) {
+      const pageY = e.touches[0].pageY
+      if (this.pageYStart - pageY > 100) {
+        this.$refs.cover.classList = "cover cover-hide"
+        setTimeout(e => {
+          this.$refs.cover.style = "display: none"
+        }, 600)
+      }
+    },
     handleClick(e) {
       this.fullPage.moveTo(e)
     }
@@ -125,67 +137,67 @@ export default {
         switch (destination.index + 1) {
           case 1:
             this.$refs['cell-1'].style = 'top: 0';
-            this.$refs['cell-1'].className = 'cell top';
+            this.$refs['cell-1'].classList = 'cell top';
 
             this.$refs['cell-2'].style = `top: ${clientHeight - 56 * 4}px`;
-            this.$refs['cell-2'].className = 'cell';
+            this.$refs['cell-2'].classList = 'cell';
             this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
-            this.$refs['cell-3'].className = 'cell';
+            this.$refs['cell-3'].classList = 'cell';
             this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
-            this.$refs['cell-4'].className = 'cell';
+            this.$refs['cell-4'].classList = 'cell';
             this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
-            this.$refs['cell-5'].className = 'cell';
+            this.$refs['cell-5'].classList = 'cell';
             break;
           case 2:
             this.$refs['cell-1'].style = 'top: 0';
-            this.$refs['cell-1'].className = 'cell top';
+            this.$refs['cell-1'].classList = 'cell top';
             this.$refs['cell-2'].style = `top: 0`;
-            this.$refs['cell-2'].className = 'cell top';
+            this.$refs['cell-2'].classList = 'cell top';
 
             this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
-            this.$refs['cell-3'].className = 'cell';
+            this.$refs['cell-3'].classList = 'cell';
             this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
-            this.$refs['cell-4'].className = 'cell';
+            this.$refs['cell-4'].classList = 'cell';
             this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
-            this.$refs['cell-5'].className = 'cell';
+            this.$refs['cell-5'].classList = 'cell';
             break;
           case 3:
             this.$refs['cell-1'].style = 'top: 0';
-            this.$refs['cell-1'].className = 'cell top';
+            this.$refs['cell-1'].classList = 'cell top';
             this.$refs['cell-2'].style = `top: 0`;
-            this.$refs['cell-2'].className = 'cell top';
+            this.$refs['cell-2'].classList = 'cell top';
             this.$refs['cell-3'].style = `top: 0`;
-            this.$refs['cell-3'].className = 'cell top';
+            this.$refs['cell-3'].classList = 'cell top';
 
             this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
-            this.$refs['cell-4'].className = 'cell';
+            this.$refs['cell-4'].classList = 'cell';
             this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
-            this.$refs['cell-5'].className = 'cell';
+            this.$refs['cell-5'].classList = 'cell';
             break;
           case 4:
             this.$refs['cell-1'].style = 'top: 0';
-            this.$refs['cell-1'].className = 'cell top';
+            this.$refs['cell-1'].classList = 'cell top';
             this.$refs['cell-2'].style = `top: 0`;
-            this.$refs['cell-2'].className = 'cell top';
+            this.$refs['cell-2'].classList = 'cell top';
             this.$refs['cell-3'].style = `top: 0`;
-            this.$refs['cell-3'].className = 'cell top';
+            this.$refs['cell-3'].classList = 'cell top';
             this.$refs['cell-4'].style = `top: 0`;
-            this.$refs['cell-4'].className = 'cell top';
+            this.$refs['cell-4'].classList = 'cell top';
 
             this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
-            this.$refs['cell-5'].className = 'cell';
+            this.$refs['cell-5'].classList = 'cell';
             break;
           case 5:
             this.$refs['cell-1'].style = 'top: 0';
-            this.$refs['cell-1'].className = 'cell top';
+            this.$refs['cell-1'].classList = 'cell top';
             this.$refs['cell-2'].style = `top: 0`;
-            this.$refs['cell-2'].className = 'cell top';
+            this.$refs['cell-2'].classList = 'cell top';
             this.$refs['cell-3'].style = `top: 0`;
-            this.$refs['cell-3'].className = 'cell top';
+            this.$refs['cell-3'].classList = 'cell top';
             this.$refs['cell-4'].style = `top: 0`;
-            this.$refs['cell-4'].className = 'cell top';
+            this.$refs['cell-4'].classList = 'cell top';
             this.$refs['cell-5'].style = `top: 0`;
-            this.$refs['cell-5'].className = 'cell top';
+            this.$refs['cell-5'].classList = 'cell top';
             break;
         }
       },
@@ -208,6 +220,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  transition: all 0.6s ease-in-out;
 
   img {
     width: 100%;
@@ -256,6 +270,11 @@ export default {
       bottom: 50px;
     }
   }
+}
+
+.cover-hide {
+  top: -300px;
+  opacity: 0;
 }
 
 .cells {
