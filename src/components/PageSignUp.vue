@@ -1,8 +1,10 @@
 <script>
 import {defineComponent} from 'vue'
+import HeaderNav from "./HeaderNav.vue";
 
 export default defineComponent({
   name: "PageSignUp",
+  components: {HeaderNav},
   data() {
     return {
       images: [
@@ -17,6 +19,7 @@ export default defineComponent({
 
 <template>
   <div class="sign-up">
+    <header-nav/>
     <div class="header">
       <img src="../static/img/header-introduction.png" alt="header">
     </div>
@@ -67,6 +70,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .sign-up {
+  padding-top: 50px;
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
