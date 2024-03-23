@@ -42,24 +42,25 @@ export default defineComponent({
 
     <div class="block">
       <div class="title">*作品名称（必填）</div>
-      <input type="text" placeholder="在此处输入你的作品名称">
+      <input type="text" placeholder="在此处输入你的作品名称" placeholder-style="color: #989898">
     </div>
 
     <div class="block">
       <div class="title">*作品描述（选填）</div>
-      <textarea placeholder="在此处输入你的作品描述，140字以内"></textarea>
+      <textarea placeholder="在此处输入你的作品描述，140字以内" placeholder-style="color: #989898" maxlength="140"></textarea>
     </div>
 
     <div class="block">
       <div class="title">*你的昵称（必填）</div>
-      <input type="text" placeholder="在此处输入你的昵称">
+      <input type="text" placeholder="在此处输入你的昵称" placeholder-style="color: #989898">
     </div>
 
     <div class="block">
       <div class="title">*手机号码（必填）</div>
-      <input type="text" placeholder="请输入您的手机号码，以便我们与你联系">
+      <input type="tel" placeholder="请输入您的手机号码，以便我们与你联系" placeholder-style="color: #989898">
     </div>
 
+    <!-- todo -->
     <img class="btn" src="../../static/img/btn-submit.png" alt="submit">
   </div>
 </template>
@@ -87,7 +88,6 @@ export default defineComponent({
 
   .block {
     width: 350px;
-    border: 1px red solid;
     margin-bottom: 43px;
 
     .title {
@@ -155,9 +155,41 @@ export default defineComponent({
     }
 
     input {
+      width: 100%;
+      border: 0.5px solid #979797;
+      border-radius: 7px;
+      padding: 0 12px;
+
+      font-family: Source Han Serif CN;
+      font-size: 17.25px;
+      font-weight: 300;
+      line-height: 24.79px;
+      text-align: left;
+
+      height: 53px;
+
+      color: #4D4D4D;
+
+      margin-top: 13px;
     }
 
     textarea {
+      width: 100%;
+      border: 0.5px solid #979797;
+      border-radius: 7px;
+
+      color: #4D4D4D;
+
+      margin-top: 13px;
+
+      font-family: Source Han Serif CN;
+      font-size: 17.25px;
+      font-weight: 300;
+      line-height: 24.79px;
+      text-align: left;
+
+      height: 221px;
+      padding: 12px;
     }
   }
 
