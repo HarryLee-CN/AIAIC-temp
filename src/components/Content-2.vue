@@ -2,7 +2,14 @@
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: "Content-2"
+  name: "Content-2",
+  methods: {
+    handleSignUp() {
+      uni.navigateTo({
+        url: "/pages/sign-up/index"
+      })
+    }
+  }
 })
 </script>
 
@@ -42,7 +49,7 @@ export default defineComponent({
       5.作品分辨率XXX提交上传文件要求XXXX最终解释权XXXXX
     </p>
   </div>
-  <img class="btn" src="../static/img/btn-sign-up.png" alt="btn">
+  <img class="btn" src="../static/img/btn-sign-up.png" alt="btn" @click="handleSignUp">
 </div>
 </template>
 

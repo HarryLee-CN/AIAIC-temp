@@ -6,6 +6,10 @@
       "style": {}
     },
     {
+      "path": "pages/sign-up/index",
+      "style": {}
+    },
+    {
       "path": "pages/poster/index",
       "style": {}
     }
