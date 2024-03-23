@@ -1,13 +1,12 @@
 <script>
+import {useBaseStore} from "../store/base";
 import {defineComponent} from 'vue'
 
 export default defineComponent({
   name: "Content-2",
   methods: {
     handleSignUp() {
-      uni.navigateTo({
-        url: "/pages/sign-up/index"
-      })
+      useBaseStore().updateIsShowPageSignUp(true)
     }
   }
 })

@@ -2,7 +2,7 @@
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: "index",
+  name: "PageSignUp",
   data() {
     return {
       images: [
@@ -18,7 +18,7 @@ export default defineComponent({
 <template>
   <div class="sign-up">
     <div class="header">
-      <img src="../../static/img/header-introduction.png" alt="header">
+      <img src="../static/img/header-introduction.png" alt="header">
     </div>
     <div class="divider"/>
 
@@ -30,12 +30,12 @@ export default defineComponent({
         最多上传4张图片
       </div>
       <div class="images">
-        <div class="image" v-for="(item, index) in images" :key="index">
-          <img class="icon-delete" src="../../static/img/icon-delete.svg" alt="delete">
+        <div class="image" v-for="(item, index) in images" :key="PageSignUp">
+          <img class="icon-delete" src="../static/img/icon-delete.svg" alt="delete">
           <img class="work" :src="item" alt="img">
         </div>
         <div class="uploader" v-if="true">
-          <img src="../../static/img/icon-image-uploader.png" alt="uploader">
+          <img src="../static/img/icon-image-uploader.png" alt="uploader">
         </div>
       </div>
     </div>
@@ -61,12 +61,13 @@ export default defineComponent({
     </div>
 
     <!-- todo -->
-    <img class="btn" src="../../static/img/btn-submit.png" alt="submit">
+    <img class="btn" src="../static/img/btn-submit.png" alt="submit">
   </div>
 </template>
 
 <style scoped lang="scss">
 .sign-up {
+  width: 100vw;
   height: 100vh;
   overflow-y: scroll;
 
@@ -74,6 +75,11 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   padding-bottom: 60px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
 
   .header {
     img {

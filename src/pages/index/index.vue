@@ -75,6 +75,8 @@
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
   </div>
+
+  <page-sign-up v-if="isShowPageSignUp"/>
 </template>
 
 <script>
@@ -83,15 +85,21 @@ import Content2 from "../../components/Content-2.vue";
 import Content3 from "../../components/Content-3.vue";
 import Content4 from "../../components/Content-4.vue";
 import Content5 from "../../components/Content-5.vue";
+import PageSignUp from "../../components/PageSignUp.vue";
+import {useBaseStore} from "../../store/base";
 
 export default {
-  components: {Content1, Content2, Content3, Content4, Content5,},
+  components: {PageSignUp, Content1, Content2, Content3, Content4, Content5,},
   data() {
     return {
       fullPage: {}
     }
   },
-  computed: {},
+  computed: {
+    isShowPageSignUp() {
+      return useBaseStore().getterIsShowPageSignUp
+    }
+  },
   methods: {
     handleClick(e) {
       this.fullPage.moveTo(e)
