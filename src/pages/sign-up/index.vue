@@ -9,7 +9,6 @@ export default defineComponent({
         "https://static-thefair-bj.oss-cn-beijing.aliyuncs.com/activity/jnby/631709876716_.pic.jpg",
         "https://static-thefair-bj.oss-cn-beijing.aliyuncs.com/activity/jnby/631709876716_.pic.jpg",
         "https://static-thefair-bj.oss-cn-beijing.aliyuncs.com/activity/jnby/631709876716_.pic.jpg",
-        "https://static-thefair-bj.oss-cn-beijing.aliyuncs.com/activity/jnby/631709876716_.pic.jpg",
       ]
     }
   }
@@ -35,7 +34,7 @@ export default defineComponent({
           <img class="icon-delete" src="../../static/img/icon-delete.svg" alt="delete">
           <img class="work" :src="item" alt="img">
         </div>
-        <div class="uploader" v-if="false">
+        <div class="uploader" v-if="true">
           <img src="../../static/img/icon-image-uploader.png" alt="uploader">
         </div>
       </div>
@@ -114,7 +113,7 @@ export default defineComponent({
     }
 
     .images {
-      margin-top: 18px;
+      margin-top: 5px;
       display: flex;
       flex-wrap: wrap;
 
@@ -122,8 +121,12 @@ export default defineComponent({
         display: flex;
         position: relative;
 
-        margin-bottom: 13px;
+        margin-top: 13px;
         margin-right: 13px;
+
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
 
         .work {
           width: 166.74px;
@@ -136,14 +139,12 @@ export default defineComponent({
           top: 0;
           right: 0;
         }
-
-        &:nth-child(2n) {
-          margin-right: 0;
-        }
       }
 
       .uploader {
         display: flex;
+
+        margin-top: 13px;
 
         img {
           width: 166.74px;
