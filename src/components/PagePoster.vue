@@ -8,6 +8,7 @@ export default defineComponent({
   components: {HeaderNav},
   data() {
     return {
+      isLoading: true,
       imageHeights: [],
       imageHeightsTotal: 0,
       asset_count: 0,
@@ -80,6 +81,7 @@ export default defineComponent({
           }, 300)
           setTimeout(() => {
             uni.hideLoading()
+            this.isLoading = false
             this.drawCanvas()
           }, 600)
         }
@@ -150,6 +152,8 @@ export default defineComponent({
 
     resetData() {
       useBaseStore().updatePosterContent({images: []})
+
+      this.isLoading = true;
       this.imageHeights =  [];
       this.imageHeightsTotal = 0;
       this.asset_count = 0;
@@ -161,6 +165,11 @@ export default defineComponent({
       this.singleAssetHeight = 56;
       this.bottomHeight = 359
     },
+
+    again() {
+      useBaseStore().updateIsShowPagePoster(false)
+      useBaseStore().updateIsShowPageSubmit(true)
+    }
   },
 })
 </script>
@@ -173,12 +182,16 @@ export default defineComponent({
     <div class="canvas-container">
       <canvas canvas-id="canvas" id="canvas" class="canvas" ref="canvas"/>
     </div>
+
+    <div v-if="!isLoading" class="tips">
+      长按分享我的AI创作
+    </div>
+    <img v-if="!isLoading" class="again" src="../static/img/btn-submit-again.png" alt="submit-again" @click="again">
   </div>
 </template>
 
 <style scoped lang="scss">
 .page-poster {
-  font-family: "Source Han Serif CN";
   padding-top: 50px;
   width: 100vw;
   height: 100vh;
@@ -201,9 +214,29 @@ export default defineComponent({
   .canvas-container {
     margin-top: 56px;
 
+    box-shadow: 0px 2px 7px 0px #00000034;
+
     .canvas {
       width: 330px;
     }
+  }
+
+  .tips {
+    font-family: Source Han Serif CN;
+    font-size: 18.4px;
+    font-weight: 250;
+    line-height: 25.76px;
+    text-align: left;
+
+    color: #191919;
+
+    margin-top: 114px;
+    text-decoration: underline;
+  }
+
+  .again {
+    margin-top: 14px;
+    width: 329px;
   }
 }
 </style>
