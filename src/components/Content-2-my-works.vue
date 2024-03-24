@@ -10,9 +10,9 @@ export default defineComponent({
     }
   },
   methods: {
-    handleSignUp() {
+    handleSubmitAgain() {
       useBaseStore().updateIsShowPageSignUp(true)
-    }
+    },
   }
 })
 </script>
@@ -34,7 +34,7 @@ export default defineComponent({
         <img :src="image" v-for="image in item.images" alt="work"/>
       </div>
     </div>
-    <img class="submit-again" src="../static/img/btn-submit-again.png" alt="submit-again">
+    <img class="submit-again" src="../static/img/btn-submit-again.png" alt="submit-again" @click="handleSubmitAgain">
   </div>
 </template>
 

@@ -3,7 +3,7 @@ import {defineComponent} from 'vue'
 import HeaderNav from "./HeaderNav.vue";
 
 export default defineComponent({
-  name: "PageSignUp",
+  name: "PagePoster",
   components: {HeaderNav},
   data() {
     return {
