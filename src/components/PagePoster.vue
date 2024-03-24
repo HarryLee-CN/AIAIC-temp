@@ -18,7 +18,9 @@ export default defineComponent({
       imageWidth: 304,
       topHeight: 213,
       singleAssetHeight: 56,
-      bottomHeight: 359
+      bottomHeight: 359,
+
+      posterSrc: ""
     }
   },
   computed: {
@@ -78,11 +80,14 @@ export default defineComponent({
           uni.showLoading()
           setTimeout(() => {
             this.getBackgroundHeight()
-          }, 300)
+          }, 200)
           setTimeout(() => {
+            this.drawCanvas()
+          }, 400)
+          setTimeout(() => {
+            this.exportPoster()
             uni.hideLoading()
             this.isLoading = false
-            this.drawCanvas()
           }, 600)
         }
       }
@@ -93,6 +98,7 @@ export default defineComponent({
       this.backgroundHeight = this.topHeight + this.asset_count * this.singleAssetHeight + this.bottomHeight
       console.log('backgroundHeight', this.backgroundHeight)
       document.getElementById('canvas').style.height = this.backgroundHeight + 'px'
+      document.getElementById('poster').style.height = this.backgroundHeight + 'px'
     },
     drawCanvas() {
       const that = this
@@ -149,6 +155,22 @@ export default defineComponent({
 
       ctx.draw()
     },
+    exportPoster() {
+      const that = this
+      uni.canvasToTempFilePath({
+        x: 0,
+        y: 0,
+        width: this.backgroundWidth,
+        height: this.backgroundHeight,
+        destWidth: this.backgroundWidth * 4,
+        destHeight: this.backgroundHeight * 4,
+        canvasId: 'canvas',
+        success: function (res) {
+          console.log(res)
+          that.posterSrc = res.tempFilePath
+        }
+      })
+    },
 
     resetData() {
       useBaseStore().updatePosterContent({images: []})
@@ -182,6 +204,9 @@ export default defineComponent({
     <div class="canvas-container">
       <canvas canvas-id="canvas" id="canvas" class="canvas" ref="canvas"/>
     </div>
+    <div class="poster" id="poster">
+      <img :src="posterSrc" alt="post" v-if="posterSrc">
+    </div>
 
     <div v-if="!isLoading" class="tips">
       长按分享我的AI创作
@@ -214,10 +239,26 @@ export default defineComponent({
   .canvas-container {
     margin-top: 56px;
 
-    box-shadow: 0px 2px 7px 0px #00000034;
+    position: absolute;
+    visibility: hidden;
 
     .canvas {
       width: 330px;
+    }
+  }
+
+  .poster {
+    margin-top: 56px;
+    width: 330px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 100;
+
+    box-shadow: 0px 2px 7px 0px #00000034;
+
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 
