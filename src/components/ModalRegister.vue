@@ -23,25 +23,32 @@ export default defineComponent({
   },
   methods: {
     async getCode() {
-      if (this.btnGetCodeDisabled) return
-      if (this.isLoading) return
-      if (!phoneNumValid(this.mobile)) return uni.showToast({icon: "none", title: "请输入正确的手机号"})
-      uni.showLoading()
-      this.isLoading = true
-      const res = await activityAigcSendSmsCode({mobile: this.mobile})
-      uni.hideLoading()
-      this.isLoading = false
-      const {encrypt_mobile, status} = res.data.result
-      this.encryptedMobile = encrypt_mobile
-      uni.showToast({icon: "none", title: "验证码已发送"})
-      this.btnGetCodeDisabled = true
-      timeCountdown(60, (time) => {
-        this.btnGetCodeText = `已发送（${time}）`;
-        if (time === 0) {
-          this.btnGetCodeText = "获取验证码";
-          this.btnGetCodeDisabled = false;
-        }
-      });
+      try {
+        if (this.btnGetCodeDisabled) return
+        if (this.isLoading) return
+        if (!phoneNumValid(this.mobile)) return uni.showToast({icon: "none", title: "请输入正确的手机号"})
+        uni.showLoading()
+        this.isLoading = true
+        const res = await activityAigcSendSmsCode({mobile: this.mobile})
+        uni.hideLoading()
+        this.isLoading = false
+        const {encrypt_mobile, status} = res.data.result
+        this.encryptedMobile = encrypt_mobile
+        uni.showToast({icon: "none", title: "验证码已发送"})
+        this.btnGetCodeDisabled = true
+        timeCountdown(60, (time) => {
+          this.btnGetCodeText = `已发送（${time}）`;
+          if (time === 0) {
+            this.btnGetCodeText = "获取验证码";
+            this.btnGetCodeDisabled = false;
+          }
+        });
+      } catch (e) {
+        console.log(e)
+        uni.hideLoading()
+        this.isLoading = false
+        uni.showToast({icon: "none", title: e.data.message.text})
+      }
     },
     async register() {
       try {
@@ -75,19 +82,21 @@ export default defineComponent({
 </script>
 
 <template>
-<div class="register" v-if="open">
-  <div class="content">
-    <div class="input-container">
-      <input class="phone-input" type="tel" placeholder="请输入手机号" placeholder-style="color: #C9C9C9" v-model="mobile">
+  <div class="register" v-if="open">
+    <div class="content">
+      <div class="input-container">
+        <input class="phone-input" type="tel" placeholder="请输入手机号" placeholder-style="color: #C9C9C9"
+               v-model="mobile">
+      </div>
+      <div class="code-container">
+        <input class="code-input" type="number" placeholder="请输入验证码" placeholder-style="color: #C9C9C9"
+               v-model="code">
+        <div class="btn-get-code" :class="{disabled: btnGetCodeDisabled}" @click="getCode">{{ btnGetCodeText }}</div>
+      </div>
+      <div class="btn-register" :class="{disabled: btnRegisterDisabled}" @click="register">登录</div>
     </div>
-    <div class="code-container">
-      <input class="code-input" type="number" placeholder="请输入验证码" placeholder-style="color: #C9C9C9" v-model="code">
-      <div class="btn-get-code" :class="{disabled: btnGetCodeDisabled}" @click="getCode">{{btnGetCodeText}}</div>
-    </div>
-    <div class="btn-register" :class="{disabled: btnRegisterDisabled}" @click="register">登录</div>
+    <img class="close" src="../static/img/icon-close.svg" alt="close" @click="$emit('close')">
   </div>
-  <img class="close" src="../static/img/icon-close.svg" alt="close" @click="$emit('close')">
-</div>
 </template>
 
 <style scoped lang="scss">
@@ -104,7 +113,7 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
 
-  background-color: rgba(0,0,0,0.67);
+  background-color: rgba(0, 0, 0, 0.67);
 
   .content {
     width: 328.45px;
