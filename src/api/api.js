@@ -43,7 +43,7 @@ export function activityAigcGetUserCollectionFeedList() {
     method: "post",
     data: {
       "collection_id": 6475,
-      "uid": useBaseStore().getterUserInfo.uid,
+      "uid": localStorage.getItem('uid'),
       "last_item_id": 1
     },
   })

@@ -64,7 +64,7 @@ export default defineComponent({
         this.isLoading = false
         console.log(res.data.result)
         useBaseStore().updateUserInfo(res.data.result.user)
-        // todo localStorage记录uid
+        localStorage.setItem('uid', res.data.result.user.uid)
         // "user": {
         //   "status": "online",
         //     "uid": "485373384205240306",

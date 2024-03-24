@@ -92,7 +92,7 @@ import Content5 from "../../components/Content-5.vue";
 import PageSignUp from "../../components/PageSignUp.vue";
 import {useBaseStore} from "../../store/base";
 import ModalRegister from "../../components/ModalRegister.vue";
-import {activityAigcGetChosenCollectionFeedList} from "../../api/api";
+import {activityAigcGetChosenCollectionFeedList, activityAigcGetUserCollectionFeedList} from "../../api/api";
 import ModalSwiper from "../../components/ModalSwiper.vue";
 
 export default {
@@ -120,6 +120,7 @@ export default {
     async getData() {
       const res = await activityAigcGetChosenCollectionFeedList()
       useBaseStore().updateSelectedWorks(res.data.result.item_list)
+      const resMine = await activityAigcGetUserCollectionFeedList()
     },
     initUsersInterface() {
       const clientHeight = document.body.clientHeight
