@@ -24,7 +24,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="submit" v-if="isShowPageSubmit">
+  <div class="page-submit" v-if="isShowPageSubmit">
     <header-nav/>
     <div class="header">
       <img src="../static/img/header-introduction.png" alt="header">
@@ -74,7 +74,7 @@ export default defineComponent({
 </template>
 
 <style scoped lang="scss">
-.submit {
+.page-submit {
   padding-top: 50px;
   width: 100vw;
   height: 100vh;

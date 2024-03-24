@@ -7,6 +7,7 @@ export default defineComponent({
   methods: {
     back() {
       useBaseStore().updateIsShowPageSubmit(false)
+      useBaseStore().updateIsShowPagePoster(false)
     }
   }
 })
