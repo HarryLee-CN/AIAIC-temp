@@ -52,7 +52,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 27px;
+    padding-top: 27.5px;
 
     .phone-input {
       width: 268.58px;
