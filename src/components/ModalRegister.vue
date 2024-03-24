@@ -91,7 +91,7 @@ export default defineComponent({
       </div>
       <div class="code-container">
         <input class="code-input" type="number" placeholder="请输入验证码" placeholder-style="color: #C9C9C9"
-               v-model="code">
+               v-model="code" maxlength="4">
         <div class="btn-get-code" :class="{disabled: btnGetCodeDisabled}" @click="getCode">{{ btnGetCodeText }}</div>
       </div>
       <div class="btn-register" :class="{disabled: btnRegisterDisabled}" @click="register">登录</div>
