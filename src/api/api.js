@@ -25,3 +25,21 @@ export function v1UserLogin({encrypt_mobile, sms_code}) {
     },
   })
 }
+
+// 精选作品
+export function activityAigcGetChosenCollectionFeedList() {
+  return uniRequest({
+    url: config.activityAigcGetChosenCollectionFeedListPath,
+    method: "post",
+    data: {},
+  })
+}
+
+// 我的作品
+export function activityAigcGetUserCollectionFeedList() {
+  return uniRequest({
+    url: config.activityAigcGetUserCollectionFeedListPath,
+    method: "post",
+    data: {},
+  })
+}
