@@ -1,6 +1,7 @@
 <script>
 import {defineComponent} from 'vue'
 import HeaderNav from "./HeaderNav.vue";
+import {useBaseStore} from "../store/base";
 
 export default defineComponent({
   name: "PagePoster",
@@ -13,12 +14,17 @@ export default defineComponent({
         "https://static-thefair-bj.oss-cn-beijing.aliyuncs.com/activity/jnby/631709876716_.pic.jpg",
       ]
     }
+  },
+  computed: {
+    isShowPagePoster() {
+      return useBaseStore().getterIsShowPagePoster
+    }
   }
 })
 </script>
 
 <template>
-  <div class="submit">
+  <div class="submit" v-if="isShowPagePoster">
     <header-nav/>
     <div class="header">
       <img src="../static/img/header-introduction.png" alt="header">
