@@ -116,22 +116,27 @@ export default defineComponent({
 
       // 写文字
       ctx.font = "600 13px Source Han Serif CN"
-      const marginLeft = 15.3
+      const textMaginLeft = 15.3
       const lineHeight = 18.5
       const lineSpace = 6
       const firstY = 154
       ctx.fillStyle = 'white'
-      ctx.fillText(`作品名：《${this.posterContent.title}》`, marginLeft, lineHeight + firstY)
-      ctx.fillText(`创作者：${this.posterContent.nick}`, marginLeft, lineHeight + firstY + lineHeight + lineSpace)
+      ctx.fillText(`作品名：《${this.posterContent.title}》`, textMaginLeft, lineHeight + firstY)
+      ctx.fillText(`创作者：${this.posterContent.nick}`, textMaginLeft, lineHeight + firstY + lineHeight + lineSpace)
 
+      const imgMarginLeft = 13
       // 画图片
       for (let i = 0; i < this.posterContent.images.length; i++) {
         const src = this.posterContent.images[i]
         const imageMargin = 16
         if (i === 0) {
-          ctx.drawImage(src, marginLeft, lineHeight + firstY + lineHeight + lineSpace + imageMargin, this.imageWidth, this.imageHeights[i])
-        } else {
-          ctx.drawImage(src, marginLeft, lineHeight + firstY + lineHeight + lineSpace + imageMargin * (i + 1) + this.imageHeights[i - 1] * i, this.imageWidth, this.imageHeights[i])
+          ctx.drawImage(src, imgMarginLeft, lineHeight + firstY + lineHeight + lineSpace + imageMargin, this.imageWidth, this.imageHeights[i])
+        } else if (i === 1) {
+          ctx.drawImage(src, imgMarginLeft, lineHeight + firstY + lineHeight + lineSpace + imageMargin * 2 + this.imageHeights[0], this.imageWidth, this.imageHeights[i])
+        } else if (i === 2) {
+          ctx.drawImage(src, imgMarginLeft, lineHeight + firstY + lineHeight + lineSpace + imageMargin * 3 + this.imageHeights[0] + this.imageHeights[1], this.imageWidth, this.imageHeights[i])
+        } else if (i === 3) {
+          ctx.drawImage(src, imgMarginLeft, lineHeight + firstY + lineHeight + lineSpace + imageMargin * 4 + this.imageHeights[0] + this.imageHeights[1] + this.imageHeights[2], this.imageWidth, this.imageHeights[i])
         }
       }
 
@@ -139,6 +144,9 @@ export default defineComponent({
     }
   },
   mounted() {
+  },
+  beforeDestroy() {
+    console.log("beforeDestroy")
   }
 })
 </script>
