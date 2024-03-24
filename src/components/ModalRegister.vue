@@ -62,19 +62,8 @@ export default defineComponent({
         const res = await v1UserLogin({encrypt_mobile: this.encryptedMobile, sms_code: this.code})
         uni.hideLoading()
         this.isLoading = false
-        console.log(res.data.result)
         useBaseStore().updateUserInfo(res.data.result.user)
         localStorage.setItem('uid', res.data.result.user.uid)
-        // "user": {
-        //   "status": "online",
-        //     "uid": "485373384205240306",
-        //     "nick": "NAME17112690859155",
-        //     "balance": "￥0",
-        //     "avatar": "http:\/\/image.bj.taooo.cc\/public\/user\/avatar\/default_avatar_v1.png?x-oss-process=image\/auto-orient,1\/resize,w_750\/format,jpg\/interlace,1\/quality,q_80",
-        //     "sex": "unknown",
-        //     "desc": "",
-        //     "hashid": "X1w_6VGBmel"
-        // }
         // 关闭注册弹窗
         useBaseStore().updateIsShowModalRegister(false)
         this.$emit("registered")

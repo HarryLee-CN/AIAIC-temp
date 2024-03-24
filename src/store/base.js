@@ -8,6 +8,7 @@ export const useBaseStore = defineStore("base", {
     isShowModalRegister: false,
     swiperItems: [],
     isShowModalSwiper: false,
+    myWorks: []
   }),
   getters: {
     getterUserInfo(state) {
@@ -28,6 +29,9 @@ export const useBaseStore = defineStore("base", {
     getterIsShowModalSwiper(state) {
       return state.isShowModalSwiper
     },
+    getterMyWorks(state) {
+      return state.myWorks
+    },
   },
   actions: {
     updateUserInfo(userInfo) {
@@ -47,6 +51,9 @@ export const useBaseStore = defineStore("base", {
     },
     updateIsShowModalSwiper(isShowModalSwiper) {
       this.isShowModalSwiper = isShowModalSwiper
+    },
+    updateMyWorks(myWorks) {
+      this.myWorks = myWorks
     },
   }
 })

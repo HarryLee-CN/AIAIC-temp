@@ -121,6 +121,7 @@ export default {
       const res = await activityAigcGetChosenCollectionFeedList()
       useBaseStore().updateSelectedWorks(res.data.result.item_list)
       const resMine = await activityAigcGetUserCollectionFeedList()
+      useBaseStore().updateMyWorks(resMine.data.result.item_list)
     },
     initUsersInterface() {
       const clientHeight = document.body.clientHeight
