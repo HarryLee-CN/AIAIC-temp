@@ -1,11 +1,12 @@
 <script>
 import {defineComponent} from 'vue'
+import {useBaseStore} from "../store/base";
 
 export default defineComponent({
   name: "Content-3",
-  data() {
-    return {
-      list: []
+  computed: {
+    selectedWorks() {
+      return useBaseStore().getterSelectedWorks
     }
   }
 })
@@ -13,13 +14,13 @@ export default defineComponent({
 
 <template>
   <div class="content-3">
-    <div class="block" v-for="(item, index) in 6">
+    <div class="block" v-for="(item, index) in selectedWorks">
       <div class="top">
-        <img :src="`https://static.thefair.net.cn/activity/AIAIC/display-img${index+1}.png`" alt="">
+        <img :src="item.images[0]" alt="">
       </div>
       <div class="bottom">
-        <div class="desc">{{index}}超级马里奥：惊奇了了两行文字 超级马里奥：惊奇了了两行文字</div>
-        <div class="name">Patrick</div>
+        <div class="desc">{{ item.desc }}</div>
+        <div class="name">{{ item.nick }}</div>
         <img class="next" src="../static/img/icon-arrow-next.svg" alt="arrow">
       </div>
     </div>
@@ -34,26 +35,11 @@ export default defineComponent({
   column-count: 2;
   column-gap: 5px;
 
-  //display: flex;
-  //flex-direction: column;
-  //flex-wrap: wrap;
-  //justify-content: flex-start;
-
-  //.block:nth-child(2n+1){
-  //  order: 1;
-  //  margin-left: 0;
-  //}
-  //.block:nth-child(2n+2){
-  //  order: 2;
-  //}
-
   .block {
-    //margin-left: 5px;
-    //width: 49.3%;
     height: fit-content;
     padding-bottom: 4px;
-    display: flex;
-    flex-direction: column;
+    break-inside: avoid;
+    page-break-inside: avoid;
 
     .top {
       width: 100%;
