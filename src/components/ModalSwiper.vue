@@ -45,9 +45,9 @@ export default defineComponent({
 <template>
   <div class="modal-swiper" v-if="isShowModalSwiper">
     <div class="content">
-      <img class="icon" src="../static/img/icon-arrow-left.svg" alt="left" @click="swipe('left')">
+      <img class="icon" src="../static/img/icon-arrow-left.svg" alt="left" @click="swipe('left')" v-if="swiperItems.length !== 1">
       <img class="img" :src="swiperItems[current]" alt="img">
-      <img class="icon" src="../static/img/icon-arrow-right.svg" alt="right" @click="swipe('right')">
+      <img class="icon" src="../static/img/icon-arrow-right.svg" alt="right" @click="swipe('right')" v-if="swiperItems.length !== 1">
     </div>
     <img class="close" src="../static/img/icon-close.svg" alt="close" @click="handleClose">
   </div>
@@ -71,15 +71,15 @@ export default defineComponent({
 
   .content {
     width: 100%;
-    padding: 0 25px;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
     .img {
       width: 323px;
       border-radius: 7px;
+      margin: 0 18px;
     }
   }
 
