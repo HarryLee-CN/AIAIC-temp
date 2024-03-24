@@ -10,7 +10,17 @@ export const useBaseStore = defineStore("base", {
     swiperItems: [],
     isShowModalSwiper: false,
     myWorks: [],
-    isShowPagePoster: false
+    isShowPagePoster: false,
+    posterContent: { // todo
+      // "title": "我的作品1",
+      // "desc": "有描述",
+      // "nick": "韭菜",
+      // "images": [
+      //   "https:\/\/static.thefair.net.cn\/activity\/collect\/ugc\/20240324\/1683bb3ee765ddd333d7364a70c725da.png?x-oss-process=image\/auto-orient,1\/resize,w_750\/format,jpg\/interlace,1\/quality,q_80",
+      //   "https:\/\/static.thefair.net.cn\/activity\/collect\/ugc\/20240324\/e7e42c61ad614c3e5c866defbc0d8472.png?x-oss-process=image\/auto-orient,1\/resize,w_750\/format,jpg\/interlace,1\/quality,q_80"
+      // ],
+      // "poster_link": "xxx"
+    }
   }),
   getters: {
     getterIsLogin(state) {
@@ -40,6 +50,9 @@ export const useBaseStore = defineStore("base", {
     getterIsShowPagePoster(state) {
       return state.isShowPagePoster
     },
+    getterPosterContent(state) {
+      return state.posterContent
+    },
   },
   actions: {
     updateUserInfo(userInfo) {
@@ -65,6 +78,9 @@ export const useBaseStore = defineStore("base", {
     },
     updateIsShowPagePoster(isShowPagePoster) {
       this.isShowPagePoster = isShowPagePoster
+    },
+    updatePosterContent(posterContent) {
+      this.posterContent = posterContent
     },
   }
 })

@@ -13,6 +13,10 @@ export default defineComponent({
     handleSubmitAgain() {
       useBaseStore().updateIsShowPageSubmit(true)
     },
+    handlePoster(item) {
+      useBaseStore().updateIsShowPagePoster(true)
+      useBaseStore().updatePosterContent(item)
+    }
   }
 })
 </script>
@@ -26,7 +30,7 @@ export default defineComponent({
           <div class="decoration"/>
           《{{ item.title }}》
         </div>
-        <div class="right">
+        <div class="right" @click="handlePoster(item)">
           查看海报>
         </div>
       </div>
