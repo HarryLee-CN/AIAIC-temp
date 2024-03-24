@@ -36,6 +36,7 @@ export default defineComponent({
     },
     posterContent: {
       handler(posterContent) {
+        if (!posterContent.images.length) return
         console.log(posterContent)
         for (let i = 0; i < posterContent.images.length; i++) {
           console.log(posterContent.images[i])
@@ -73,26 +74,19 @@ export default defineComponent({
     imageAnalysisComplete: {
       handler(imageAnalysisComplete) {
         if (imageAnalysisComplete) {
-          this.getBackgroundHeight()
-          this.drawCanvas()
+          uni.showLoading()
+          setTimeout(() => {
+            this.getBackgroundHeight()
+          }, 300)
+          setTimeout(() => {
+            uni.hideLoading()
+            this.drawCanvas()
+          }, 600)
         }
       }
     }
   },
   methods: {
-    resetData() {
-      useBaseStore().updatePosterContent({images: []})
-      this.imageHeights =  [];
-      this.imageHeightsTotal = 0;
-      this.asset_count = 0;
-      this.backgroundHeight = 0;
-      this.imageAnalysisComplete = false;
-      this.backgroundWidth = 330;
-      this.imageWidth = 304;
-      this.topHeight = 213;
-      this.singleAssetHeight = 56;
-      this.bottomHeight = 359
-    },
     getBackgroundHeight() {
       this.backgroundHeight = this.topHeight + this.asset_count * this.singleAssetHeight + this.bottomHeight
       console.log('backgroundHeight', this.backgroundHeight)
@@ -152,13 +146,22 @@ export default defineComponent({
       ctx.drawImage(qrcode, marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + marginTop + this.imageHeightsTotal + qrcode_marginTop, 94, 94)
 
       ctx.draw()
-    }
+    },
+
+    resetData() {
+      useBaseStore().updatePosterContent({images: []})
+      this.imageHeights =  [];
+      this.imageHeightsTotal = 0;
+      this.asset_count = 0;
+      this.backgroundHeight = 0;
+      this.imageAnalysisComplete = false;
+      this.backgroundWidth = 330;
+      this.imageWidth = 304;
+      this.topHeight = 213;
+      this.singleAssetHeight = 56;
+      this.bottomHeight = 359
+    },
   },
-  mounted() {
-  },
-  beforeDestroy() {
-    console.log("beforeDestroy")
-  }
 })
 </script>
 
