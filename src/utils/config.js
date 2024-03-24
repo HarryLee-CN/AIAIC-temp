@@ -1,6 +1,6 @@
 export const config = {
-  activityGnsmsInitConfigPath: "/activity/gnsms/init_config",
-  activityGnsmsSendSmsCodePath: "/activity/gnsms/send_sms_code",
-  activityGnsmsCheckCodePath: "/activity/gnsms/check_code",
-  activityGnsmsCreateSmsUserPath: "/activity/gnsms/create_sms_user",
+  activityAigcSendSmsCodePath: "/activity/aigc/send_sms_code",
+  v1UserLoginPath: "/v1/user/login",
+  activityAigcGetChosenCollectionFeedListPath: "/activity/aigc/get_chosen_collection_feed_list", // 精选作品
+  activityAigcGetUserCollectionFeedListPath: "/activity/aigc/get_user_collection_feed_list", // 用户作品
 }

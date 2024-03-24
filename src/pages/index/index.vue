@@ -78,7 +78,7 @@
 
   <page-sign-up v-if="isShowPageSignUp"/>
 
-  <modal-register :open="true"/>
+  <modal-register :open="isShowModalRegister" @close="isShowModalRegister = false"/>
 </template>
 
 <script>
@@ -97,6 +97,7 @@ export default {
     return {
       // 上传过作品了
       hasWorks: true,
+      isShowModalRegister: true,
       fullPage: {}
     }
   },

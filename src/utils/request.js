@@ -1,5 +1,3 @@
-import {useBaseStore} from "../store/base";
-
 function handleResponse(resolve, reject, res) {
   switch (res.statusCode) {
     case 200:
@@ -32,9 +30,7 @@ export function uniRequest(options) {
     uni.request({
       url: host + url,
       data,
-      header: {
-        "X-THEFAIR-SOURCE": useBaseStore().getterSource
-      },
+      header: {},
       method,
       withCredentials: true,
       success: (res) => {
