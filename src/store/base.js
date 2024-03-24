@@ -5,7 +5,7 @@ export const useBaseStore = defineStore("base", {
     isLogin: !!localStorage.getItem('uid'),
     userInfo: {},
     selectedWorks: [],
-    isShowPageSubmit: true,
+    isShowPageSubmit: false,
     isShowModalRegister: false,
     swiperItems: [],
     isShowModalSwiper: false,

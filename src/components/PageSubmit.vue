@@ -27,13 +27,14 @@ export default defineComponent({
     async uploadImg(file) {
       let url = '';
       let res = await getOssToken({path: 'activity/collect/ugc/'});
-      const OssTokenData = res.result;
+      const OssTokenData = res.data.result;
       let uploadResult = await imgUpload(OssTokenData, file);
-      if (uploadResult.status === 200) {
-        url = OssTokenData.url;
-        return url;
-      }
-      return url;
+      console.log("uploadResult", uploadResult)
+      // if (uploadResult.status === 200) {
+      //   url = OssTokenData.url;
+      //   return url;
+      // }
+      // return url;
     },
   },
   mounted() {

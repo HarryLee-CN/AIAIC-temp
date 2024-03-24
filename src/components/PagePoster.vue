@@ -80,15 +80,15 @@ export default defineComponent({
           uni.showLoading()
           setTimeout(() => {
             this.getBackgroundHeight()
-          }, 200)
+          }, 300)
           setTimeout(() => {
             this.drawCanvas()
-          }, 400)
+          }, 600)
           setTimeout(() => {
             this.exportPoster()
             uni.hideLoading()
             this.isLoading = false
-          }, 600)
+          }, 900)
         }
       }
     }
@@ -186,6 +186,7 @@ export default defineComponent({
       this.topHeight = 213;
       this.singleAssetHeight = 56;
       this.bottomHeight = 359
+      this.posterSrc = ""
     },
 
     again() {
