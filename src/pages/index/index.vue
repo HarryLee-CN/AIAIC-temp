@@ -77,6 +77,8 @@
   </div>
 
   <page-sign-up v-if="isShowPageSignUp"/>
+
+  <modal-register :open="true"/>
 </template>
 
 <script>
@@ -87,11 +89,14 @@ import Content4 from "../../components/Content-4.vue";
 import Content5 from "../../components/Content-5.vue";
 import PageSignUp from "../../components/PageSignUp.vue";
 import {useBaseStore} from "../../store/base";
+import ModalRegister from "../../components/ModalRegister.vue";
 
 export default {
-  components: {PageSignUp, Content1, Content2, Content3, Content4, Content5,},
+  components: {ModalRegister, PageSignUp, Content1, Content2, Content3, Content4, Content5,},
   data() {
     return {
+      // 上传过作品了
+      hasWorks: true,
       fullPage: {}
     }
   },
