@@ -6,7 +6,6 @@ import {useBaseStore} from "../store/base";
 
 export default defineComponent({
   name: "ModalRegister",
-  props: ["open"],
   data() {
     return {
       mobile: "",
@@ -20,6 +19,9 @@ export default defineComponent({
   computed: {
     btnRegisterDisabled() {
       return !this.mobile || !this.encryptedMobile || !this.code
+    },
+    isShowModalRegister() {
+      return useBaseStore().getterIsShowModalRegister
     }
   },
   methods: {
@@ -73,6 +75,8 @@ export default defineComponent({
         //     "desc": "",
         //     "hashid": "X1w_6VGBmel"
         // }
+        // 关闭注册弹窗
+        useBaseStore().updateIsShowModalRegister(false)
         this.$emit("registered")
       } catch (e) {
         console.log(e)
@@ -80,13 +84,17 @@ export default defineComponent({
         this.isLoading = false
         uni.showToast({icon: "none", title: e.data.message.text})
       }
-    }
+    },
+    handleClose() {
+      // 关闭注册弹窗
+      useBaseStore().updateIsShowModalRegister(false)
+    },
   }
 })
 </script>
 
 <template>
-  <div class="register" v-if="open">
+  <div class="register" v-if="isShowModalRegister">
     <div class="content">
       <div class="input-container">
         <input class="phone-input" type="tel" placeholder="请输入手机号" placeholder-style="color: #C9C9C9"
@@ -99,7 +107,7 @@ export default defineComponent({
       </div>
       <div class="btn-register" :class="{disabled: btnRegisterDisabled}" @click="register">登录</div>
     </div>
-    <img class="close" src="../static/img/icon-close.svg" alt="close" @click="$emit('close')">
+    <img class="close" src="../static/img/icon-close.svg" alt="close" @click="handleClose">
   </div>
 </template>
 

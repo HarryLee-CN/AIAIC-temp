@@ -78,7 +78,9 @@
 
   <page-sign-up v-if="isShowPageSignUp"/>
 
-  <modal-register :open="isShowModalRegister" @close="handleClose" @registered="handleLogin"/>
+  <modal-register @registered="handleLogin"/>
+
+  <modal-swiper/>
 </template>
 
 <script>
@@ -91,9 +93,10 @@ import PageSignUp from "../../components/PageSignUp.vue";
 import {useBaseStore} from "../../store/base";
 import ModalRegister from "../../components/ModalRegister.vue";
 import {activityAigcGetChosenCollectionFeedList} from "../../api/api";
+import ModalSwiper from "../../components/ModalSwiper.vue";
 
 export default {
-  components: {ModalRegister, PageSignUp, Content1, Content2, Content3, Content4, Content5,},
+  components: {ModalSwiper, ModalRegister, PageSignUp, Content1, Content2, Content3, Content4, Content5,},
   data() {
     return {
       // 上传过作品了
@@ -105,21 +108,12 @@ export default {
     isShowPageSignUp() {
       return useBaseStore().getterIsShowPageSignUp
     },
-    isShowModalRegister() {
-      return useBaseStore().getterIsShowModalRegister
-    }
   },
   methods: {
     handleClick(e) {
       this.fullPage.moveTo(e)
     },
-    handleClose() {
-      // 关闭注册弹窗
-      useBaseStore().updateIsShowModalRegister(false)
-    },
     handleLogin() {
-      // 关闭注册弹窗
-      useBaseStore().updateIsShowModalRegister(false)
       // 打开报名弹窗
       useBaseStore().updateIsShowPageSignUp(true)
     },

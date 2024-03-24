@@ -8,13 +8,19 @@ export default defineComponent({
     selectedWorks() {
       return useBaseStore().getterSelectedWorks
     }
+  },
+  methods: {
+    handleClick(images) {
+      useBaseStore().updateSwiperItems(images)
+      useBaseStore().updateIsShowModalSwiper(true)
+    }
   }
 })
 </script>
 
 <template>
   <div class="content-3">
-    <div class="block" v-for="(item, index) in selectedWorks">
+    <div class="block" v-for="(item, index) in selectedWorks" @click="handleClick(item.images)" :key="index">
       <div class="top">
         <img :src="item.images[0]" alt="">
       </div>
