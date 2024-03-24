@@ -4,11 +4,20 @@ import {defineComponent} from 'vue'
 
 export default defineComponent({
   name: "Content-2",
+  computed: {
+    isLogin() {
+      return useBaseStore().getterIsLogin
+    }
+  },
   methods: {
     handleSignUp() {
-      // todo 判断
-      // 打开注册弹窗
-      useBaseStore().updateIsShowModalRegister(true)
+      if (!this.isLogin) {
+        // 打开注册弹窗
+        useBaseStore().updateIsShowModalRegister(true)
+      } else {
+        // 打开报名弹窗
+        useBaseStore().updateIsShowPageSignUp(true)
+      }
     }
   }
 })
