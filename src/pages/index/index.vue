@@ -97,7 +97,6 @@ export default {
     return {
       // 上传过作品了
       hasWorks: true,
-      isShowModalRegister: false,
       fullPage: {}
     }
   },
@@ -106,7 +105,7 @@ export default {
       return useBaseStore().getterIsShowPageSignUp
     },
     isShowModalRegister() {
-      return useBaseStore().getterIsShowPageSignUp
+      return useBaseStore().getterIsShowModalRegister
     }
   },
   methods: {
