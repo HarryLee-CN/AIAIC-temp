@@ -12,3 +12,16 @@ export function activityAigcSendSmsCode({mobile}) {
     },
   })
 }
+
+export function v1UserLogin({encrypt_mobile, sms_code}) {
+  return uniRequest({
+    url: config.v1UserLoginPath,
+    method: "post",
+    data: {
+      "login_method": "sms_code",
+      "country_code": 86,
+      "mobile": encrypt_mobile,
+      sms_code
+    },
+  })
+}

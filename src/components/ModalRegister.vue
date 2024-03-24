@@ -1,7 +1,7 @@
 <script>
 import {defineComponent} from 'vue'
 import {phoneNumValid, timeCountdown} from "../utils/common";
-import {activityAigcSendSmsCode} from "../api/api";
+import {activityAigcSendSmsCode, v1UserLogin} from "../api/api";
 
 export default defineComponent({
   name: "ModalRegister",
@@ -13,7 +13,12 @@ export default defineComponent({
       btnGetCodeText: "获取验证码",
       isLoading: false,
       btnGetCodeDisabled: false,
-      encryptedMobile: ""
+      encryptedMobile: "",
+    }
+  },
+  computed: {
+    btnRegisterDisabled() {
+      return !this.mobile || !this.encryptedMobile || !this.code
     }
   },
   methods: {
@@ -37,6 +42,33 @@ export default defineComponent({
           this.btnGetCodeDisabled = false;
         }
       });
+    },
+    async register() {
+      try {
+        if (this.btnRegisterDisabled) return
+        if (this.isLoading) return
+        uni.showLoading()
+        this.isLoading = true
+        const res = await v1UserLogin({encrypt_mobile: this.encryptedMobile, sms_code: this.code})
+        uni.hideLoading()
+        this.isLoading = false
+        console.log(res.data.result)
+        // "user": {
+        //   "status": "online",
+        //     "uid": "485373384205240306",
+        //     "nick": "NAME17112690859155",
+        //     "balance": "￥0",
+        //     "avatar": "http:\/\/image.bj.taooo.cc\/public\/user\/avatar\/default_avatar_v1.png?x-oss-process=image\/auto-orient,1\/resize,w_750\/format,jpg\/interlace,1\/quality,q_80",
+        //     "sex": "unknown",
+        //     "desc": "",
+        //     "hashid": "X1w_6VGBmel"
+        // }
+      } catch (e) {
+        console.log(e)
+        uni.hideLoading()
+        this.isLoading = false
+        uni.showToast({icon: "none", title: e.data.message.text})
+      }
     }
   }
 })
@@ -52,7 +84,7 @@ export default defineComponent({
       <input class="code-input" type="number" placeholder="请输入验证码" placeholder-style="color: #C9C9C9" v-model="code">
       <div class="btn-get-code" :class="{disabled: btnGetCodeDisabled}" @click="getCode">{{btnGetCodeText}}</div>
     </div>
-    <div class="btn-register">登录</div>
+    <div class="btn-register" :class="{disabled: btnRegisterDisabled}" @click="register">登录</div>
   </div>
   <img class="close" src="../static/img/icon-close.svg" alt="close" @click="$emit('close')">
 </div>
@@ -163,6 +195,11 @@ export default defineComponent({
       text-align: left;
 
       color: #C9C9C9
+    }
+
+    .disabled {
+      background-color: #E8E8E8;
+      color: #5F5F5F;
     }
   }
 
