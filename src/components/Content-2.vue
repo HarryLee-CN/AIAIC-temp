@@ -6,7 +6,9 @@ export default defineComponent({
   name: "Content-2",
   methods: {
     handleSignUp() {
-      useBaseStore().updateIsShowPageSignUp(true)
+      // todo 判断
+      // 打开注册弹窗
+      useBaseStore().updateIsShowModalRegister(true)
     }
   }
 })

@@ -70,6 +70,7 @@ export default defineComponent({
         //     "desc": "",
         //     "hashid": "X1w_6VGBmel"
         // }
+        this.$emit("registered")
       } catch (e) {
         console.log(e)
         uni.hideLoading()

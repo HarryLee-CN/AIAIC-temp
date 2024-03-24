@@ -78,7 +78,7 @@
 
   <page-sign-up v-if="isShowPageSignUp"/>
 
-  <modal-register :open="isShowModalRegister" @close="isShowModalRegister = false"/>
+  <modal-register :open="isShowModalRegister" @close="handleClose" @registered="handleLogin"/>
 </template>
 
 <script>
@@ -97,19 +97,32 @@ export default {
     return {
       // 上传过作品了
       hasWorks: true,
-      isShowModalRegister: true,
+      isShowModalRegister: false,
       fullPage: {}
     }
   },
   computed: {
     isShowPageSignUp() {
       return useBaseStore().getterIsShowPageSignUp
+    },
+    isShowModalRegister() {
+      return useBaseStore().getterIsShowPageSignUp
     }
   },
   methods: {
     handleClick(e) {
       this.fullPage.moveTo(e)
-    }
+    },
+    handleClose() {
+      // 关闭注册弹窗
+      useBaseStore().updateIsShowModalRegister(false)
+    },
+    handleLogin() {
+      // 关闭注册弹窗
+      useBaseStore().updateIsShowModalRegister(false)
+      // 打开报名弹窗
+      useBaseStore().updateIsShowPageSignUp(true)
+    },
   },
   mounted() {
     const clientHeight = document.body.clientHeight
