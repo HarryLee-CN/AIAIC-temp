@@ -29,6 +29,11 @@ export default defineComponent({
     }
   },
   watch: {
+    isShowPagePoster(newV, oldV) {
+      if (newV === false && oldV === true){
+        this.resetData();
+      }
+    },
     posterContent: {
       handler(posterContent) {
         console.log(posterContent)
@@ -75,6 +80,19 @@ export default defineComponent({
     }
   },
   methods: {
+    resetData() {
+      useBaseStore().updatePosterContent({images: []})
+      this.imageHeights =  [];
+      this.imageHeightsTotal = 0;
+      this.asset_count = 0;
+      this.backgroundHeight = 0;
+      this.imageAnalysisComplete = false;
+      this.backgroundWidth = 330;
+      this.imageWidth = 304;
+      this.topHeight = 213;
+      this.singleAssetHeight = 56;
+      this.bottomHeight = 359
+    },
     getBackgroundHeight() {
       this.backgroundHeight = this.topHeight + this.asset_count * this.singleAssetHeight + this.bottomHeight
       console.log('backgroundHeight', this.backgroundHeight)

@@ -12,6 +12,7 @@ export const useBaseStore = defineStore("base", {
     myWorks: [],
     isShowPagePoster: false,
     posterContent: { // todo
+      images: []
       // "title": "我的作品1",
       // "desc": "有描述",
       // "nick": "韭菜",
