@@ -143,11 +143,13 @@ export default defineComponent({
       const marginTop = 44.5
 
       // 写结尾
-      ctx.fillText('扫码查看更多作品', marginLeft, firstY + lineHeight + lineSpace + lineHeight + marginTop + this.imageHeightsTotal)
+      ctx.font = "600 12px Source Han Serif CN"
+      const qrCodeTipLineHeight = 17.4
+      ctx.fillText('扫码查看更多作品', marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + marginTop + this.imageHeightsTotal)
 
       const qrcode = "https://static.thefair.net.cn/activity/aiaic/qrcode.png"
       const qrcode_marginTop = 8
-      ctx.drawImage(qrcode, marginLeft, firstY + lineHeight + lineSpace + lineHeight + marginTop + this.imageHeightsTotal + qrcode_marginTop, 102, 102)
+      ctx.drawImage(qrcode, marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + marginTop + this.imageHeightsTotal + qrcode_marginTop, 94, 94)
 
       ctx.draw()
     }
