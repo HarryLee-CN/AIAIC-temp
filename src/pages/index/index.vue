@@ -105,6 +105,9 @@ export default {
     }
   },
   computed: {
+    isLogin() {
+      return useBaseStore().getterIsLogin
+    },
     isShowPageSignUp() {
       return useBaseStore().getterIsShowPageSignUp
     },
@@ -118,8 +121,12 @@ export default {
       useBaseStore().updateIsShowPageSignUp(true)
     },
     async getData() {
+      console.log('[isLogin]', this.isLogin)
+      console.log('[uid]', localStorage.getItem('uid'))
+
       const res = await activityAigcGetChosenCollectionFeedList()
       useBaseStore().updateSelectedWorks(res.data.result.item_list)
+      if (!this.isLogin) return
       const resMine = await activityAigcGetUserCollectionFeedList()
       useBaseStore().updateMyWorks(resMine.data.result.item_list)
     },

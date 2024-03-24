@@ -2,6 +2,7 @@ import {defineStore} from "pinia";
 
 export const useBaseStore = defineStore("base", {
   state: () => ({
+    isLogin: !!localStorage.getItem('uid'),
     userInfo: {},
     selectedWorks: [],
     isShowPageSignUp: false,
@@ -11,6 +12,9 @@ export const useBaseStore = defineStore("base", {
     myWorks: []
   }),
   getters: {
+    getterIsLogin(state) {
+      return state.isLogin
+    },
     getterUserInfo(state) {
       return state.userInfo
     },
