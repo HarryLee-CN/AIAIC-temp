@@ -5,13 +5,13 @@ export const useBaseStore = defineStore("base", {
     isLogin: !!localStorage.getItem('uid'),
     userInfo: {},
     selectedWorks: [],
-    isShowPageSubmit: false,
+    isShowPageSubmit: true,
     isShowModalRegister: false,
     swiperItems: [],
     isShowModalSwiper: false,
     myWorks: [],
     isShowPagePoster: false,
-    posterContent: { // todo
+    posterContent: {
       images: []
       // "title": "我的作品1",
       // "desc": "有描述",

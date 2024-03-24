@@ -2,6 +2,8 @@
 import {defineComponent} from 'vue'
 import HeaderNav from "./HeaderNav.vue";
 import {useBaseStore} from "../store/base";
+import {getOssToken} from "../api/api";
+import {imgUpload} from "../utils/common";
 
 export default defineComponent({
   name: "PageSubmit",
@@ -19,6 +21,23 @@ export default defineComponent({
     isShowPageSubmit() {
       return useBaseStore().getterIsShowPageSubmit
     }
+  },
+  methods: {
+    // 图片上传
+    async uploadImg(file) {
+      let url = '';
+      let res = await getOssToken({path: 'activity/collect/ugc/'});
+      const OssTokenData = res.result;
+      let uploadResult = await imgUpload(OssTokenData, file);
+      if (uploadResult.status === 200) {
+        url = OssTokenData.url;
+        return url;
+      }
+      return url;
+    },
+  },
+  mounted() {
+    this.uploadImg('1234')
   }
 })
 </script>

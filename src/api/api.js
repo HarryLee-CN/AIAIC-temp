@@ -1,6 +1,13 @@
 import {uniRequest} from "../utils/request";
 import {config} from "../utils/config";
-import {useBaseStore} from "../store/base";
+
+export function getOssToken({path}) {
+  return uniRequest({
+    url: "https://acth5.thefair.net.cn/v1/upload/image_sign",
+    method: "get",
+    params: {path}
+  })
+}
 
 export function activityAigcSendSmsCode({mobile}) {
   return uniRequest({

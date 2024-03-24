@@ -25,7 +25,8 @@ function handleResponse(resolve, reject, res) {
 export function uniRequest(options) {
   return new Promise(async (resolve, reject) => {
     const {url, data, method} = options
-    let host = 'https://actapi.thefair.net.cn';
+    let host = ""
+    if (!url.includes('http')) host = 'https://actapi.thefair.net.cn';
     /** 通过ajax获取数据 **/
     uni.request({
       url: host + url,
