@@ -3,7 +3,7 @@ import {useBaseStore} from "../store/base";
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: "Content-2",
+  name: "Content-2-My-Works",
   methods: {
     handleSignUp() {
       useBaseStore().updateIsShowPageSignUp(true)

@@ -18,7 +18,8 @@
     </div>
     <div class="section">
       <div class="content" ref="content-2">
-        <content-2/>
+        <content-2 v-if="!isLogin || (isLogin && !myWorks.length)"/>
+        <content-2-my-works v-else/>
       </div>
     </div>
     <div class="section">
@@ -47,9 +48,13 @@
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
     <div class="cell" @click="handleClick(3)" ref="cell-2">
-      <div class="left">
+      <div class="left" v-if="!isLogin || (isLogin && !myWorks.length)">
         <div class="title" style="color: #70C6F6 !important;">作品征集</div>
         <div class="eng">Call for works</div>
+      </div>
+      <div class="left" v-else>
+        <div class="title" style="color: #70C6F6 !important;">我的创作</div>
+        <div class="eng">Creation</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
@@ -86,6 +91,7 @@
 <script>
 import Content1 from "../../components/Content-1.vue";
 import Content2 from "../../components/Content-2.vue";
+import Content2MyWorks from "../../components/Content-2-my-works.vue";
 import Content3 from "../../components/Content-3.vue";
 import Content4 from "../../components/Content-4.vue";
 import Content5 from "../../components/Content-5.vue";
@@ -96,7 +102,7 @@ import {activityAigcGetChosenCollectionFeedList, activityAigcGetUserCollectionFe
 import ModalSwiper from "../../components/ModalSwiper.vue";
 
 export default {
-  components: {ModalSwiper, ModalRegister, PageSignUp, Content1, Content2, Content3, Content4, Content5,},
+  components: {Content2MyWorks, ModalSwiper, ModalRegister, PageSignUp, Content1, Content2, Content3, Content4, Content5,},
   data() {
     return {
       // 上传过作品了
@@ -111,6 +117,9 @@ export default {
     isShowPageSignUp() {
       return useBaseStore().getterIsShowPageSignUp
     },
+    myWorks() {
+      return useBaseStore().getterMyWorks
+    }
   },
   methods: {
     handleClick(e) {
