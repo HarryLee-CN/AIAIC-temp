@@ -16,7 +16,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="sign-up">
+  <div class="submit">
     <div class="header">
       <img src="../../static/img/header-introduction.png" alt="header">
     </div>
@@ -66,7 +66,7 @@ export default defineComponent({
 </template>
 
 <style scoped lang="scss">
-.sign-up {
+.submit {
   height: 100vh;
   overflow-y: scroll;
 

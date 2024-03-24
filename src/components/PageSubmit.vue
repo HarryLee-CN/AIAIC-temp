@@ -1,9 +1,10 @@
 <script>
 import {defineComponent} from 'vue'
 import HeaderNav from "./HeaderNav.vue";
+import {useBaseStore} from "../store/base";
 
 export default defineComponent({
-  name: "PageSignUp",
+  name: "PageSubmit",
   components: {HeaderNav},
   data() {
     return {
@@ -13,12 +14,17 @@ export default defineComponent({
         "https://static-thefair-bj.oss-cn-beijing.aliyuncs.com/activity/jnby/631709876716_.pic.jpg",
       ]
     }
+  },
+  computed: {
+    isShowPageSubmit() {
+      return useBaseStore().getterIsShowPageSubmit
+    }
   }
 })
 </script>
 
 <template>
-  <div class="sign-up">
+  <div class="submit" v-if="isShowPageSubmit">
     <header-nav/>
     <div class="header">
       <img src="../static/img/header-introduction.png" alt="header">
@@ -33,7 +39,7 @@ export default defineComponent({
         最多上传4张图片
       </div>
       <div class="images">
-        <div class="image" v-for="(item, index) in images" :key="PageSignUp">
+        <div class="image" v-for="(item, index) in images" :key="index">
           <img class="icon-delete" src="../static/img/icon-delete.svg" alt="delete">
           <img class="work" :src="item" alt="img">
         </div>
@@ -68,7 +74,7 @@ export default defineComponent({
 </template>
 
 <style scoped lang="scss">
-.sign-up {
+.submit {
   padding-top: 50px;
   width: 100vw;
   height: 100vh;

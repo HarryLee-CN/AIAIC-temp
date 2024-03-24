@@ -16,7 +16,7 @@ export default defineComponent({
         useBaseStore().updateIsShowModalRegister(true)
       } else {
         // 打开报名弹窗
-        useBaseStore().updateIsShowPageSignUp(true)
+        useBaseStore().updateIsShowPageSubmit(true)
       }
     }
   }

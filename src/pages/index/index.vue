@@ -81,7 +81,9 @@
     </div>
   </div>
 
-  <page-sign-up v-if="isShowPageSignUp"/>
+  <page-submit/>
+
+  <page-poster/>
 
   <modal-register @registered="handleLogin"/>
 
@@ -95,14 +97,17 @@ import Content2MyWorks from "../../components/Content-2-my-works.vue";
 import Content3 from "../../components/Content-3.vue";
 import Content4 from "../../components/Content-4.vue";
 import Content5 from "../../components/Content-5.vue";
-import PageSignUp from "../../components/PageSignUp.vue";
+import PageSubmit from "../../components/PageSubmit.vue";
 import {useBaseStore} from "../../store/base";
 import ModalRegister from "../../components/ModalRegister.vue";
 import {activityAigcGetChosenCollectionFeedList, activityAigcGetUserCollectionFeedList} from "../../api/api";
 import ModalSwiper from "../../components/ModalSwiper.vue";
+import PagePoster from "../../components/PagePoster.vue";
 
 export default {
-  components: {Content2MyWorks, ModalSwiper, ModalRegister, PageSignUp, Content1, Content2, Content3, Content4, Content5,},
+  components: {
+    PagePoster,
+    Content2MyWorks, ModalSwiper, ModalRegister, PageSubmit, Content1, Content2, Content3, Content4, Content5,},
   data() {
     return {
       // 上传过作品了
@@ -114,8 +119,8 @@ export default {
     isLogin() {
       return useBaseStore().getterIsLogin
     },
-    isShowPageSignUp() {
-      return useBaseStore().getterIsShowPageSignUp
+    isShowPageSubmit() {
+      return useBaseStore().getterIsShowPageSubmit
     },
     myWorks() {
       return useBaseStore().getterMyWorks
@@ -127,7 +132,7 @@ export default {
     },
     handleLogin() {
       // 打开报名弹窗
-      useBaseStore().updateIsShowPageSignUp(true)
+      useBaseStore().updateIsShowPageSubmit(true)
     },
     async getData() {
       console.log('[isLogin]', this.isLogin)

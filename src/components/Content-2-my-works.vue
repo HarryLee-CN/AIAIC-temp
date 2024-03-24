@@ -11,7 +11,7 @@ export default defineComponent({
   },
   methods: {
     handleSubmitAgain() {
-      useBaseStore().updateIsShowPageSignUp(true)
+      useBaseStore().updateIsShowPageSubmit(true)
     },
   }
 })

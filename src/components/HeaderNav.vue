@@ -6,7 +6,7 @@ export default defineComponent({
   name: "HeaderNav",
   methods: {
     back() {
-      useBaseStore().updateIsShowPageSignUp(false)
+      useBaseStore().updateIsShowPageSubmit(false)
     }
   }
 })

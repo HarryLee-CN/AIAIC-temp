@@ -18,7 +18,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="sign-up">
+  <div class="submit">
     <header-nav/>
     <div class="header">
       <img src="../static/img/header-introduction.png" alt="header">
@@ -33,7 +33,7 @@ export default defineComponent({
         最多上传4张图片
       </div>
       <div class="images">
-        <div class="image" v-for="(item, index) in images" :key="PageSignUp">
+        <div class="image" v-for="(item, index) in images" :key="index">
           <img class="icon-delete" src="../static/img/icon-delete.svg" alt="delete">
           <img class="work" :src="item" alt="img">
         </div>
@@ -68,7 +68,7 @@ export default defineComponent({
 </template>
 
 <style scoped lang="scss">
-.sign-up {
+.submit {
   padding-top: 50px;
   width: 100vw;
   height: 100vh;

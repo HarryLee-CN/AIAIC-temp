@@ -5,7 +5,7 @@ export const useBaseStore = defineStore("base", {
     isLogin: !!localStorage.getItem('uid'),
     userInfo: {},
     selectedWorks: [],
-    isShowPageSignUp: false,
+    isShowPageSubmit: false,
     isShowModalRegister: false,
     swiperItems: [],
     isShowModalSwiper: false,
@@ -21,8 +21,8 @@ export const useBaseStore = defineStore("base", {
     getterSelectedWorks(state) {
       return state.selectedWorks
     },
-    getterIsShowPageSignUp(state) {
-      return state.isShowPageSignUp
+    getterIsShowPageSubmit(state) {
+      return state.isShowPageSubmit
     },
     getterIsShowModalRegister(state) {
       return state.isShowModalRegister
@@ -44,8 +44,8 @@ export const useBaseStore = defineStore("base", {
     updateSelectedWorks(selectedWorks) {
       this.selectedWorks = selectedWorks
     },
-    updateIsShowPageSignUp(isShowPageSignUp) {
-      this.isShowPageSignUp = isShowPageSignUp
+    updateIsShowPageSubmit(isShowPageSubmit) {
+      this.isShowPageSubmit = isShowPageSubmit
     },
     updateIsShowModalRegister(isShowModalRegister) {
       this.isShowModalRegister = isShowModalRegister
