@@ -1,5 +1,6 @@
 import {uniRequest} from "../utils/request";
 import {config} from "../utils/config";
+import {useBaseStore} from "../store/base";
 
 export function activityAigcSendSmsCode({mobile}) {
   return uniRequest({
@@ -31,7 +32,7 @@ export function activityAigcGetChosenCollectionFeedList() {
   return uniRequest({
     url: config.activityAigcGetChosenCollectionFeedListPath,
     method: "post",
-    data: {},
+    data: {"collection_id": 6475},
   })
 }
 
@@ -40,6 +41,10 @@ export function activityAigcGetUserCollectionFeedList() {
   return uniRequest({
     url: config.activityAigcGetUserCollectionFeedListPath,
     method: "post",
-    data: {},
+    data: {
+      "collection_id": 6475,
+      "uid": useBaseStore().getterUserInfo.uid,
+      "last_item_id": 1
+    },
   })
 }

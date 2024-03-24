@@ -2,10 +2,14 @@ import {defineStore} from "pinia";
 
 export const useBaseStore = defineStore("base", {
   state: () => ({
+    userInfo: {},
     isShowPageSignUp: false,
     isShowModalRegister: false,
   }),
   getters: {
+    getterUserInfo(state) {
+      return state.userInfo
+    },
     getterIsShowPageSignUp(state) {
       return state.isShowPageSignUp
     },
@@ -14,6 +18,9 @@ export const useBaseStore = defineStore("base", {
     },
   },
   actions: {
+    updateUserInfo(userInfo) {
+      this.userInfo = userInfo
+    },
     updateIsShowPageSignUp(isShowPageSignUp) {
       this.isShowPageSignUp = isShowPageSignUp
     },

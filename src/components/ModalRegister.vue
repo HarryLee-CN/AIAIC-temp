@@ -2,6 +2,7 @@
 import {defineComponent} from 'vue'
 import {phoneNumValid, timeCountdown} from "../utils/common";
 import {activityAigcSendSmsCode, v1UserLogin} from "../api/api";
+import {useBaseStore} from "../store/base";
 
 export default defineComponent({
   name: "ModalRegister",
@@ -60,6 +61,8 @@ export default defineComponent({
         uni.hideLoading()
         this.isLoading = false
         console.log(res.data.result)
+        useBaseStore().updateUserInfo(res.data.result.user)
+        // todo localStorage记录uid
         // "user": {
         //   "status": "online",
         //     "uid": "485373384205240306",
