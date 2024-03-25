@@ -108,12 +108,12 @@ export default defineComponent({
       flex-wrap: wrap;
 
       img {
-        width: 168px;
-        height: 168px;
+        width: 40vw;
+        height: 40vw;
         object-position: center center;
         object-fit: cover;
-        margin-right: 7px;
-        margin-bottom: 7px;
+        margin-right: 5px;
+        margin-bottom: 5px;
 
         &:nth-child(2n) {
           margin-right: 0;
