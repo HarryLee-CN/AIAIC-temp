@@ -2,7 +2,7 @@
 import {defineComponent} from 'vue'
 import HeaderNav from "./HeaderNav.vue";
 import {useBaseStore} from "../store/base";
-import {getOssToken} from "../api/api";
+import {activityAigcGetUserCollectionFeedList, getOssToken} from "../api/api";
 import {imgUpload, phoneNumValid} from "../utils/common";
 
 export default defineComponent({
@@ -82,8 +82,20 @@ export default defineComponent({
             ]
           })
         },
-        success: (uploadFileRes) => {
+        success: async (uploadFileRes) => {
           console.log(uploadFileRes)
+          uni.showToast({icon: "none", title: "提交成功"})
+          // 获取我的创作
+          const resMine = await activityAigcGetUserCollectionFeedList()
+          useBaseStore().updateMyWorks(resMine.data.result.item_list)
+          setTimeout(() => {
+            // 关闭提交页
+            useBaseStore().updateIsShowPageSubmit(false)
+            // 设为最后一个作品是海报内容
+            useBaseStore().updatePosterContent(resMine.data.result.item_list[resMine.data.result.item_list.length - 1])
+            // 打开海报页
+            useBaseStore().updateIsShowPagePoster(true)
+          }, 1500)
         }
       })
     }
