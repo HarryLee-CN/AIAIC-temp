@@ -3,14 +3,18 @@ import {defineComponent} from 'vue'
 import HeaderNav from "./HeaderNav.vue";
 import {useBaseStore} from "../store/base";
 import {getOssToken} from "../api/api";
-import {imgUpload} from "../utils/common";
+import {imgUpload, phoneNumValid} from "../utils/common";
 
 export default defineComponent({
   name: "PageSubmit",
   components: {HeaderNav},
   data() {
     return {
-      images: []
+      images: [],
+      workName: "",
+      workDesc: "",
+      nickname: "",
+      mobile: "",
     }
   },
   computed: {
@@ -39,10 +43,15 @@ export default defineComponent({
     },
     handleDelete(index) {
       this.images = this.images.filter((v, k) => k !== index)
+    },
+    handleSubmit() {
+      if (this.images.length === 0) return uni.showToast({icon: "none", title: "请上传至少一幅作品"})
+      if (!this.workName) return uni.showToast({icon: "none", title: "请输入作品名称"})
+      if (!this.nickname) return uni.showToast({icon: "none", title: "请输入您的昵称"})
+      if (!this.mobile) return uni.showToast({icon: "none", title: "请输入您的手机号"})
+      if (!phoneNumValid(this.mobile)) return uni.showToast({icon: "none", title: "请输入正确的手机号"})
     }
   },
-  mounted() {
-  }
 })
 </script>
 
@@ -74,25 +83,25 @@ export default defineComponent({
 
     <div class="block">
       <div class="title">*作品名称（必填）</div>
-      <input type="text" placeholder="在此处输入你的作品名称" placeholder-style="color: #989898">
+      <input type="text" placeholder="在此处输入你的作品名称" placeholder-style="color: #989898" v-model="workName">
     </div>
 
     <div class="block">
       <div class="title">*作品描述（选填）</div>
-      <textarea placeholder="在此处输入你的作品描述，140字以内" placeholder-style="color: #989898" maxlength="140"></textarea>
+      <textarea placeholder="在此处输入你的作品描述，140字以内" placeholder-style="color: #989898" maxlength="140" v-model="workDesc"></textarea>
     </div>
 
     <div class="block">
       <div class="title">*你的昵称（必填）</div>
-      <input type="text" placeholder="在此处输入你的昵称" placeholder-style="color: #989898">
+      <input type="text" placeholder="在此处输入你的昵称" placeholder-style="color: #989898" v-model="nickname">
     </div>
 
     <div class="block">
       <div class="title">*手机号码（必填）</div>
-      <input type="tel" placeholder="请输入您的手机号码，以便我们与你联系" placeholder-style="color: #989898">
+      <input type="tel" placeholder="请输入您的手机号码，以便我们与你联系" placeholder-style="color: #989898" v-model="mobile">
     </div>
 
-    <img class="btn" src="../static/img/btn-submit.png" alt="submit">
+    <img class="btn" src="../static/img/btn-submit.png" alt="submit" @click="handleSubmit">
   </div>
 </template>
 
