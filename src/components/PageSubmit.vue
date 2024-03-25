@@ -64,6 +64,7 @@ export default defineComponent({
       if (!this.nickname) return uni.showToast({icon: "none", title: "请输入您的昵称"})
       if (!this.mobile) return uni.showToast({icon: "none", title: "请输入您的手机号"})
       if (!phoneNumValid(this.mobile)) return uni.showToast({icon: "none", title: "请输入正确的手机号"})
+      uni.showLoading()
       uni.uploadFile({
         url: `https://acth5.thefair.net.cn/api?_ajax_stamp_=${new Date().getTime()}`,
         formData: {
@@ -97,6 +98,7 @@ export default defineComponent({
           })
         },
         success: async (uploadFileRes) => {
+          uni.hideLoading()
           console.log(uploadFileRes)
           uni.showToast({icon: "none", title: "提交成功"})
           // 获取我的创作
@@ -110,6 +112,10 @@ export default defineComponent({
             // 打开海报页
             useBaseStore().updateIsShowPagePoster(true)
           }, 1500)
+        },
+        fail: (e) => {
+          uni.hideLoading()
+          uni.showToast({icon: "none", title: "发生错误，请重试"})
         }
       })
     }
