@@ -10,11 +10,7 @@ export default defineComponent({
   components: {HeaderNav},
   data() {
     return {
-      images: [
-        "https://static-thefair-bj.oss-cn-beijing.aliyuncs.com/activity/jnby/631709876716_.pic.jpg",
-        "https://static-thefair-bj.oss-cn-beijing.aliyuncs.com/activity/jnby/631709876716_.pic.jpg",
-        "https://static-thefair-bj.oss-cn-beijing.aliyuncs.com/activity/jnby/631709876716_.pic.jpg",
-      ]
+      images: []
     }
   },
   computed: {
@@ -24,21 +20,23 @@ export default defineComponent({
   },
   methods: {
     // 图片上传
-    async uploadImg(file) {
-      let url = '';
-      let res = await getOssToken({path: 'activity/collect/ugc/'});
-      const OssTokenData = res.data.result;
-      let uploadResult = await imgUpload(OssTokenData, file);
-      console.log("uploadResult", uploadResult)
-      // if (uploadResult.status === 200) {
-      //   url = OssTokenData.url;
-      //   return url;
-      // }
-      // return url;
-    },
+    handleUpload() {
+      uni.chooseImage({
+        count: 1,
+        sourceType: ['album'],
+        success: async (chooseImageRes) => {
+          const tempFiles = chooseImageRes.tempFiles
+          let res = await getOssToken({path: 'activity/collect/ugc/'});
+          const resGetOssToken = res.data.result;
+          let uploadResult = await imgUpload(resGetOssToken, tempFiles[0]);
+          if (uploadResult.statusCode === 200) {
+            this.images.push(resGetOssToken.url)
+          }
+        }
+      });
+    }
   },
   mounted() {
-    this.uploadImg('1234')
   }
 })
 </script>
@@ -63,7 +61,7 @@ export default defineComponent({
           <img class="icon-delete" src="../static/img/icon-delete.svg" alt="delete">
           <img class="work" :src="item" alt="img">
         </div>
-        <div class="uploader" v-if="true">
+        <div class="uploader" v-if="images.length < 4" @click="handleUpload">
           <img src="../static/img/icon-image-uploader.png" alt="uploader">
         </div>
       </div>
@@ -170,6 +168,8 @@ export default defineComponent({
           width: 166.74px;
           height: 166.5px;
           border-radius: 7px;
+          object-fit: contain;
+          object-position: center center;
         }
 
         .icon-delete {
