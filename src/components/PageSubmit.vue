@@ -22,7 +22,21 @@ export default defineComponent({
       return useBaseStore().getterIsShowPageSubmit
     }
   },
+  watch: {
+    isShowPageSubmit(newV, oldV) {
+      if (newV === false && oldV === true) {
+        this.resetData();
+      }
+    },
+  },
   methods: {
+    resetData() {
+      this.images = []
+      this.workName = ""
+      this.workDesc = ""
+      this.nickname = ""
+      this.mobile = ""
+    },
     // 图片上传
     handleUpload() {
       uni.chooseImage({
