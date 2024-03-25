@@ -161,6 +161,7 @@ export default {
         autoScrolling: true,
         scrollHorizontally: true,
         scrollOverflow: true,
+        scrollingSpeed: 500,
         onLeave: (origin, destination, direction, trigger) => {
           switch (destination.index) {
             case 0:
@@ -360,7 +361,7 @@ export default {
     border-bottom: 0.5px #191919 solid;
 
     position: fixed;
-    transition: all 500ms ease-in-out;
+    transition: all 300ms ease-in-out;
 
     display: flex;
     justify-content: space-between;
