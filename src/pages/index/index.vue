@@ -135,6 +135,7 @@ export default {
       useBaseStore().updateIsShowPageSubmit(true)
     },
     async getData() {
+      useBaseStore().updateIsLogin(!!localStorage.getItem('uid'))
       console.log('[isLogin]', this.isLogin)
       console.log('[uid]', localStorage.getItem('uid'))
 

@@ -2,7 +2,7 @@ import {defineStore} from "pinia";
 
 export const useBaseStore = defineStore("base", {
   state: () => ({
-    isLogin: !!localStorage.getItem('uid'),
+    isLogin: false,
     userInfo: {},
     selectedWorks: [],
     isShowPageSubmit: false,
@@ -56,6 +56,9 @@ export const useBaseStore = defineStore("base", {
     },
   },
   actions: {
+    updateIsLogin(isLogin) {
+      this.isLogin = isLogin
+    },
     updateUserInfo(userInfo) {
       this.userInfo = userInfo
     },

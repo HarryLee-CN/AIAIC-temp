@@ -1,7 +1,7 @@
 <script>
 import {defineComponent} from 'vue'
 import {phoneNumValid, timeCountdown} from "../utils/common";
-import {activityAigcSendSmsCode, v1UserLogin} from "../api/api";
+import {activityAigcGetUserCollectionFeedList, activityAigcSendSmsCode, v1UserLogin} from "../api/api";
 import {useBaseStore} from "../store/base";
 
 export default defineComponent({
@@ -62,8 +62,15 @@ export default defineComponent({
         const res = await v1UserLogin({encrypt_mobile: this.encryptedMobile, sms_code: this.code})
         uni.hideLoading()
         this.isLoading = false
+        // 获取用户信息
         useBaseStore().updateUserInfo(res.data.result.user)
+        // 本地登录态
+        useBaseStore().updateIsLogin(true)
+        // 储存UID
         localStorage.setItem('uid', res.data.result.user.uid)
+        // 获取我的创作
+        const resMine = await activityAigcGetUserCollectionFeedList()
+        useBaseStore().updateMyWorks(resMine.data.result.item_list)
         // 关闭注册弹窗
         useBaseStore().updateIsShowModalRegister(false)
         this.$emit("registered")
