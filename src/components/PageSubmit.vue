@@ -50,6 +50,42 @@ export default defineComponent({
       if (!this.nickname) return uni.showToast({icon: "none", title: "请输入您的昵称"})
       if (!this.mobile) return uni.showToast({icon: "none", title: "请输入您的手机号"})
       if (!phoneNumValid(this.mobile)) return uni.showToast({icon: "none", title: "请输入正确的手机号"})
+      uni.uploadFile({
+        url: `https://acth5.thefair.net.cn/api?_ajax_stamp_=${new Date().getTime()}`,
+        formData: {
+          path: "/v1/collect/create_collect",
+          params: JSON.stringify({
+            "collection_id": "6475",
+            "content_type": "questionaires",
+            "content": [
+              {
+                "guide_id": "485373384205237932",
+                "text": this.images// 作品
+
+              },
+              {
+                "guide_id": "485373384205237933", // 名称
+                "text": this.workName
+              },
+              {
+                "guide_id": "485373384205237934", // 描述
+                "text": this.workDesc
+              },
+              {
+                "guide_id": "485373384205237935",
+                "text": this.nickname // 昵称
+              },
+              {
+                "guide_id": "485373384205237936", // 手机号
+                "text": this.mobile
+              }
+            ]
+          })
+        },
+        success: (uploadFileRes) => {
+          console.log(uploadFileRes)
+        }
+      })
     }
   },
 })
@@ -88,7 +124,8 @@ export default defineComponent({
 
     <div class="block">
       <div class="title">*作品描述（选填）</div>
-      <textarea placeholder="在此处输入你的作品描述，140字以内" placeholder-style="color: #989898" maxlength="140" v-model="workDesc"></textarea>
+      <textarea placeholder="在此处输入你的作品描述，140字以内" placeholder-style="color: #989898" maxlength="140"
+                v-model="workDesc"></textarea>
     </div>
 
     <div class="block">
@@ -98,7 +135,8 @@ export default defineComponent({
 
     <div class="block">
       <div class="title">*手机号码（必填）</div>
-      <input type="tel" placeholder="请输入您的手机号码，以便我们与你联系" placeholder-style="color: #989898" v-model="mobile">
+      <input type="tel" placeholder="请输入您的手机号码，以便我们与你联系" placeholder-style="color: #989898"
+             v-model="mobile">
     </div>
 
     <img class="btn" src="../static/img/btn-submit.png" alt="submit" @click="handleSubmit">
