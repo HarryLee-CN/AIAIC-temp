@@ -19,6 +19,7 @@ export default defineComponent({
   },
   methods: {
     handleClose() {
+      this.current = 0
       // 关闭
       useBaseStore().updateIsShowModalSwiper(false)
     },
