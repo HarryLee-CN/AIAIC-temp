@@ -30,10 +30,15 @@ export default defineComponent({
           const resGetOssToken = res.data.result;
           let uploadResult = await imgUpload(resGetOssToken, tempFiles[0]);
           if (uploadResult.statusCode === 200) {
-            this.images.push(resGetOssToken.url)
+            if (this.images.length < 4) {
+              this.images.push(resGetOssToken.url)
+            }
           }
         }
       });
+    },
+    handleDelete(index) {
+      this.images = this.images.filter((v, k) => k !== index)
     }
   },
   mounted() {
@@ -58,7 +63,7 @@ export default defineComponent({
       </div>
       <div class="images">
         <div class="image" v-for="(item, index) in images" :key="index">
-          <img class="icon-delete" src="../static/img/icon-delete.svg" alt="delete">
+          <img class="icon-delete" src="../static/img/icon-delete.svg" alt="delete" @click="handleDelete(index)">
           <img class="work" :src="item" alt="img">
         </div>
         <div class="uploader" v-if="images.length < 4" @click="handleUpload">
