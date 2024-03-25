@@ -5,7 +5,7 @@ export const useBaseStore = defineStore("base", {
     isLogin: false,
     userInfo: {},
     selectedWorks: [],
-    isShowPageSubmit: true,
+    isShowPageSubmit: false,
     isShowModalRegister: false,
     swiperItems: [],
     isShowModalSwiper: false,
