@@ -85,7 +85,7 @@
 
   <page-poster/>
 
-  <modal-register @registered="handleLogin"/>
+  <modal-register/>
 
   <modal-swiper/>
 </template>
@@ -129,10 +129,6 @@ export default {
   methods: {
     handleClick(e) {
       this.fullPage.moveTo(e)
-    },
-    handleLogin() {
-      // 打开报名弹窗
-      useBaseStore().updateIsShowPageSubmit(true)
     },
     async getData() {
       useBaseStore().updateIsLogin(!!localStorage.getItem('uid'))

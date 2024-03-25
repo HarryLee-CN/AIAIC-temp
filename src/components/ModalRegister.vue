@@ -71,9 +71,13 @@ export default defineComponent({
         // 获取我的创作
         const resMine = await activityAigcGetUserCollectionFeedList()
         useBaseStore().updateMyWorks(resMine.data.result.item_list)
-        // 关闭注册弹窗
-        useBaseStore().updateIsShowModalRegister(false)
-        this.$emit("registered")
+        uni.showToast({icon: "none", title: "登录成功"})
+        setTimeout(() => {
+          // 关闭注册弹窗
+          useBaseStore().updateIsShowModalRegister(false)
+          // 打开报名弹窗
+          useBaseStore().updateIsShowPageSubmit(true)
+        }, 1500)
       } catch (e) {
         console.log(e)
         uni.hideLoading()
