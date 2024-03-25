@@ -15,7 +15,7 @@ export default defineComponent({
         // 打开注册弹窗
         useBaseStore().updateIsShowModalRegister(true)
       } else {
-        // 打开报名弹窗
+        // 打开提交页面
         useBaseStore().updateIsShowPageSubmit(true)
       }
     }

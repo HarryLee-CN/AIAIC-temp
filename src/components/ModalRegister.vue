@@ -75,8 +75,11 @@ export default defineComponent({
         setTimeout(() => {
           // 关闭注册弹窗
           useBaseStore().updateIsShowModalRegister(false)
-          // 打开报名弹窗
-          useBaseStore().updateIsShowPageSubmit(true)
+          // 没有作品的则打开提交页
+          if (!resMine.data.result.item_list.length) {
+            // 打开提交页面
+            useBaseStore().updateIsShowPageSubmit(true)
+          }
         }, 1500)
       } catch (e) {
         console.log(e)
