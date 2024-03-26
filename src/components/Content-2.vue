@@ -25,9 +25,9 @@ export default defineComponent({
 
 <template>
 <div class="content-2">
+  <img class="bg-side" src="../static/img/bg-call-for-works-1.png" alt="bg-side">
   <div class="text">
     <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">
-    <img class="bg-side" src="../static/img/bg-call-for-works-1.png" alt="bg-side">
     <p>
       征集主题：爱恨情仇
     </p>
@@ -69,6 +69,13 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+
+  .bg-side {
+    width: 25px;
+    position: fixed;
+    right: 0;
+  }
 
   .text {
     width: 100%;
@@ -87,13 +94,6 @@ export default defineComponent({
       position: absolute;
       left: 0;
       top: 0;
-    }
-
-    .bg-side {
-      width: 25px;
-      position: absolute;
-      right: 0;
-      top: -24px;
     }
 
     p {
