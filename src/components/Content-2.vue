@@ -102,7 +102,7 @@ export default defineComponent({
 
   .btn {
     width: 329px;
-    margin: 55px auto;
+    margin: 76px 43px 29px 42px;
   }
 }
 </style>
