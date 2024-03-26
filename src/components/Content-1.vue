@@ -59,14 +59,16 @@ export default defineComponent({
   }
 
   .header {
-    width: 327.5px;
+    width: 100%;
+    //width: 327.5px;
+    padding-left: 47px;
+    padding-right: 40px;
     margin-top: 6.5px;
-    margin-left: 3.5px;
   }
 
   .text {
     width: 100%;
-    padding: 19px 50px 0 50px;
+    padding: 19px 50.5px 0 51.5px;
     margin-top: 45px;
     position: relative;
 
