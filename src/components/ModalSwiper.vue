@@ -44,11 +44,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="modal-swiper" v-if="isShowModalSwiper">
+  <div class="modal-swiper" v-if="isShowModalSwiper" @click="handleClose">
     <div class="content">
-      <img class="icon" src="../static/img/icon-arrow-left.svg" alt="left" @click="swipe('left')" v-if="swiperItems.length !== 1">
-      <img class="img" :src="swiperItems[current]" alt="img">
-      <img class="icon" src="../static/img/icon-arrow-right.svg" alt="right" @click="swipe('right')" v-if="swiperItems.length !== 1">
+      <img class="icon" src="../static/img/icon-arrow-left.svg" alt="left" @click.stop="swipe('left')" v-if="swiperItems.length !== 1">
+      <img class="img" :src="swiperItems[current]" alt="img" @click.stop>
+      <img class="icon" src="../static/img/icon-arrow-right.svg" alt="right" @click.stop="swipe('right')" v-if="swiperItems.length !== 1">
     </div>
     <img class="close" src="../static/img/icon-close.svg" alt="close" @click="handleClose">
   </div>
