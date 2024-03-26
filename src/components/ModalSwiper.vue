@@ -73,14 +73,15 @@ export default defineComponent({
   .content {
     width: 100%;
 
+    padding: 0 23px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     .img {
-      width: 323px;
+      width: calc(100vw - 13px * 2 - 23px * 2 - 15px * 2);
       border-radius: 7px;
-      margin: 0 18px;
+      margin: 0 15px;
     }
   }
 
