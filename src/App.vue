@@ -1,10 +1,14 @@
 <script>
+import { wxShareInit } from "./utils/wxShare";
 export default {
   data() {
     return {
       query: {},
       path: ""
     }
+  },
+  mounted() {
+    wxShareInit();
   },
   onLaunch(e) {
   },
