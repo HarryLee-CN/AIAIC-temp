@@ -5,7 +5,7 @@ export function getTicketSignature() {
   return uniRequest({
     url: "https://api.thefair.net.cn/wechat/open/get_wechat_sign",
     method: "get",
-    params: {
+    data: {
       app_label: "Subscribe",
       url: window.location.href
     }
@@ -16,7 +16,7 @@ export function getOssToken({path}) {
   return uniRequest({
     url: "https://acth5.thefair.net.cn/v1/upload/image_sign",
     method: "get",
-    params: {path}
+    data: {path}
   })
 }
 
