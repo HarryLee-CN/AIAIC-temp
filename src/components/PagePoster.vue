@@ -79,17 +79,17 @@ export default defineComponent({
       handler(imageAnalysisComplete) {
         if (imageAnalysisComplete) {
           uni.showLoading()
-          setTimeout(() => {
+          // setTimeout(() => {
             this.getBackgroundHeight()
-          }, 300)
-          setTimeout(() => {
+          // }, 300)
+          // setTimeout(() => {
             this.drawCanvas()
-          }, 600)
+          // }, 600)
           setTimeout(() => {
             this.exportPoster()
             uni.hideLoading()
             this.isLoading = false
-          }, 900)
+          }, 2000)
         }
       }
     }
