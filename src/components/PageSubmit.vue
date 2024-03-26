@@ -199,7 +199,7 @@ export default defineComponent({
   }
 
   .divider {
-    width: 350px;
+    width: 347.5px;
     height: .5px;
     background-color: #1C1C1C;
     margin-top: 37.2px;
@@ -207,7 +207,7 @@ export default defineComponent({
   }
 
   .block {
-    width: 350px;
+    width: 347.5px;
     margin-bottom: 43px;
 
     .title {
