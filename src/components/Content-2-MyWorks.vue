@@ -76,10 +76,17 @@ export default defineComponent({
         display: flex;
         align-items: center;
 
+        //font-family: Source Han Serif CN;
+        //font-size: 19.14px;
+        //font-weight: 700;
+        //line-height: 27.5px;
+        //text-align: left;
+
         font-family: Source Han Serif CN;
-        font-size: 19.14px;
-        font-weight: 700;
-        line-height: 27.5px;
+        font-size: 16.59px;
+        font-weight: 500;
+        line-height: 23.84px;
+        letter-spacing: -0.6635649800300598px;
         text-align: left;
 
         color: #191919;
