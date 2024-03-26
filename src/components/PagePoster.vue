@@ -40,13 +40,14 @@ export default defineComponent({
     posterContent: {
       handler(posterContent) {
         if (!posterContent.images.length) return
-        console.log(posterContent)
+        console.log('============ start ==============')
+        console.log("posterContent", posterContent)
         for (let i = 0; i < posterContent.images.length; i++) {
           console.log(posterContent.images[i])
           const image = new Image()
           image.src = posterContent.images[i]
           image.onload = () => {
-            // console.log(image)
+            console.log("image onload", image)
             const aspectRatio = image.naturalWidth / image.naturalHeight;
             // 定宽 / 比例
             const imageHeight = parseFloat((this.imageWidth / aspectRatio).toFixed(2))
@@ -167,6 +168,7 @@ export default defineComponent({
         canvasId: 'canvas',
         success: function (res) {
           console.log(res)
+          console.log('============ end ==============')
           that.posterSrc = res.tempFilePath
         }
       })
