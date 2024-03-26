@@ -260,10 +260,10 @@ export default defineComponent({
 
   .canvas-container {
     margin-top: 56px;
-    border: 2px red solid;
+    //border: 2px red solid;
 
-    //position: absolute;
-    //visibility: hidden;
+    position: absolute;
+    visibility: hidden;
 
     .canvas {
       width: 330px;
