@@ -167,8 +167,9 @@ export default {
             case 0:
               this.$refs['cell-1'].style = `top: ${clientHeight}px`;
               this.$refs['cell-1'].classList = 'cell cell-black';
+
               this.$refs['cell-2'].style = `top: ${clientHeight * 2 - 56 * 4}px`;
-              this.$refs['cell-2'].classList = 'cell';
+              this.$refs['cell-2'].classList = 'cell first-cell-shadow';
               this.$refs['cell-3'].style = `top: ${clientHeight * 2 - 56 * 3}px`;
               this.$refs['cell-3'].classList = 'cell';
               this.$refs['cell-4'].style = `top: ${clientHeight * 2 - 56 * 2}px`;
@@ -181,7 +182,7 @@ export default {
               this.$refs['cell-1'].classList = 'cell cell-black';
 
               this.$refs['cell-2'].style = `top: ${clientHeight - 56 * 4}px`;
-              this.$refs['cell-2'].classList = 'cell';
+              this.$refs['cell-2'].classList = 'cell first-cell-shadow';
               this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
               this.$refs['cell-3'].classList = 'cell';
               this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
@@ -196,7 +197,7 @@ export default {
               this.$refs['cell-2'].classList = 'cell cell-black';
 
               this.$refs['cell-3'].style = `top: ${clientHeight - 56 * 3}px`;
-              this.$refs['cell-3'].classList = 'cell';
+              this.$refs['cell-3'].classList = 'cell first-cell-shadow';
               this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
               this.$refs['cell-4'].classList = 'cell';
               this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
@@ -211,7 +212,7 @@ export default {
               this.$refs['cell-3'].classList = 'cell cell-black';
 
               this.$refs['cell-4'].style = `top: ${clientHeight - 56 * 2}px`;
-              this.$refs['cell-4'].classList = 'cell';
+              this.$refs['cell-4'].classList = 'cell first-cell-shadow';
               this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
               this.$refs['cell-5'].classList = 'cell';
               break;
@@ -226,7 +227,7 @@ export default {
               this.$refs['cell-4'].classList = 'cell cell-black';
 
               this.$refs['cell-5'].style = `top: ${clientHeight - 56}px`;
-              this.$refs['cell-5'].classList = 'cell';
+              this.$refs['cell-5'].classList = 'cell first-cell-shadow';
               break;
             case 5:
               this.$refs['cell-1'].style = 'top: 0';
@@ -355,7 +356,6 @@ export default {
     pointer-events: auto;
     width: 100%;
     height: 56px;
-    box-shadow: 0px -2px 8px 0px #0000001B;
     background: #FFFFFF;
 
     border-bottom: 0.5px #191919 solid;
@@ -401,6 +401,10 @@ export default {
       margin-top: -6px;
       width: 28px;
     }
+  }
+
+  .first-cell-shadow {
+    box-shadow: 0px -2px 8px 0px #0000001B;
   }
 }
 </style>
