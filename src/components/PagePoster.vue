@@ -156,8 +156,10 @@ export default defineComponent({
         const qrcode_marginTop = 8
         ctx.drawImage(qrcode, marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + marginTop + this.imageHeightsTotal + qrcode_marginTop, 94, 94)
 
-        ctx.draw()
-        resolve(ctx)
+        ctx.draw(false, () => {
+          console.log('ctx.draw complete')
+          resolve(ctx)
+        })
       })
     },
     exportPoster() {
