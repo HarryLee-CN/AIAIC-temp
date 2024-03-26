@@ -27,7 +27,7 @@ export default defineComponent({
       <div class="bottom">
         <div class="desc">{{ item.desc }}</div>
         <div class="name">{{ item.nick }}</div>
-        <img class="next" src="../static/img/icon-arrow-next.svg" alt="arrow">
+        <img class="next" src="../static/img/icon-arrow-next.png" alt="arrow">
       </div>
     </div>
   </div>
@@ -91,6 +91,8 @@ export default defineComponent({
 
       .next {
         position: absolute;
+        width: 26px;
+        height: 26px;
         right: 10px;
         bottom: 19px;
       }
