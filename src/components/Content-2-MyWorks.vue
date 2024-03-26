@@ -50,18 +50,19 @@ export default defineComponent({
   align-items: center;
   position: relative;
   min-height: 573px;
-  padding-top: 21px;
+  //padding-top: 21px;
 
   .bg {
     width: 25px;
-    height: 573px;
-    position: absolute;
+    position: fixed;
     right: 0;
-    top: 0;
   }
 
   .block {
     width: 100%;
+    &:last-child {
+      border: 1px red solid;
+    }
 
     .title {
       display: flex;
@@ -124,7 +125,7 @@ export default defineComponent({
 
   .submit-again {
     width: 329px;
-    margin: -14px auto 24px auto;
+    margin: 5px auto 22px auto;
   }
 }
 </style>
