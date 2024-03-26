@@ -60,8 +60,9 @@ export default defineComponent({
 
   .block {
     width: 100%;
-    &:last-child {
-      border: 1px red solid;
+
+    &:nth-child(2) {
+      margin-top: 21px;
     }
 
     .title {

@@ -95,9 +95,6 @@ export default defineComponent({
       left: 0;
       top: 0;
     }
-
-    p {
-    }
   }
 
   .btn {
