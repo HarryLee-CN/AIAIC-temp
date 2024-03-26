@@ -155,7 +155,7 @@ export default defineComponent({
     </div>
 
     <div class="block">
-      <div class="title">*作品描述（选填）</div>
+      <div class="title">作品描述（选填）</div>
       <textarea placeholder="在此处输入你的作品描述，140字以内" placeholder-style="color: #989898" maxlength="140"
                 v-model="workDesc"></textarea>
     </div>
