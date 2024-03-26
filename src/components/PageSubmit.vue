@@ -316,6 +316,7 @@ export default defineComponent({
   }
 
   .btn {
+    margin-right: 5px;
     width: 329px;
   }
 }
