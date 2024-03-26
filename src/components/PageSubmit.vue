@@ -167,7 +167,7 @@ export default defineComponent({
 
     <div class="block">
       <div class="title">*手机号码（必填）</div>
-      <input type="tel" placeholder="请输入您的手机号码，以便我们与你联系" placeholder-style="color: #989898"
+      <input type="tel" placeholder="请输入你的手机号码，以便我们与你联系" placeholder-style="color: #989898"
              v-model="mobile">
     </div>
 
@@ -253,7 +253,7 @@ export default defineComponent({
           width: 166.74px;
           height: 166.5px;
           border-radius: 7px;
-          object-fit: contain;
+          object-fit: cover;
           object-position: center center;
         }
 
