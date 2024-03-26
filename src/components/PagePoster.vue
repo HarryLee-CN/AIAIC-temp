@@ -41,9 +41,8 @@ export default defineComponent({
       handler(posterContent) {
         if (!posterContent.images.length) return
         console.log('============ start ==============')
-        // console.log("posterContent", posterContent)
+        console.log("posterContent", posterContent)
         for (let i = 0; i < posterContent.images.length; i++) {
-          console.log(posterContent.images[i])
           const image = new Image()
           image.src = posterContent.images[i]
           image.onload = () => {
@@ -65,10 +64,10 @@ export default defineComponent({
             // 分析完毕
             if (i === posterContent.images.length - 1) {
               this.imageAnalysisComplete = true
-              // console.log("asset_count", this.asset_count)
-              // console.log("imageAnalysisComplete", this.imageAnalysisComplete)
-              // console.log("imageHeightsTotal", this.imageHeightsTotal)
-              // console.log("imageHeights", this.imageHeights)
+              console.log("asset_count", this.asset_count)
+              console.log("imageAnalysisComplete", this.imageAnalysisComplete)
+              console.log("imageHeightsTotal", this.imageHeightsTotal)
+              console.log("imageHeights", this.imageHeights)
             }
           }
         }
@@ -80,11 +79,10 @@ export default defineComponent({
         if (imageAnalysisComplete) {
           uni.showLoading()
           // setTimeout(() => {
-          this.getBackgroundHeight()
+          await this.getBackgroundHeight()
           // }, 300)
           // setTimeout(() => {
-          const ctx = await this.drawCanvas()
-          console.log('ctx end', ctx)
+          await this.drawCanvas()
           // }, 500)
           // setTimeout(() => {
           this.exportPoster()
@@ -97,10 +95,19 @@ export default defineComponent({
   },
   methods: {
     getBackgroundHeight() {
-      this.backgroundHeight = this.topHeight + this.asset_count * this.singleAssetHeight + this.bottomHeight
-      // console.log('backgroundHeight', this.backgroundHeight)
-      document.getElementById('canvas').style.height = this.backgroundHeight + 'px'
-      document.getElementById('poster').style.height = this.backgroundHeight + 'px'
+      return new Promise(resolve => {
+        this.backgroundHeight = this.topHeight + this.asset_count * this.singleAssetHeight + this.bottomHeight
+        // console.log('backgroundHeight', this.backgroundHeight)
+        document.getElementById('canvas').style.height = this.backgroundHeight + 'px'
+        document.getElementById('poster').style.height = this.backgroundHeight + 'px'
+        // this.$refs['canvas'].style = `height: ${this.backgroundHeight}px;`
+        // this.$refs['poster'].style = `height: ${this.backgroundHeight}px;`
+        setTimeout(() => {
+          // console.log('canvas height', this.$refs['canvas'].style.height)
+          // console.log('poster Height', this.$refs['poster'].style.height)
+          resolve()
+        }, 1000)
+      })
     },
     drawCanvas() {
       return new Promise((resolve) => {
@@ -164,7 +171,7 @@ export default defineComponent({
         console.log('画完结尾')
         ctx.draw(false, () => {
           console.log('ctx.draw complete')
-          resolve(ctx)
+          resolve()
         })
       })
     },
@@ -219,7 +226,7 @@ export default defineComponent({
     <div class="canvas-container">
       <canvas canvas-id="canvas" id="canvas" class="canvas" ref="canvas"/>
     </div>
-    <div class="poster" id="poster">
+    <div class="poster" id="poster" ref="poster">
       <img :src="posterSrc" alt="post" v-if="posterSrc">
     </div>
 
@@ -253,12 +260,14 @@ export default defineComponent({
 
   .canvas-container {
     margin-top: 56px;
+    border: 2px red solid;
 
-    position: absolute;
-    visibility: hidden;
+    //position: absolute;
+    //visibility: hidden;
 
     .canvas {
       width: 330px;
+      height: 572px
     }
   }
 
