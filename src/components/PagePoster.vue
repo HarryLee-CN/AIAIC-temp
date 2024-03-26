@@ -41,18 +41,18 @@ export default defineComponent({
       handler(posterContent) {
         if (!posterContent.images.length) return
         console.log('============ start ==============')
-        console.log("posterContent", posterContent)
+        // console.log("posterContent", posterContent)
         for (let i = 0; i < posterContent.images.length; i++) {
           console.log(posterContent.images[i])
           const image = new Image()
           image.src = posterContent.images[i]
           image.onload = () => {
-            console.log("image onload", image)
+            // console.log("image onload", image)
             const aspectRatio = image.naturalWidth / image.naturalHeight;
             // 定宽 / 比例
             const imageHeight = parseFloat((this.imageWidth / aspectRatio).toFixed(2))
-            console.log('Aspect Ratio:', aspectRatio);
-            console.log('imageHeight:', imageHeight);
+            // console.log('Aspect Ratio:', aspectRatio);
+            // console.log('imageHeight:', imageHeight);
             // 图片间距
             this.imageHeightsTotal += 16
             // 图片高度
@@ -65,10 +65,10 @@ export default defineComponent({
             // 分析完毕
             if (i === posterContent.images.length - 1) {
               this.imageAnalysisComplete = true
-              console.log("asset_count", this.asset_count)
-              console.log("imageAnalysisComplete", this.imageAnalysisComplete)
-              console.log("imageHeightsTotal", this.imageHeightsTotal)
-              console.log("imageHeights", this.imageHeights)
+              // console.log("asset_count", this.asset_count)
+              // console.log("imageAnalysisComplete", this.imageAnalysisComplete)
+              // console.log("imageHeightsTotal", this.imageHeightsTotal)
+              // console.log("imageHeights", this.imageHeights)
             }
           }
         }
@@ -98,7 +98,7 @@ export default defineComponent({
   methods: {
     getBackgroundHeight() {
       this.backgroundHeight = this.topHeight + this.asset_count * this.singleAssetHeight + this.bottomHeight
-      console.log('backgroundHeight', this.backgroundHeight)
+      // console.log('backgroundHeight', this.backgroundHeight)
       document.getElementById('canvas').style.height = this.backgroundHeight + 'px'
       document.getElementById('poster').style.height = this.backgroundHeight + 'px'
     },
@@ -109,14 +109,17 @@ export default defineComponent({
         console.log('ctx', ctx)
         // 画背景图 头
         ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-top.png', 0, 0, this.backgroundWidth, this.topHeight)
+        console.log('画完头图')
 
         // 画背景图 中间素材
         for (let i = 0; i < this.asset_count; i++) {
           ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-asset.png', 0, this.topHeight + this.singleAssetHeight * i, this.backgroundWidth, this.singleAssetHeight)
         }
+        console.log('画完中间素材：',this.asset_count,'个')
 
         // 画背景图 尾
         ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-bottom.png', 0, this.topHeight + this.singleAssetHeight * this.asset_count, this.backgroundWidth, this.bottomHeight)
+        console.log('画完尾图')
 
         // 写文字
         ctx.font = "600 13px Source Han Serif CN"
@@ -127,6 +130,7 @@ export default defineComponent({
         ctx.fillStyle = 'white'
         ctx.fillText(`作品名：《${this.posterContent.title}》`, marginLeft, firstY)
         ctx.fillText(`创作者：${this.posterContent.nick}`, marginLeft, firstY + lineSpace + lineHeight)
+        console.log('画完作品名创作者')
 
         marginLeft = 13
         // 画图片
@@ -143,6 +147,7 @@ export default defineComponent({
             ctx.drawImage(src, marginLeft, firstY + lineHeight + lineSpace + imageMargin * 4 + this.imageHeights[0] + this.imageHeights[1] + this.imageHeights[2], this.imageWidth, this.imageHeights[i])
           }
         }
+        console.log('画完图片', this.posterContent.images)
 
         marginLeft = 34.3
         const marginTop = 44.5
@@ -156,6 +161,7 @@ export default defineComponent({
         const qrcode_marginTop = 8
         ctx.drawImage(qrcode, marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + marginTop + this.imageHeightsTotal + qrcode_marginTop, 94, 94)
 
+        console.log('画完结尾')
         ctx.draw(false, () => {
           console.log('ctx.draw complete')
           resolve(ctx)
