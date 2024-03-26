@@ -72,15 +72,13 @@ export default defineComponent({
         const resMine = await activityAigcGetUserCollectionFeedList()
         useBaseStore().updateMyWorks(resMine.data.result.item_list)
         uni.showToast({icon: "none", title: "登录成功"})
-        setTimeout(() => {
-          // 关闭注册弹窗
-          useBaseStore().updateIsShowModalRegister(false)
-          // 没有作品的则打开提交页
-          if (!resMine.data.result.item_list.length) {
-            // 打开提交页面
-            useBaseStore().updateIsShowPageSubmit(true)
-          }
-        }, 1500)
+        // 关闭注册弹窗
+        useBaseStore().updateIsShowModalRegister(false)
+        // 没有作品的则打开提交页
+        if (!resMine.data.result.item_list.length) {
+          // 打开提交页面
+          useBaseStore().updateIsShowPageSubmit(true)
+        }
       } catch (e) {
         console.log(e)
         uni.hideLoading()
