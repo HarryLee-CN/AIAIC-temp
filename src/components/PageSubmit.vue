@@ -204,6 +204,7 @@ export default defineComponent({
     background-color: #1C1C1C;
     margin-top: 37.2px;
     margin-bottom: 33px;
+    flex-shrink: 0;
   }
 
   .block {
