@@ -33,7 +33,7 @@ export default defineComponent({
   },
   watch: {
     isShowPagePoster(newV, oldV) {
-      if (newV === false && oldV === true){
+      if (newV === false && oldV === true) {
         this.resetData();
       }
     },
@@ -76,20 +76,21 @@ export default defineComponent({
       immediate: true
     },
     imageAnalysisComplete: {
-      handler(imageAnalysisComplete) {
+      async handler(imageAnalysisComplete) {
         if (imageAnalysisComplete) {
           uni.showLoading()
           // setTimeout(() => {
-            this.getBackgroundHeight()
+          this.getBackgroundHeight()
           // }, 300)
           // setTimeout(() => {
-            this.drawCanvas()
-          // }, 600)
-          setTimeout(() => {
-            this.exportPoster()
-            uni.hideLoading()
-            this.isLoading = false
-          }, 2000)
+          const ctx = await this.drawCanvas()
+          console.log('ctx end', ctx)
+          // }, 500)
+          // setTimeout(() => {
+          this.exportPoster()
+          uni.hideLoading()
+          this.isLoading = false
+          // }, 2000)
         }
       }
     }
@@ -102,59 +103,62 @@ export default defineComponent({
       document.getElementById('poster').style.height = this.backgroundHeight + 'px'
     },
     drawCanvas() {
-      const that = this
-      const ctx = uni.createCanvasContext('canvas')
-      console.log(ctx)
-      // 画背景图 头
-      ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-top.png', 0, 0, this.backgroundWidth, this.topHeight)
+      return new Promise((resolve) => {
+        const that = this
+        const ctx = uni.createCanvasContext('canvas')
+        console.log('ctx', ctx)
+        // 画背景图 头
+        ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-top.png', 0, 0, this.backgroundWidth, this.topHeight)
 
-      // 画背景图 中间素材
-      for (let i = 0; i < this.asset_count; i++) {
-        ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-asset.png', 0, this.topHeight + this.singleAssetHeight * i, this.backgroundWidth, this.singleAssetHeight)
-      }
-
-      // 画背景图 尾
-      ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-bottom.png', 0, this.topHeight + this.singleAssetHeight * this.asset_count, this.backgroundWidth, this.bottomHeight)
-
-      // 写文字
-      ctx.font = "600 13px Source Han Serif CN"
-      let marginLeft = 15.3
-      const lineHeight = 18.5
-      const lineSpace = 6
-      const firstY = 154 + lineHeight
-      ctx.fillStyle = 'white'
-      ctx.fillText(`作品名：《${this.posterContent.title}》`, marginLeft, firstY)
-      ctx.fillText(`创作者：${this.posterContent.nick}`, marginLeft, firstY + lineSpace + lineHeight)
-
-      marginLeft = 13
-      // 画图片
-      for (let i = 0; i < this.posterContent.images.length; i++) {
-        const src = this.posterContent.images[i]
-        const imageMargin = 16
-        if (i === 0) {
-          ctx.drawImage(src, marginLeft, firstY + lineHeight + lineSpace + imageMargin, this.imageWidth, this.imageHeights[i])
-        } else if (i === 1) {
-          ctx.drawImage(src, marginLeft, firstY + lineHeight + lineSpace + imageMargin * 2 + this.imageHeights[0], this.imageWidth, this.imageHeights[i])
-        } else if (i === 2) {
-          ctx.drawImage(src, marginLeft, firstY + lineHeight + lineSpace + imageMargin * 3 + this.imageHeights[0] + this.imageHeights[1], this.imageWidth, this.imageHeights[i])
-        } else if (i === 3) {
-          ctx.drawImage(src, marginLeft, firstY + lineHeight + lineSpace + imageMargin * 4 + this.imageHeights[0] + this.imageHeights[1] + this.imageHeights[2], this.imageWidth, this.imageHeights[i])
+        // 画背景图 中间素材
+        for (let i = 0; i < this.asset_count; i++) {
+          ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-asset.png', 0, this.topHeight + this.singleAssetHeight * i, this.backgroundWidth, this.singleAssetHeight)
         }
-      }
 
-      marginLeft = 34.3
-      const marginTop = 44.5
+        // 画背景图 尾
+        ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-bottom.png', 0, this.topHeight + this.singleAssetHeight * this.asset_count, this.backgroundWidth, this.bottomHeight)
 
-      // 写结尾
-      ctx.font = "600 12px Source Han Serif CN"
-      const qrCodeTipLineHeight = 17.4
-      ctx.fillText('扫码查看更多作品', marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + marginTop + this.imageHeightsTotal)
+        // 写文字
+        ctx.font = "600 13px Source Han Serif CN"
+        let marginLeft = 15.3
+        const lineHeight = 18.5
+        const lineSpace = 6
+        const firstY = 154 + lineHeight
+        ctx.fillStyle = 'white'
+        ctx.fillText(`作品名：《${this.posterContent.title}》`, marginLeft, firstY)
+        ctx.fillText(`创作者：${this.posterContent.nick}`, marginLeft, firstY + lineSpace + lineHeight)
 
-      const qrcode = "https://static.thefair.net.cn/activity/aiaic/qrcode.png"
-      const qrcode_marginTop = 8
-      ctx.drawImage(qrcode, marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + marginTop + this.imageHeightsTotal + qrcode_marginTop, 94, 94)
+        marginLeft = 13
+        // 画图片
+        for (let i = 0; i < this.posterContent.images.length; i++) {
+          const src = this.posterContent.images[i]
+          const imageMargin = 16
+          if (i === 0) {
+            ctx.drawImage(src, marginLeft, firstY + lineHeight + lineSpace + imageMargin, this.imageWidth, this.imageHeights[i])
+          } else if (i === 1) {
+            ctx.drawImage(src, marginLeft, firstY + lineHeight + lineSpace + imageMargin * 2 + this.imageHeights[0], this.imageWidth, this.imageHeights[i])
+          } else if (i === 2) {
+            ctx.drawImage(src, marginLeft, firstY + lineHeight + lineSpace + imageMargin * 3 + this.imageHeights[0] + this.imageHeights[1], this.imageWidth, this.imageHeights[i])
+          } else if (i === 3) {
+            ctx.drawImage(src, marginLeft, firstY + lineHeight + lineSpace + imageMargin * 4 + this.imageHeights[0] + this.imageHeights[1] + this.imageHeights[2], this.imageWidth, this.imageHeights[i])
+          }
+        }
 
-      ctx.draw()
+        marginLeft = 34.3
+        const marginTop = 44.5
+
+        // 写结尾
+        ctx.font = "600 12px Source Han Serif CN"
+        const qrCodeTipLineHeight = 17.4
+        ctx.fillText('扫码查看更多作品', marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + marginTop + this.imageHeightsTotal)
+
+        const qrcode = "https://static.thefair.net.cn/activity/aiaic/qrcode.png"
+        const qrcode_marginTop = 8
+        ctx.drawImage(qrcode, marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + marginTop + this.imageHeightsTotal + qrcode_marginTop, 94, 94)
+
+        ctx.draw()
+        resolve(ctx)
+      })
     },
     exportPoster() {
       const that = this
@@ -178,7 +182,7 @@ export default defineComponent({
       useBaseStore().updatePosterContent({images: []})
 
       this.isLoading = true;
-      this.imageHeights =  [];
+      this.imageHeights = [];
       this.imageHeightsTotal = 0;
       this.asset_count = 0;
       this.backgroundHeight = 0;
