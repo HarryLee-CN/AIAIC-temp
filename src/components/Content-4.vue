@@ -87,6 +87,15 @@ export default defineComponent({
         color: #8a8a8a;
 
         margin-top: 29px;
+
+        width: 85%;
+        //单行
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-clamp: 1;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
       }
 
       .next {
