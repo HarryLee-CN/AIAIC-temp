@@ -28,7 +28,7 @@ export default defineComponent({
       <div class="title">
         <div class="left">
           <div class="decoration"/>
-          《{{ item.title }}》
+          《<span class="title-text">{{ item.title }}</span>》
         </div>
         <div class="right" @click="handlePoster(item)">
           查看海报>
@@ -73,6 +73,7 @@ export default defineComponent({
       margin-bottom: 15px;
 
       .left {
+        width: 80%;
         display: flex;
         align-items: center;
 
@@ -96,6 +97,16 @@ export default defineComponent({
           height: 26px;
           background-color: #191919;
           margin-right: 19px;
+        }
+
+        .title-text {
+          //单行
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          line-clamp: 1;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
         }
       }
 
