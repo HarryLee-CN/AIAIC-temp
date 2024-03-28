@@ -7,19 +7,21 @@ export default defineComponent({
 </script>
 
 <template>
-<div class="content-5">
-  <div class="text">
-    <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">
-    <p>
-      联合发起：UCCA Lab、真格基金、线性资本<br>
-      特邀合作：Midjourney<br>
-      媒体支持：Design360<br>
-      推荐使用工具：悠船App、右脑Vega.ai 、Tiamat<br>
-      （此处logo，文字先占位）<br>
-    </p>
+  <div class="content-5">
+    <img class="bg" src="../static/img/bg-support.png" alt="bg">
+    <div class="text">
+      <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">
+      <div class="block">
+        <div class="title">顾问团队</div>
+        <div class="divider"/>
+        <img class="photo" src="../static/img/team.png" alt="team">
+        <div class="divider"/>
+      </div>
+      <div class="block">
+        <div class="title">合作支持</div>
+      </div>
+    </div>
   </div>
-  <img class="bg" src="../static/img/bg-support.png" alt="bg">
-</div>
 </template>
 
 <style scoped lang="scss">
@@ -29,17 +31,15 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
 
+  .bg {
+    width: 100%;
+  }
+
   .text {
     width: 100%;
-    padding: 45px 33px 0 50px;
-    margin-top: 46px;
+    padding: 25px;
+    margin-top: 9px;
     position: relative;
-
-    font-family: Source Han Serif CN;
-    font-size: 15px;
-    font-weight: 250;
-    line-height: 26px;
-    text-align: justified;
 
     .bg2 {
       width: 40px;
@@ -47,12 +47,37 @@ export default defineComponent({
       left: 0;
       top: 0;
     }
-  }
 
-  .bg {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+    .block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .title {
+        font-family: Source Han Serif CN;
+        font-size: 16.8px;
+        font-weight: 250;
+        line-height: 21px;
+        text-align: left;
+
+        color: #191919;
+        width: 100%;
+        padding-left: 10px;
+      }
+
+      .divider {
+        width: 100%;
+        height: 0.5px;
+        background-color: #191919;
+        margin-top: 22px;
+      }
+
+      .photo {
+        width: 100%;
+        padding: 0 10px;
+        margin-top: 21px;
+      }
+    }
   }
 }
 </style>
