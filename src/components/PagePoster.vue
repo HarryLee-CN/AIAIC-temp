@@ -60,7 +60,7 @@ export default defineComponent({
             // 得到素材数量
             this.asset_count = Math.round(this.imageHeightsTotal / this.singleAssetHeight)
             // 误差速算（素材数量实际不需要这么多）
-            if (this.asset_count >= 2) this.asset_count -= 2
+            if (this.asset_count >= 1) this.asset_count -= 1
             // 分析完毕
             if (i === posterContent.images.length - 1) {
               this.imageAnalysisComplete = true
@@ -160,17 +160,18 @@ export default defineComponent({
         // 写结尾
         ctx.font = "600 12px Source Han Serif CN"
 
-        const tipsLineHeight = 16.4
-        ctx.fillText('*提示：海报中图片作品由AI工具创作，仅用于创意呈现。', marginLeft, firstY + lineHeight + lineSpace + tipsLineHeight + this.imageHeightsTotal)
+        const tipsLineHeight = 17.4
+        const tipsMarginTop = 5.5
+        ctx.fillText('*提示：海报中图片作品由AI工具创作，仅用于创意呈现。', marginLeft, firstY + lineHeight + lineSpace + this.imageHeightsTotal + tipsLineHeight + tipsMarginTop)
 
         marginLeft = 34.3
         const qrCodeTipLineHeight = 17.4
-        const qrCodeTipMarginTop = 44.5
-        ctx.fillText('扫码查看更多作品', marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + qrCodeTipMarginTop + this.imageHeightsTotal)
+        const qrCodeTipMarginTop = 74.5
+        ctx.fillText('扫码查看更多作品', marginLeft, firstY + lineHeight + lineSpace + this.imageHeightsTotal + tipsLineHeight + tipsMarginTop + qrCodeTipLineHeight + qrCodeTipMarginTop)
 
         const qrcode = "https://static.thefair.net.cn/activity/aiaic/qrcode.png"
-        const qrcode_marginTop = 8
-        ctx.drawImage(qrcode, marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + qrCodeTipMarginTop + this.imageHeightsTotal + qrcode_marginTop, 94, 94)
+        const qrcode_marginTop = 12
+        ctx.drawImage(qrcode, marginLeft, firstY + lineHeight + lineSpace + this.imageHeightsTotal + tipsLineHeight + tipsMarginTop + qrCodeTipLineHeight + qrCodeTipMarginTop + qrcode_marginTop, 94, 94)
 
         console.log('画完结尾')
         ctx.draw(false, () => {
