@@ -1,65 +1,49 @@
 <script>
-import {useBaseStore} from "../store/base";
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: "Content-2",
-  computed: {
-    isLogin() {
-      return useBaseStore().getterIsLogin
-    }
-  },
-  methods: {
-    handleSignUp() {
-      if (!this.isLogin) {
-        // 打开注册弹窗
-        useBaseStore().updateIsShowModalRegister(true)
-      } else {
-        // 打开提交页面
-        useBaseStore().updateIsShowPageSubmit(true)
-      }
-    }
-  }
+  name: "Content-2"
 })
 </script>
 
 <template>
 <div class="content-2">
-  <img class="bg-side" src="../static/img/bg-call-for-works-1.png" alt="bg-side">
+  <img class="bg1" src="../static/img/bg-introduction-1.png" alt="bg1">
+  <img class="header" src="../static/img/header-introduction.png" alt="header">
   <div class="text">
     <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">
     <p>
-      征集主题：爱恨情仇
+      首届 AIAIC（Artificial Intelligence Art Innovation Challenge）：「AI影像创作计划」由新世相联合UCCA
+      Lab、真格基金、线性资本，特别邀请 MidJourney 作为合作伙伴共同发起，是一次面向全球华人为主的创作者及 AI
+      爱好者的共同创作行动。
     </p>
     <p>
-      征集时间：2024.3.25-2024.4.07
+      人工智能正在快速重塑世界，它的不断迭代为人类世界带来了丰富的可能。而我们相信，在变化带来的无数不确定性中，“人类精神”将更凸显其迷人、其不可替代，正如历史上的每一次技术革新。
     </p>
     <p>
-      征集说明：
+      首届AIAIC将聚焦「图片」创作，以“爱恨情仇”为主题，号召内容及艺术创作者与AI爱好者，以AI为核心工具和方法完成内容创作。所有评选出的优秀作品将作为
+      AI 时代的人类创作者联盟的作品集中呈现、发布。
     </p>
     <p>
-      1. 请你结合主题，以 AI作为主要工具，创作一幅或一组能够反映主题的影像作品，风格不限。
+      所谓“爱恨情仇”，即人类复杂且多样的基本情感。作为首届挑战赛的创作命题，我们希望以此探索机械语言对人类复杂情感的理解力、想象力和传达效力，并彰显“人类精神”的迷人与可贵。
     </p>
     <p>
-      2. 我们接受纪实摄影的、艺术的表达，但希望作品具有「现实感」，内容能够反映准现实的生活——可以是发生在过去某个时间点的客观事件的重构，可以是合理推想的社会场景。
+      关于AIAIC
     </p>
     <p>
-      希望你的作品场景虽也许不发生在现实里、但能以真实的意象展现「爱恨情仇」
+      AIAIC（Artificial Intelligence Art Innovation
+      Challenge）作为一个比赛和创造力嘉年华，由新世相联合真格基金、线性资本主办，与人工智能、艺术与内容创作行业的机构与个人联合体共同发起。
     </p>
     <p>
-      3. 你可以选择「爱恨情仇」中的一个字或多个字，来进行创作。
+      每届 AIAIC 挑战赛将设定一个完整命题，策划不同活动形式，邀请挑战者以 AI 为核心工具和方法完成内容创作。所有优秀作品将作为
+      AI 时代的人类创作者联盟的作品集中呈现、发布。我们将邀请人工智能技术领域以及艺术文化领域的优秀代表组成顾问团/评委会，选出最能体现人类使用
+      AI 工具展现创意和人类精神的作品。
     </p>
     <p>
-      期待你的作品可以反映对情感、人际关系以及AI如何理解和表达这些复杂情感的思考，包括想象力、创造力、现实理解力和共鸣性，这也是「优秀作品」的评选维度。
-    </p>
-    <p>
-      4. 这个创作计划整体也将是一次持续发生、开放的作品，每位创作者都是这个作品的共同行动者。
-    </p>
-    <p>
-      5.作品分辨率XXX提交上传文件要求XXXX最终解释权XXXXX
+      AIAIC 的 mission 之一是提供一个契机，激励更多有创造力的人加入 AI 创作中来，并且联合所有使用 AI
+      作为工具的人，共同探索令人兴奋的新的内容和创意可能。「联合」是重要的，「人的联盟」这个描述，在这个AI快速成长的时代，将是亲密相连的温暖命题。
     </p>
   </div>
-  <img class="btn" src="../static/img/btn-sign-up.png" alt="btn" @click="handleSignUp">
 </div>
 </template>
 
@@ -69,18 +53,23 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 
-  .bg-side {
-    width: 25px;
-    position: fixed;
-    right: 0;
+  .bg1 {
+    width: 100%;
+  }
+
+  .header {
+    width: 100%;
+    //width: 327.5px;
+    padding-left: 47px;
+    padding-right: 40px;
+    margin-top: 6.5px;
   }
 
   .text {
     width: 100%;
-    padding: 19px 50px 0 50px;
-    margin-top: 24px;
+    padding: 19px 50.5px 0 51.5px;
+    margin-top: 45px;
     position: relative;
 
     font-family: Source Han Serif CN;
@@ -95,11 +84,10 @@ export default defineComponent({
       left: 0;
       top: 0;
     }
-  }
 
-  .btn {
-    width: 329px;
-    margin: 76px 43px 29px 42px;
+    p {
+      margin-bottom: 30px;
+    }
   }
 }
 </style>

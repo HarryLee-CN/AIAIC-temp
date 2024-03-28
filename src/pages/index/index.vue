@@ -20,20 +20,20 @@
     <!-- 活动介绍 -->
     <div class="section">
       <div class="content" ref="content-2">
-        <content-1/>
+        <content-2/>
       </div>
     </div>
     <!-- 作品征集、我的创作 -->
     <div class="section">
       <div class="content" ref="content-3">
-        <content-2 v-if="!isLogin || (isLogin && !myWorks.length)"/>
-        <content-2-my-works v-else/>
+        <content-3 v-if="!isLogin || (isLogin && !myWorks.length)"/>
+        <content-3-my-works v-else/>
       </div>
     </div>
     <!-- 作品展示 -->
     <div class="section">
       <div class="content" ref="content-4">
-        <content-3/>
+        <content-4/>
       </div>
     </div>
     <!-- 合作支持 -->
@@ -98,8 +98,8 @@
 <script>
 import Content1 from "../../components/Content-1.vue";
 import Content2 from "../../components/Content-2.vue";
-import Content2MyWorks from "../../components/Content-2-MyWorks.vue";
 import Content3 from "../../components/Content-3.vue";
+import Content3MyWorks from "../../components/Content-3-MyWorks.vue";
 import Content4 from "../../components/Content-4.vue";
 import Content5 from "../../components/Content-5.vue";
 import PageSubmit from "../../components/PageSubmit.vue";
@@ -112,7 +112,16 @@ import PagePoster from "../../components/PagePoster.vue";
 export default {
   components: {
     PagePoster,
-    Content2MyWorks, ModalSwiper, ModalRegister, PageSubmit, Content1, Content2, Content3, Content4, Content5,},
+    ModalSwiper,
+    ModalRegister,
+    PageSubmit,
+    Content1,
+    Content2,
+    Content3,
+    Content3MyWorks,
+    Content4,
+    Content5
+  },
   data() {
     return {
       // 上传过作品了

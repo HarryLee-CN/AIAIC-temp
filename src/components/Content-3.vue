@@ -1,102 +1,105 @@
 <script>
-import {defineComponent} from 'vue'
 import {useBaseStore} from "../store/base";
+import {defineComponent} from 'vue'
 
 export default defineComponent({
   name: "Content-3",
   computed: {
-    selectedWorks() {
-      return useBaseStore().getterSelectedWorks
+    isLogin() {
+      return useBaseStore().getterIsLogin
     }
   },
   methods: {
-    handleClick(images) {
-      useBaseStore().updateSwiperItems(images)
-      useBaseStore().updateIsShowModalSwiper(true)
+    handleSignUp() {
+      if (!this.isLogin) {
+        // 打开注册弹窗
+        useBaseStore().updateIsShowModalRegister(true)
+      } else {
+        // 打开提交页面
+        useBaseStore().updateIsShowPageSubmit(true)
+      }
     }
   }
 })
 </script>
 
 <template>
-  <div class="content-3">
-    <div class="block" v-for="(item, index) in selectedWorks" @click="handleClick(item.images)" :key="index">
-      <div class="top">
-        <img :src="item.images[0]" alt="">
-      </div>
-      <div class="bottom">
-        <div class="desc">{{ item.desc }}</div>
-        <div class="name">{{ item.nick }}</div>
-        <img class="next" src="../static/img/icon-arrow-next.png" alt="arrow">
-      </div>
-    </div>
+<div class="content-3">
+  <img class="bg-side" src="../static/img/bg-call-for-works-1.png" alt="bg-side">
+  <div class="text">
+    <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">
+    <p>
+      征集主题：爱恨情仇
+    </p>
+    <p>
+      征集时间：2024.3.25-2024.4.07
+    </p>
+    <p>
+      征集说明：
+    </p>
+    <p>
+      1. 请你结合主题，以 AI作为主要工具，创作一幅或一组能够反映主题的影像作品，风格不限。
+    </p>
+    <p>
+      2. 我们接受纪实摄影的、艺术的表达，但希望作品具有「现实感」，内容能够反映准现实的生活——可以是发生在过去某个时间点的客观事件的重构，可以是合理推想的社会场景。
+    </p>
+    <p>
+      希望你的作品场景虽也许不发生在现实里、但能以真实的意象展现「爱恨情仇」
+    </p>
+    <p>
+      3. 你可以选择「爱恨情仇」中的一个字或多个字，来进行创作。
+    </p>
+    <p>
+      期待你的作品可以反映对情感、人际关系以及AI如何理解和表达这些复杂情感的思考，包括想象力、创造力、现实理解力和共鸣性，这也是「优秀作品」的评选维度。
+    </p>
+    <p>
+      4. 这个创作计划整体也将是一次持续发生、开放的作品，每位创作者都是这个作品的共同行动者。
+    </p>
+    <p>
+      5.作品分辨率XXX提交上传文件要求XXXX最终解释权XXXXX
+    </p>
   </div>
+  <img class="btn" src="../static/img/btn-sign-up.png" alt="btn" @click="handleSignUp">
+</div>
 </template>
 
 <style scoped lang="scss">
 
 .content-3 {
-  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 
-  column-count: 2;
-  column-gap: 5px;
+  .bg-side {
+    width: 25px;
+    position: fixed;
+    right: 0;
+  }
 
-  .block {
-    height: fit-content;
-    padding-bottom: 4px;
-    break-inside: avoid;
-    page-break-inside: avoid;
+  .text {
+    width: 100%;
+    padding: 19px 50px 0 50px;
+    margin-top: 24px;
+    position: relative;
 
-    .top {
-      width: 100%;
-      display: flex;
+    font-family: Source Han Serif CN;
+    font-size: 15px;
+    font-weight: 250;
+    line-height: 26px;
+    text-align: justified;
 
-      img {
-        width: 100%;
-      }
+    .bg2 {
+      width: 40px;
+      position: absolute;
+      left: 0;
+      top: 0;
     }
+  }
 
-    .bottom {
-      padding: 11px 9px 18px 9px;
-      position: relative;
-      background-color: rgba(216, 216, 216, 0.36);
-
-      .desc {
-        font-family: Source Han Serif CN;
-        font-size: 16.59px;
-        font-weight: 400;
-        line-height: 21px;
-        text-align: left;
-        // 两行时 超出不换行自动省略号
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        line-clamp: 2;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        word-wrap: anywhere;
-      }
-
-      .name {
-        font-family: Source Han Serif CN;
-        font-size: 13.77px;
-        font-weight: 400;
-        line-height: 17.43px;
-        text-align: left;
-
-        color: #8a8a8a;
-
-        margin-top: 29px;
-      }
-
-      .next {
-        position: absolute;
-        width: 26px;
-        height: 26px;
-        right: 10px;
-        bottom: 19px;
-      }
-    }
+  .btn {
+    width: 329px;
+    margin: 76px 43px 29px 42px;
   }
 }
 </style>

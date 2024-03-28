@@ -3,7 +3,7 @@ import {useBaseStore} from "../store/base";
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: "Content-2-My-Works",
+  name: "Content-3-MyWorks",
   computed: {
     myWorks() {
       return useBaseStore().getterMyWorks
@@ -22,7 +22,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="content-2-my-works">
+  <div class="content-3-my-works">
     <img class="bg" src="../static/img/bg-call-for-works-1.png" alt="bg">
     <div class="block" v-for="(item, index) in myWorks" :key="index">
       <div class="title">
@@ -44,7 +44,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 
-.content-2-my-works {
+.content-3-my-works {
   display: flex;
   flex-direction: column;
   align-items: center;

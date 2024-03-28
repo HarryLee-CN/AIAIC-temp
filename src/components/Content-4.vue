@@ -1,17 +1,33 @@
 <script>
 import {defineComponent} from 'vue'
+import {useBaseStore} from "../store/base";
 
 export default defineComponent({
-  name: "Content-4"
+  name: "Content-4",
+  computed: {
+    selectedWorks() {
+      return useBaseStore().getterSelectedWorks
+    }
+  },
+  methods: {
+    handleClick(images) {
+      useBaseStore().updateSwiperItems(images)
+      useBaseStore().updateIsShowModalSwiper(true)
+    }
+  }
 })
 </script>
 
 <template>
   <div class="content-4">
-    <img class="bg" src="../static/img/bg-counselor.png" alt="bg">
-    <div class="swiper">
-      <div class="swiper-item" v-for="(item, index) in 4">
-        <img src="../static/img/counselor.png" alt="counselor">
+    <div class="block" v-for="(item, index) in selectedWorks" @click="handleClick(item.images)" :key="index">
+      <div class="top">
+        <img :src="item.images[0]" alt="">
+      </div>
+      <div class="bottom">
+        <div class="desc">{{ item.desc }}</div>
+        <div class="name">{{ item.nick }}</div>
+        <img class="next" src="../static/img/icon-arrow-next.png" alt="arrow">
       </div>
     </div>
   </div>
@@ -20,38 +36,65 @@ export default defineComponent({
 <style scoped lang="scss">
 
 .content-4 {
-  height: calc(100vh - 56px * 2);
-  position: relative;
-  display: flex;
+  padding: 10px 6px;
 
-  .bg {
-    width: 110px;
-    position: absolute;
-    left: 0;
-    height: 100%;
-    z-index: -1;
-  }
+  column-count: 2;
+  column-gap: 5px;
 
-  .swiper {
-    width: 100%;
-    height: 390px;
-    margin-top: 125.5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    display: flex;
-    overflow-x: scroll;
+  .block {
+    height: fit-content;
+    padding-bottom: 4px;
+    break-inside: avoid;
+    page-break-inside: avoid;
 
-    .swiper-item {
+    .top {
+      width: 100%;
       display: flex;
-      margin-right: 29px;
 
       img {
-        width: 284px;
-        height: 390px;
+        width: 100%;
+      }
+    }
+
+    .bottom {
+      padding: 11px 9px 18px 9px;
+      position: relative;
+      background-color: rgba(216, 216, 216, 0.36);
+
+      .desc {
+        font-family: Source Han Serif CN;
+        font-size: 16.59px;
+        font-weight: 400;
+        line-height: 21px;
+        text-align: left;
+        // 两行时 超出不换行自动省略号
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-clamp: 2;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        word-wrap: anywhere;
       }
 
-      &:last-child {
-        margin-right: 0;
+      .name {
+        font-family: Source Han Serif CN;
+        font-size: 13.77px;
+        font-weight: 400;
+        line-height: 17.43px;
+        text-align: left;
+
+        color: #8a8a8a;
+
+        margin-top: 29px;
+      }
+
+      .next {
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        right: 10px;
+        bottom: 19px;
       }
     }
   }
