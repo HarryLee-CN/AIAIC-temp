@@ -8,8 +8,7 @@ export default defineComponent({
 
 <template>
 <div class="content-2">
-  <img class="bg1" src="../static/img/bg-introduction-1.png" alt="bg1">
-  <img class="header" src="../static/img/header-introduction.png" alt="header">
+  <img class="bg-side" src="../static/img/bg-introduction-side.png" alt="side">
   <div class="text">
     <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">
     <p>
@@ -53,22 +52,17 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 
-  .bg1 {
-    width: 100%;
-  }
-
-  .header {
-    width: 100%;
-    //width: 327.5px;
-    padding-left: 47px;
-    padding-right: 40px;
-    margin-top: 6.5px;
+  .bg-side {
+    width: 17px;
+    left: 0;
+    position: fixed;
   }
 
   .text {
     width: 100%;
-    padding: 19px 50.5px 0 51.5px;
+    padding: 9px 50.5px 0 51.5px;
     margin-top: 45px;
     position: relative;
 
@@ -81,8 +75,8 @@ export default defineComponent({
     .bg2 {
       width: 40px;
       position: absolute;
-      left: 0;
-      top: 0;
+      left: 17px;
+      top: -35px;
     }
 
     p {
