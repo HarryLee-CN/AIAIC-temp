@@ -26,7 +26,7 @@ export const wxShareInit = async () => {
         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: res.data.result.appId, // 必填，公众号的唯一标识
         timestamp: res.data.result.timestamp, // 必填，生成签名的时间戳
-        nonceStr: res.data.result.noncestr, // 必填，生成签名的随机串
+        nonceStr: res.data.result.nonceStr, // 必填，生成签名的随机串
         signature: res.data.result.signature, // 必填，签名
         jsApiList: ["updateAppMessageShareData", "updateTimelineShareData"], // 必填，需要使用的JS接口列表
       });
@@ -37,11 +37,11 @@ export const wxShareInit = async () => {
             scale: "",
             width: "",
           },
-          url: "https://static.thefair.net.cn/activity/jnby/631709876716_.pic.jpg",
+          url: "https://static.thefair.net.cn/activity/aiaic/share.jpg",
         },
         link: window.location.href,
-        text: "JNBY 2024春夏系列，灵感来源于一次苗族村寨的采风。",
-        title: "时间的褶皱",
+        text: "待定todo",
+        title: "「爱恨情仇」AI影像创作计划",
       };
       updateWxShareData(DEFAULT_SHARE_INFO);
       wx.error(function (res) {

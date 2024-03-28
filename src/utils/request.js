@@ -2,6 +2,7 @@ function handleResponse(resolve, reject, res) {
   switch (res.statusCode) {
     case 200:
       switch (res.data.code) {
+        case 0:
         case "0":
           resolve(res)
           break;
