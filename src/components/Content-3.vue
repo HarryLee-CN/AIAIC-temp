@@ -27,13 +27,7 @@ export default defineComponent({
 <div class="content-3">
   <img class="bg-side" src="../static/img/bg-call-for-works-1.png" alt="bg-side">
   <div class="text">
-    <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">
-    <p>
-      征集主题：爱恨情仇
-    </p>
-    <p>
-      征集时间：2024.3.25-2024.4.07
-    </p>
+<!--    <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">-->
     <p>
       征集说明：
     </p>
@@ -55,9 +49,6 @@ export default defineComponent({
     <p>
       4. 这个创作计划整体也将是一次持续发生、开放的作品，每位创作者都是这个作品的共同行动者。
     </p>
-    <p>
-      5.作品分辨率XXX提交上传文件要求XXXX最终解释权XXXXX
-    </p>
   </div>
   <img class="btn" src="../static/img/btn-sign-up.png" alt="btn" @click="handleSignUp">
 </div>
@@ -73,6 +64,7 @@ export default defineComponent({
 
   .bg-side {
     width: 25px;
+    height: 686px;
     position: fixed;
     right: 0;
   }
@@ -89,17 +81,17 @@ export default defineComponent({
     line-height: 26px;
     text-align: justified;
 
-    .bg2 {
-      width: 40px;
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
+    //.bg2 {
+    //  width: 40px;
+    //  position: absolute;
+    //  left: 0;
+    //  top: 0;
+    //}
   }
 
   .btn {
     width: 329px;
-    margin: 76px 43px 29px 42px;
+    margin: 36px 43px 29px 42px;
   }
 }
 </style>
