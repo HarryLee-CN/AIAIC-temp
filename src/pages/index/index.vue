@@ -61,10 +61,12 @@
     </div>
     <div class="cell" @click="handleClick(4)" ref="cell-3">
       <div class="left" v-if="!isLogin || (isLogin && !myWorks.length)">
+        <img class="icon" src="../../static/img/icon-call-for-work.svg" alt="call-for-work">
         <div class="title" style="color: #70C6F6 !important;">作品征集</div>
         <div class="eng">Call for works</div>
       </div>
       <div class="left" v-else>
+        <img class="icon" src="../../static/img/icon-call-for-work.svg" alt="call-for-work">
         <div class="title" style="color: #70C6F6 !important;">我的创作</div>
         <div class="eng">Creation</div>
       </div>
@@ -383,6 +385,14 @@ export default {
 
     .left {
       display: flex;
+
+      .icon {
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        left: 8px;
+        top: 23px;
+      }
     }
 
     .title {
