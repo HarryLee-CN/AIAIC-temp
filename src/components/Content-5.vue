@@ -10,15 +10,17 @@ export default defineComponent({
   <div class="content-5">
     <img class="bg" src="../static/img/bg-support.png" alt="bg">
     <div class="text">
-      <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">
-      <div class="block">
+      <div class="block" style="margin-top: 9px">
+        <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">
         <div class="title">顾问团队</div>
         <div class="divider"/>
-        <img class="photo" src="../static/img/team.png" alt="team">
+        <img class="team" src="../static/img/team.png" alt="team">
         <div class="divider"/>
       </div>
-      <div class="block">
-        <div class="title">合作支持</div>
+      <div class="block" style="margin-top: 30px">
+        <img class="bg3" src="../static/img/bg-introduction-2.png" alt="bg3">
+        <div class="title" style="margin-top: 34px">合作支持</div>
+        <img class="support" src="../static/img/support.png" alt="support">
       </div>
     </div>
   </div>
@@ -37,21 +39,25 @@ export default defineComponent({
 
   .text {
     width: 100%;
-    padding: 25px;
-    margin-top: 9px;
     position: relative;
-
-    .bg2 {
-      width: 40px;
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
 
     .block {
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
+
+      .bg2 {
+        position: absolute;
+        left: 0;
+        width: 40px;
+      }
+
+      .bg3 {
+        position: absolute;
+        left: 0;
+        width: 40px;
+      }
 
       .title {
         font-family: Source Han Serif CN;
@@ -62,20 +68,27 @@ export default defineComponent({
 
         color: #191919;
         width: 100%;
-        padding-left: 10px;
+        padding-left: 35px;
+        margin-top: 25px;
       }
 
       .divider {
-        width: 100%;
+        width: calc(100vw - 50px);
         height: 0.5px;
         background-color: #191919;
         margin-top: 22px;
       }
 
-      .photo {
+      .team {
         width: 100%;
-        padding: 0 10px;
+        padding: 0 35px;
         margin-top: 21px;
+      }
+
+      .support {
+        width: 100%;
+        padding: 0 67px 0 38px;
+        margin-top: 9px;
       }
     }
   }
