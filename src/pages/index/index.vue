@@ -274,6 +274,8 @@ export default {
 <style scoped lang="scss">
 
 .cover {
+  max-width: 768px;
+  margin: 0 auto;
   width: 100vw;
   height: 100vh;
   background: url("../../static/img/cover.png") center center no-repeat;
@@ -430,5 +432,10 @@ export default {
   .first-cell-shadow {
     box-shadow: 0px -2px 8px 0px #0000001B;
   }
+}
+
+.content {
+  max-width: 768px;
+  margin: 0 auto;
 }
 </style>
