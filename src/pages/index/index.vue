@@ -11,27 +11,32 @@
         <img class="icon-arrow-down" src="../../static/img/icon-arrow-down.svg" alt="down">
       </div>
     </div>
+    <!-- 为什么做 -->
     <div class="section">
       <div class="content" ref="content-1">
         <content-1/>
       </div>
     </div>
+    <!-- 活动介绍 -->
     <div class="section">
       <div class="content" ref="content-2">
+        <content-1/>
+      </div>
+    </div>
+    <!-- 作品征集、我的创作 -->
+    <div class="section">
+      <div class="content" ref="content-3">
         <content-2 v-if="!isLogin || (isLogin && !myWorks.length)"/>
         <content-2-my-works v-else/>
       </div>
     </div>
+    <!-- 作品展示 -->
     <div class="section">
-      <div class="content" ref="content-3">
+      <div class="content" ref="content-4">
         <content-3/>
       </div>
     </div>
-    <div class="section">
-      <div class="content" ref="content-4">
-        <content-4/>
-      </div>
-    </div>
+    <!-- 合作支持 -->
     <div class="section">
       <div class="content" ref="content-5">
         <content-5/>
@@ -42,12 +47,19 @@
   <div class="cells">
     <div class="cell cell-black" @click="handleClick(2)" ref="cell-1">
       <div class="left">
+        <div class="title">为什么做</div>
+        <div class="eng">Why</div>
+      </div>
+      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
+    </div>
+    <div class="cell cell" @click="handleClick(3)" ref="cell-2">
+      <div class="left">
         <div class="title">活动介绍</div>
         <div class="eng">Introduction</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
-    <div class="cell" @click="handleClick(3)" ref="cell-2">
+    <div class="cell" @click="handleClick(4)" ref="cell-3">
       <div class="left" v-if="!isLogin || (isLogin && !myWorks.length)">
         <div class="title" style="color: #70C6F6 !important;">作品征集</div>
         <div class="eng">Call for works</div>
@@ -58,17 +70,10 @@
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
-    <div class="cell" @click="handleClick(4)" ref="cell-3">
+    <div class="cell" @click="handleClick(5)" ref="cell-4">
       <div class="left">
         <div class="title">作品展示</div>
         <div class="eng">Display</div>
-      </div>
-      <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
-    </div>
-    <div class="cell" @click="handleClick(5)" ref="cell-4">
-      <div class="left">
-        <div class="title">顾问团队</div>
-        <div class="eng">Counselor</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
