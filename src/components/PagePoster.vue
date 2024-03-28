@@ -156,17 +156,21 @@ export default defineComponent({
         }
         console.log('画完图片', this.posterContent.images)
 
-        marginLeft = 34.3
-        const marginTop = 44.5
 
         // 写结尾
         ctx.font = "600 12px Source Han Serif CN"
+
+        const tipsLineHeight = 16.4
+        ctx.fillText('*提示：海报中图片作品由AI工具创作，仅用于创意呈现。', marginLeft, firstY + lineHeight + lineSpace + tipsLineHeight + this.imageHeightsTotal)
+
+        marginLeft = 34.3
         const qrCodeTipLineHeight = 17.4
-        ctx.fillText('扫码查看更多作品', marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + marginTop + this.imageHeightsTotal)
+        const qrCodeTipMarginTop = 44.5
+        ctx.fillText('扫码查看更多作品', marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + qrCodeTipMarginTop + this.imageHeightsTotal)
 
         const qrcode = "https://static.thefair.net.cn/activity/aiaic/qrcode.png"
         const qrcode_marginTop = 8
-        ctx.drawImage(qrcode, marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + marginTop + this.imageHeightsTotal + qrcode_marginTop, 94, 94)
+        ctx.drawImage(qrcode, marginLeft, firstY + lineHeight + lineSpace + qrCodeTipLineHeight + qrCodeTipMarginTop + this.imageHeightsTotal + qrcode_marginTop, 94, 94)
 
         console.log('画完结尾')
         ctx.draw(false, () => {
