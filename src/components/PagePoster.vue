@@ -122,7 +122,7 @@ export default defineComponent({
         for (let i = 0; i < this.asset_count; i++) {
           ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-asset.png', 0, this.topHeight + this.singleAssetHeight * i, this.backgroundWidth, this.singleAssetHeight)
         }
-        console.log('画完中间素材：',this.asset_count,'个')
+        console.log('画完中间素材：', this.asset_count, '个')
 
         // 画背景图 尾
         ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-bottom.png', 0, this.topHeight + this.singleAssetHeight * this.asset_count, this.backgroundWidth, this.bottomHeight)
@@ -135,8 +135,16 @@ export default defineComponent({
         const lineSpace = 6
         const firstY = 154 + lineHeight
         ctx.fillStyle = 'white'
-        ctx.fillText(`作品名：《${this.posterContent.title}》`, marginLeft, firstY)
-        ctx.fillText(`创作者：${this.posterContent.nick}`, marginLeft, firstY + lineSpace + lineHeight)
+        if (this.posterContent.title.length > 10) {
+          ctx.fillText(`作品名：《${this.posterContent.title.slice(0, 10)}...》`, marginLeft, firstY)
+        } else {
+          ctx.fillText(`作品名：《${this.posterContent.title}》`, marginLeft, firstY)
+        }
+        if (this.posterContent.nick.length > 10) {
+          ctx.fillText(`创作者：${this.posterContent.nick.slice(0, 10)}...`, marginLeft, firstY + lineSpace + lineHeight)
+        } else {
+          ctx.fillText(`创作者：${this.posterContent.nick}`, marginLeft, firstY + lineSpace + lineHeight)
+        }
         console.log('画完作品名创作者')
 
         marginLeft = 13
