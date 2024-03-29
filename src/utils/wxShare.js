@@ -40,8 +40,8 @@ export const wxShareInit = async () => {
           url: "https://static.thefair.net.cn/activity/aiaic/share.jpg",
         },
         link: window.location.href,
-        text: "待定todo",
-        title: "「爱恨情仇」AI影像创作计划",
+        text: "在科技发展过程中，探索「人类精神」的不可替代性",
+        title: "新世相「爱恨情仇」AI影像创作计划",
       };
       updateWxShareData(DEFAULT_SHARE_INFO);
       wx.error(function (res) {
