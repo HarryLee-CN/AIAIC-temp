@@ -73,7 +73,7 @@ export default defineComponent({
       margin-bottom: 15px;
 
       .left {
-        width: 80%;
+        width: 70%;
         display: flex;
         align-items: center;
 
