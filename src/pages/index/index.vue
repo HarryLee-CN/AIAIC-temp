@@ -207,7 +207,7 @@ export default {
               this.$refs['cell-5'].classList = 'cell';
               break;
             case 2:
-              this.$refs['cell-1'].style = 'top: 0';
+              this.$refs['cell-1'].style = 'top: -56px';
               this.$refs['cell-1'].classList = 'cell cell-black';
               this.$refs['cell-2'].style = `top: 0`;
               this.$refs['cell-2'].classList = 'cell cell-black';
@@ -220,9 +220,9 @@ export default {
               this.$refs['cell-5'].classList = 'cell';
               break;
             case 3:
-              this.$refs['cell-1'].style = 'top: 0';
+              this.$refs['cell-1'].style = 'top: -56px';
               this.$refs['cell-1'].classList = 'cell cell-black';
-              this.$refs['cell-2'].style = `top: 0`;
+              this.$refs['cell-2'].style = `top: -56px`;
               this.$refs['cell-2'].classList = 'cell cell-black';
               this.$refs['cell-3'].style = `top: 0`;
               this.$refs['cell-3'].classList = 'cell cell-black';
@@ -233,11 +233,11 @@ export default {
               this.$refs['cell-5'].classList = 'cell';
               break;
             case 4:
-              this.$refs['cell-1'].style = 'top: 0';
+              this.$refs['cell-1'].style = 'top: -56px';
               this.$refs['cell-1'].classList = 'cell cell-black';
-              this.$refs['cell-2'].style = `top: 0`;
+              this.$refs['cell-2'].style = `top: -56px`;
               this.$refs['cell-2'].classList = 'cell cell-black';
-              this.$refs['cell-3'].style = `top: 0`;
+              this.$refs['cell-3'].style = `top: -56px`;
               this.$refs['cell-3'].classList = 'cell cell-black';
               this.$refs['cell-4'].style = `top: 0`;
               this.$refs['cell-4'].classList = 'cell cell-black';
@@ -246,13 +246,13 @@ export default {
               this.$refs['cell-5'].classList = 'cell first-cell-shadow';
               break;
             case 5:
-              this.$refs['cell-1'].style = 'top: 0';
+              this.$refs['cell-1'].style = 'top: -56px';
               this.$refs['cell-1'].classList = 'cell cell-black';
-              this.$refs['cell-2'].style = `top: 0`;
+              this.$refs['cell-2'].style = `top: -56px`;
               this.$refs['cell-2'].classList = 'cell cell-black';
-              this.$refs['cell-3'].style = `top: 0`;
+              this.$refs['cell-3'].style = `top: -56px`;
               this.$refs['cell-3'].classList = 'cell cell-black';
-              this.$refs['cell-4'].style = `top: 0`;
+              this.$refs['cell-4'].style = `top: -56px`;
               this.$refs['cell-4'].classList = 'cell cell-black';
               this.$refs['cell-5'].style = `top: 0`;
               this.$refs['cell-5'].classList = 'cell cell-black';
