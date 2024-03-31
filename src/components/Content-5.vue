@@ -69,7 +69,7 @@ export default defineComponent({
         color: #191919;
         width: 100%;
         padding-left: 35px;
-        margin-top: 25px;
+        margin-top: 35px;
       }
 
       .divider {
