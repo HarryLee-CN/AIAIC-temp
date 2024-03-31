@@ -76,7 +76,7 @@ export default defineComponent({
     font-size: 15px;
     font-weight: 250;
     line-height: 26px;
-    text-align: justified;
+    text-align: justify;
 
     .bg2 {
       width: 40px;
