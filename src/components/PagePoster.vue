@@ -60,7 +60,7 @@ export default defineComponent({
             // 得到素材数量
             this.asset_count = Math.round(this.imageHeightsTotal / this.singleAssetHeight)
             // 误差速算（素材数量实际不需要这么多）
-            if (this.asset_count >= 1) this.asset_count -= 1
+            if (this.asset_count >= 2) this.asset_count -= 2
             // 分析完毕
             if (i === posterContent.images.length - 1) {
               this.imageAnalysisComplete = true
@@ -133,7 +133,7 @@ export default defineComponent({
         let marginLeft = 15.3
         const lineHeight = 18.5
         const lineSpace = 6
-        const firstY = 154 + lineHeight
+        const firstY = 128 + lineHeight
         ctx.fillStyle = 'white'
         if (this.posterContent.title.length > 10) {
           ctx.fillText(`作品名：《${this.posterContent.title.slice(0, 10)}...》`, marginLeft, firstY)
@@ -174,7 +174,7 @@ export default defineComponent({
 
         marginLeft = 34.3
         const qrCodeTipLineHeight = 17.4
-        const qrCodeTipMarginTop = 74.5
+        const qrCodeTipMarginTop = 46
         ctx.fillText('扫码查看更多作品', marginLeft, firstY + lineHeight + lineSpace + this.imageHeightsTotal + tipsLineHeight + tipsMarginTop + qrCodeTipLineHeight + qrCodeTipMarginTop)
 
         const qrcode = "https://static.thefair.net.cn/activity/aiaic/qrcode.png"
