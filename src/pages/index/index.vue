@@ -383,7 +383,7 @@ export default {
 
     display: flex;
     justify-content: space-between;
-    padding: 19px 11px 0 29px;
+    padding: 16px 16px 0 29px;
 
     .left {
       display: flex;
@@ -393,7 +393,7 @@ export default {
         height: 15px;
         position: absolute;
         left: 8px;
-        top: 23px;
+        top: 20px;
       }
     }
 
