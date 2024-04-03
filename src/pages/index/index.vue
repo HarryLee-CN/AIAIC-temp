@@ -75,14 +75,14 @@
     <div class="cell" @click="handleClick(5)" ref="cell-4">
       <div class="left">
         <div class="title">作品展示</div>
-        <div class="eng">Display</div>
+        <div class="eng">Innovative Art Exhibition</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
     <div class="cell" @click="handleClick(6)" ref="cell-5">
       <div class="left">
         <div class="title">合作支持</div>
-        <div class="eng">Support</div>
+        <div class="eng">Collaborative Support</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
