@@ -350,11 +350,13 @@ export default {
 }
 
 .cells {
+  max-width: 768px;
   width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
   pointer-events: none;
 
   .cell-black {
@@ -371,6 +373,7 @@ export default {
   }
 
   .cell {
+    max-width: 768px;
     pointer-events: auto;
     width: 100%;
     height: 56px;

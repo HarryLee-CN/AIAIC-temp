@@ -23,7 +23,7 @@ export default defineComponent({
 
 <template>
   <div class="content-3-my-works">
-    <img class="bg" src="../static/img/bg-call-for-works-1.png" alt="bg">
+    <img class="bg-side" src="../static/img/bg-call-for-works-1.png" alt="bg">
     <div class="block" v-for="(item, index) in myWorks" :key="index">
       <div class="title">
         <div class="left">
@@ -44,6 +44,14 @@ export default defineComponent({
 
 <style scoped lang="scss">
 
+@media (min-width: 768px) {
+  .content-3-my-works {
+    .bg-side {
+      position: absolute !important;
+    }
+  }
+}
+
 .content-3-my-works {
   display: flex;
   flex-direction: column;
@@ -52,7 +60,7 @@ export default defineComponent({
   min-height: 573px;
   //padding-top: 21px;
 
-  .bg {
+  .bg-side {
     width: 25px;
     position: fixed;
     right: 0;
@@ -128,6 +136,8 @@ export default defineComponent({
       flex-wrap: wrap;
 
       img {
+        max-width: calc(650px / 2);
+        max-height: calc(650px / 2);
         width: 40vw;
         height: 40vw;
         object-position: center center;

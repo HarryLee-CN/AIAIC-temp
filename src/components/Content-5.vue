@@ -73,6 +73,7 @@ export default defineComponent({
       }
 
       .divider {
+        max-width: calc(768px - 50px);
         width: calc(100vw - 50px);
         height: 0.5px;
         background-color: #191919;

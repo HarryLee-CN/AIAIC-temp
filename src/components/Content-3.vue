@@ -56,6 +56,14 @@ export default defineComponent({
 
 <style scoped lang="scss">
 
+@media (min-width: 768px) {
+  .content-3 {
+    .bg-side {
+      position: absolute !important;
+    }
+  }
+}
+
 .content-3 {
   display: flex;
   flex-direction: column;
