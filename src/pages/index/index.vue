@@ -11,19 +11,19 @@
         <img class="icon-arrow-down" src="../../static/img/icon-arrow-down.svg" alt="down">
       </div>
     </div>
-    <!-- 为什么做 -->
+    <!-- 行动发起 -->
     <div class="section">
       <div class="content" ref="content-1">
         <content-1/>
       </div>
     </div>
-    <!-- 活动介绍 -->
+    <!-- 关于 AIAIC -->
     <div class="section">
       <div class="content" ref="content-2">
         <content-2/>
       </div>
     </div>
-    <!-- 作品征集、我的创作 -->
+    <!-- 创作征集、我的创作 -->
     <div class="section">
       <div class="content" ref="content-3">
         <content-3 v-if="!isLogin || (isLogin && !myWorks.length)"/>
@@ -47,23 +47,23 @@
   <div class="cells">
     <div class="cell cell-black" @click="handleClick(2)" ref="cell-1">
       <div class="left">
-        <div class="title">为什么做</div>
-        <div class="eng">Why</div>
+        <div class="title">行动发起</div>
+        <div class="eng">Reasons for Action</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
     <div class="cell cell" @click="handleClick(3)" ref="cell-2">
       <div class="left">
-        <div class="title">活动介绍</div>
-        <div class="eng">Introduction</div>
+        <div class="title">关于 AIAIC</div>
+        <div class="eng">About AIAIC</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
     <div class="cell" @click="handleClick(4)" ref="cell-3">
       <div class="left" v-if="!isLogin || (isLogin && !myWorks.length)">
         <img class="icon" src="../../static/img/icon-call-for-work.svg" alt="call-for-work">
-        <div class="title" style="color: #70C6F6 !important;">作品征集</div>
-        <div class="eng">Call for works</div>
+        <div class="title" style="color: #70C6F6 !important;">创作征集</div>
+        <div class="eng">Call for Creative Submission</div>
       </div>
       <div class="left" v-else>
         <img class="icon" src="../../static/img/icon-call-for-work.svg" alt="call-for-work">
