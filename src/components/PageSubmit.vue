@@ -61,6 +61,7 @@ export default defineComponent({
     handleSubmit() {
       if (this.images.length === 0) return uni.showToast({icon: "none", title: "请上传至少一幅作品"})
       if (!this.workName) return uni.showToast({icon: "none", title: "请输入作品名称"})
+      if (!this.workDesc) return uni.showToast({icon: "none", title: "请输入作品描述"})
       if (!this.nickname) return uni.showToast({icon: "none", title: "请输入您的昵称"})
       if (!this.mobile) return uni.showToast({icon: "none", title: "请输入您的手机号"})
       if (!phoneNumValid(this.mobile)) return uni.showToast({icon: "none", title: "请输入正确的手机号"})
@@ -155,9 +156,8 @@ export default defineComponent({
     </div>
 
     <div class="block">
-      <div class="title">作品描述（选填）</div>
-      <textarea placeholder="在此处输入你的作品描述，140字以内" placeholder-style="color: #989898" maxlength="140"
-                v-model="workDesc"></textarea>
+      <div class="title">*作品描述（必填）</div>
+      <textarea placeholder="请注明使用的AI工具，并简短描述作品创作思路、关键词等信息。" placeholder-style="color: #989898" v-model="workDesc"></textarea>
     </div>
 
     <div class="block">
