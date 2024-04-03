@@ -157,7 +157,7 @@ export default defineComponent({
 
     <div class="block">
       <div class="title">*作品描述（必填）</div>
-      <textarea placeholder="请注明使用的AI工具，并简短描述作品创作思路、关键词等信息。" placeholder-style="color: #989898" v-model="workDesc"></textarea>
+      <textarea placeholder="请注明使用的AI工具，并简短描述作品创作思路、关键词等信息。" placeholder-style="color: #989898" v-model="workDesc" maxlength="999"></textarea>
     </div>
 
     <div class="block">
