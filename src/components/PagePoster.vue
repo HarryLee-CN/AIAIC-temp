@@ -233,7 +233,7 @@ export default defineComponent({
 
 <template>
   <div class="page-poster" v-if="isShowPagePoster">
-    <header-nav/>
+    <header-nav top="20"/>
     <img class="top" src="../static/img/bg-poster-top.png" alt="top">
 
     <div class="canvas-container">

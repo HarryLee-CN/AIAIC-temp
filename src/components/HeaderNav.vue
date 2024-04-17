@@ -4,6 +4,7 @@ import {useBaseStore} from "../store/base";
 
 export default defineComponent({
   name: "HeaderNav",
+  props: ["top"],
   methods: {
     back() {
       useBaseStore().updateIsShowPageSubmit(false)
@@ -14,8 +15,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="header-nav">
-    <u-icon name="arrow-left" size="17" @click="back"></u-icon>
+  <div class="header-nav" :style="{top: top}">
+    <u-icon name="arrow-left" size="17" @click="back" color="black"></u-icon>
     <span @click="back">返回</span>
   </div>
 </template>
@@ -27,13 +28,14 @@ export default defineComponent({
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  padding-left: 10px;
+  padding-left: 20px;
   position: fixed;
   top: 0;
   left: 0;
   background-color: transparent;
   z-index: 999;
   border: 1px red solid;
+  color: #000000;
 
   span {
     font-family: Source Han Serif CN;
