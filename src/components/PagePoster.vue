@@ -20,7 +20,8 @@ export default defineComponent({
       singleAssetHeight: 56,
       bottomHeight: 359,
 
-      posterSrc: ""
+      posterSrc: "",
+      canvasMounted: false
     }
   },
   computed: {
@@ -29,6 +30,12 @@ export default defineComponent({
     },
     posterContent() {
       return useBaseStore().getterPosterContent
+    },
+    progressConditions() {
+      return {
+        canvasMounted: this.canvasMounted,
+        imageAnalysisComplete: this.imageAnalysisComplete
+      }
     }
   },
   watch: {
@@ -74,9 +81,11 @@ export default defineComponent({
       },
       immediate: true
     },
-    imageAnalysisComplete: {
-      async handler(imageAnalysisComplete) {
-        if (imageAnalysisComplete) {
+    progressConditions: {
+      async handler(progressConditions) {
+        const {canvasMounted, imageAnalysisComplete} = progressConditions
+        console.log({canvasMounted, imageAnalysisComplete})
+        if (canvasMounted && imageAnalysisComplete) {
           uni.showLoading()
           // setTimeout(() => {
           await this.getBackgroundHeight()
@@ -94,6 +103,14 @@ export default defineComponent({
     }
   },
   methods: {
+    checkCanvasMounted() {
+      setTimeout(() => {
+        console.log("checkCanvasMounted")
+        const canvas = document.getElementById('canvas')
+        if (!canvas) return this.checkCanvasMounted()
+        this.canvasMounted = true
+      }, 500)
+    },
     getBackgroundHeight() {
       return new Promise(resolve => {
         this.backgroundHeight = this.topHeight + this.asset_count * this.singleAssetHeight + this.bottomHeight
@@ -228,6 +245,9 @@ export default defineComponent({
       useBaseStore().updateIsShowPageSubmit(true)
     }
   },
+  mounted() {
+    this.checkCanvasMounted()
+  }
 })
 </script>
 
