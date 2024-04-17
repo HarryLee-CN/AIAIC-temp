@@ -233,9 +233,8 @@ export default defineComponent({
 
 <template>
   <div class="page-poster" v-if="isShowPagePoster">
-    <header-nav top="38px"/>
     <img class="top" src="../static/img/bg-poster-top.png" alt="top">
-
+    <header-nav/>
     <div class="canvas-container">
       <canvas canvas-id="canvas" id="canvas" class="canvas" ref="canvas"/>
     </div>
@@ -271,7 +270,7 @@ export default defineComponent({
   }
 
   .canvas-container {
-    margin-top: 56px;
+    margin-top: 6px;
     //border: 2px red solid;
 
     position: absolute;
@@ -284,7 +283,7 @@ export default defineComponent({
   }
 
   .poster {
-    margin-top: 56px;
+    margin-top: 6px;
     width: 330px;
     flex-shrink: 0;
     position: relative;

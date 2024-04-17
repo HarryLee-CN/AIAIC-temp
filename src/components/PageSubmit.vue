@@ -183,7 +183,6 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .page-submit {
-  padding-top: 50px;
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;

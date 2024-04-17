@@ -29,9 +29,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   padding-left: 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   background-color: transparent;
   z-index: 999;
   color: #000000;
