@@ -15,7 +15,8 @@ export default defineComponent({
 
 <template>
   <div class="header-nav">
-    <u-icon name="arrow-left" size="25" @click="back"></u-icon>
+    <u-icon name="arrow-left" size="17" @click="back"></u-icon>
+    <span @click="back">返回</span>
   </div>
 </template>
 
@@ -23,7 +24,6 @@ export default defineComponent({
 .header-nav {
   width: 100%;
   height: 50px;
-  border-bottom: 0.5px #1C1C1C solid;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -31,7 +31,17 @@ export default defineComponent({
   position: fixed;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: transparent;
   z-index: 999;
+  border: 1px red solid;
+
+  span {
+    font-family: Source Han Serif CN;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 24.43px;
+    text-align: left;
+    color: #000000;
+  }
 }
 </style>
