@@ -40,6 +40,9 @@ export default defineComponent({
   },
   watch: {
     isShowPagePoster(newV, oldV) {
+      if (newV === true && oldV === false) {
+        this.checkCanvasMounted()
+      }
       if (newV === false && oldV === true) {
         this.resetData();
       }
@@ -246,9 +249,6 @@ export default defineComponent({
       useBaseStore().updateIsShowPagePoster(false)
       useBaseStore().updateIsShowPageSubmit(true)
     }
-  },
-  mounted() {
-    this.checkCanvasMounted()
   }
 })
 </script>
