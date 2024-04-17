@@ -53,6 +53,16 @@ export default defineComponent({
         uni.showToast({icon: "none", title: e.data.message.text})
       }
     },
+    async getUserData(last_item_id = "") {
+      const res = await activityAigcGetUserCollectionFeedList({last_item_id})
+      const {item_list, last_item_id: new_last_item_id} = res.data.result
+      // 没有作品的则打开提交页
+      if (!item_list.length) 
+        // 打开提交页面
+        return useBaseStore().updateIsShowPageSubmit(true)
+      useBaseStore().updateMyWorks(item_list)
+      if (new_last_item_id) await this.getUserData(new_last_item_id)
+    },
     async register() {
       try {
         if (this.btnRegisterDisabled) return
@@ -69,16 +79,10 @@ export default defineComponent({
         // 储存UID
         localStorage.setItem('uid', res.data.result.user.uid)
         // 获取我的创作
-        const resMine = await activityAigcGetUserCollectionFeedList()
-        useBaseStore().updateMyWorks(resMine.data.result.item_list)
+        await this.getUserData()
         uni.showToast({icon: "none", title: "登录成功"})
         // 关闭注册弹窗
         useBaseStore().updateIsShowModalRegister(false)
-        // 没有作品的则打开提交页
-        if (!resMine.data.result.item_list.length) {
-          // 打开提交页面
-          useBaseStore().updateIsShowPageSubmit(true)
-        }
       } catch (e) {
         console.log(e)
         uni.hideLoading()
