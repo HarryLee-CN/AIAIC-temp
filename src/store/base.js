@@ -63,7 +63,7 @@ export const useBaseStore = defineStore("base", {
       this.userInfo = userInfo
     },
     updateSelectedWorks(selectedWorks) {
-      this.selectedWorks = selectedWorks
+      this.selectedWorks = this.selectedWorks.concat(selectedWorks)
     },
     updateIsShowPageSubmit(isShowPageSubmit) {
       this.isShowPageSubmit = isShowPageSubmit
@@ -78,7 +78,7 @@ export const useBaseStore = defineStore("base", {
       this.isShowModalSwiper = isShowModalSwiper
     },
     updateMyWorks(myWorks) {
-      this.myWorks = myWorks
+      this.myWorks = this.myWorks.concat(myWorks)
     },
     updateIsShowPagePoster(isShowPagePoster) {
       this.isShowPagePoster = isShowPagePoster

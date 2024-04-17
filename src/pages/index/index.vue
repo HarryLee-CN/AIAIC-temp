@@ -147,16 +147,26 @@ export default {
     handleClick(e) {
       this.fullPage.moveTo(e)
     },
+    async getChosenData(last_item_id = "") {
+      const res = await activityAigcGetChosenCollectionFeedList({last_item_id})
+      const {item_list, last_item_id: new_last_item_id} = res.data.result
+      useBaseStore().updateSelectedWorks(item_list)
+      if (new_last_item_id) await this.getChosenData(new_last_item_id)
+    },
+    async getUserData(last_item_id = "") {
+      const res = await activityAigcGetUserCollectionFeedList({last_item_id})
+      const {item_list, last_item_id: new_last_item_id} = res.data.result
+      useBaseStore().updateMyWorks(item_list)
+      if (new_last_item_id) await this.getUserData(new_last_item_id)
+    },
     async getData() {
       useBaseStore().updateIsLogin(!!localStorage.getItem('uid'))
       console.log('[isLogin]', this.isLogin)
       console.log('[uid]', localStorage.getItem('uid'))
 
-      const res = await activityAigcGetChosenCollectionFeedList()
-      useBaseStore().updateSelectedWorks(res.data.result.item_list)
+      await this.getChosenData()
       if (!this.isLogin) return
-      const resMine = await activityAigcGetUserCollectionFeedList()
-      useBaseStore().updateMyWorks(resMine.data.result.item_list)
+      await this.getUserData()
     },
     initUsersInterface() {
       const clientHeight = document.body.clientHeight

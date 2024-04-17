@@ -46,23 +46,23 @@ export function v1UserLogin({encrypt_mobile, sms_code}) {
 }
 
 // 精选作品
-export function activityAigcGetChosenCollectionFeedList() {
+export function activityAigcGetChosenCollectionFeedList({last_item_id}) {
   return uniRequest({
     url: config.activityAigcGetChosenCollectionFeedListPath,
     method: "post",
-    data: {"collection_id": 6475},
+    data: {"collection_id": 6475, "last_item_id": last_item_id},
   })
 }
 
 // 我的作品
-export function activityAigcGetUserCollectionFeedList() {
+export function activityAigcGetUserCollectionFeedList({last_item_id}) {
   return uniRequest({
     url: config.activityAigcGetUserCollectionFeedListPath,
     method: "post",
     data: {
       "collection_id": 6475,
       "uid": localStorage.getItem('uid'),
-      "last_item_id": 1
+      "last_item_id": last_item_id
     },
   })
 }
