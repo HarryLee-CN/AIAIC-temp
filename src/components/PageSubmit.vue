@@ -132,7 +132,7 @@ export default defineComponent({
 
 <template>
   <div class="page-submit" v-if="isShowPageSubmit">
-    <header-nav/>
+    <header-nav top="5px"/>
     <div class="header">
       <img src="../static/img/header-introduction.png" alt="header">
     </div>
