@@ -34,7 +34,6 @@ export default defineComponent({
   left: 0;
   background-color: transparent;
   z-index: 999;
-  border: 1px red solid;
   color: #000000;
 
   span {
