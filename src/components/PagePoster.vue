@@ -99,7 +99,8 @@ export default defineComponent({
           this.isLoading = false
           // }, 2000)
         }
-      }
+      },
+      immediate: true
     }
   },
   methods: {

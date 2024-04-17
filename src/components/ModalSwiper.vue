@@ -75,7 +75,7 @@ export default defineComponent({
 
     padding: 0 23px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
     .img {
