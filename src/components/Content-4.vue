@@ -25,7 +25,7 @@ export default defineComponent({
         <img :src="item.images[0]" alt="">
       </div>
       <div class="bottom">
-        <div class="desc">{{ item.desc }}</div>
+        <div class="desc">{{ item.title }}</div>
         <div class="name">{{ item.nick }}</div>
         <img class="next" src="../static/img/icon-arrow-next.png" alt="arrow">
       </div>
