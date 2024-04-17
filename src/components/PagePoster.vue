@@ -239,6 +239,7 @@ export default defineComponent({
       this.singleAssetHeight = 56;
       this.bottomHeight = 359
       this.posterSrc = ""
+      this.canvasMounted = false
     },
 
     again() {
