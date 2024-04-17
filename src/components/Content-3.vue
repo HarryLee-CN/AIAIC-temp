@@ -29,7 +29,7 @@ export default defineComponent({
     <div class="text">
       <!--    <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">-->
       <p>
-        - 征集时间： 2024 年 4 月8日-4月22日
+        - 征集时间：2024年4月18日-5月6日
       </p>
       <p>
         - 征集说明：

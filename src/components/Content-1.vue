@@ -13,7 +13,7 @@ export default defineComponent({
     <div class="text">
       <img class="bg2" src="../static/img/bg-introduction-2.png" alt="bg2">
       <p>
-        这是一次面向所有创作者，以及 AI 创作者的共同创作行动。这也是一次我们以「人类」这个身份为联盟，对「AI 时代」做出的回应。
+        这是一次面向所有创作者，以及 AI 爱好者的共同创作行动。这也是一次我们以「人类」这个身份为联盟，对「AI 时代」做出的回应。
       </p>
 
       <p>
