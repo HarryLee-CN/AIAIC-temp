@@ -58,6 +58,15 @@ export default defineComponent({
     handleDelete(index) {
       this.images = this.images.filter((v, k) => k !== index)
     },
+    async getUserWorks(last_item_id = "") {
+      const res = await activityAigcGetUserCollectionFeedList({last_item_id})
+      const {item_list, last_item_id: new_last_item_id} = res.data.result
+      useBaseStore().updateMyWorks(item_list)
+      if (new_last_item_id) await this.getUserWorks(new_last_item_id)
+      // 设为最后一个作品是海报内容
+      const myWorks = useBaseStore().getterMyWorks
+      useBaseStore().updatePosterContent(myWorks[myWorks.length - 1])
+    },
     handleSubmit() {
       if (this.images.length === 0) return uni.showToast({icon: "none", title: "请上传至少一幅作品"})
       if (!this.workName) return uni.showToast({icon: "none", title: "请输入作品名称"})
@@ -103,13 +112,10 @@ export default defineComponent({
           console.log(uploadFileRes)
           uni.showToast({icon: "none", title: "提交成功"})
           // 获取我的创作
-          const resMine = await activityAigcGetUserCollectionFeedList()
-          useBaseStore().updateMyWorks(resMine.data.result.item_list)
+          await this.getUserWorks()
           setTimeout(() => {
             // 关闭提交页
             useBaseStore().updateIsShowPageSubmit(false)
-            // 设为最后一个作品是海报内容
-            useBaseStore().updatePosterContent(resMine.data.result.item_list[resMine.data.result.item_list.length - 1])
             // 打开海报页
             useBaseStore().updateIsShowPagePoster(true)
           }, 1500)

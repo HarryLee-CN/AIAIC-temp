@@ -153,11 +153,11 @@ export default {
       useBaseStore().updateSelectedWorks(item_list)
       if (new_last_item_id) await this.getChosenData(new_last_item_id)
     },
-    async getUserData(last_item_id = "") {
+    async getUserWorks(last_item_id = "") {
       const res = await activityAigcGetUserCollectionFeedList({last_item_id})
       const {item_list, last_item_id: new_last_item_id} = res.data.result
       useBaseStore().updateMyWorks(item_list)
-      if (new_last_item_id) await this.getUserData(new_last_item_id)
+      if (new_last_item_id) await this.getUserWorks(new_last_item_id)
     },
     async getData() {
       useBaseStore().updateIsLogin(!!localStorage.getItem('uid'))
@@ -166,7 +166,7 @@ export default {
 
       await this.getChosenData()
       if (!this.isLogin) return
-      await this.getUserData()
+      await this.getUserWorks()
     },
     initUsersInterface() {
       const clientHeight = document.body.clientHeight
