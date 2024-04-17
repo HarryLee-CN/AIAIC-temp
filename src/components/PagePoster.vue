@@ -115,17 +115,17 @@ export default defineComponent({
         const ctx = uni.createCanvasContext('canvas')
         console.log('ctx', ctx)
         // 画背景图 头
-        ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-top.png', 0, 0, this.backgroundWidth, this.topHeight)
+        ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/static/img/poster-bg-top.png', 0, 0, this.backgroundWidth, this.topHeight)
         console.log('画完头图')
 
         // 画背景图 中间素材
         for (let i = 0; i < this.asset_count; i++) {
-          ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-asset.png', 0, this.topHeight + this.singleAssetHeight * i, this.backgroundWidth, this.singleAssetHeight)
+          ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/static/img/poster-bg-asset.png', 0, this.topHeight + this.singleAssetHeight * i, this.backgroundWidth, this.singleAssetHeight)
         }
         console.log('画完中间素材：', this.asset_count, '个')
 
         // 画背景图 尾
-        ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/poster-bg-bottom.png', 0, this.topHeight + this.singleAssetHeight * this.asset_count, this.backgroundWidth, this.bottomHeight)
+        ctx.drawImage('https://static.thefair.net.cn/activity/aiaic/static/img/poster-bg-bottom.png', 0, this.topHeight + this.singleAssetHeight * this.asset_count, this.backgroundWidth, this.bottomHeight)
         console.log('画完尾图')
 
         // 写文字

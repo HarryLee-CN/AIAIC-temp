@@ -37,7 +37,7 @@ export const wxShareInit = async () => {
             scale: "",
             width: "",
           },
-          url: "https://static.thefair.net.cn/activity/aiaic/share.jpg",
+          url: "https://static.thefair.net.cn/activity/aiaic/share.png",
         },
         link: window.location.href,
         text: "在科技发展过程中，探索「人类精神」的不可替代性",

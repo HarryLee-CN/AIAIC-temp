@@ -70,8 +70,8 @@ export default defineComponent({
         获奖者信息将在「新世相」公众号进行公示公布，同时，我们将为所有入围创作者在阿那亚举办作品展览。
       </p>
 
-      <p>
-        *活动最终解释权，归AIAIC组委会所有。
+      <p style="font-size: 13px;color: #DEDEDE;">
+        *活动的最终解释权，归AIAF组委会所有。
       </p>
     </div>
     <img class="btn" src="../static/img/btn-sign-up.png" alt="btn" @click="handleSignUp">

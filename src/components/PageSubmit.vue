@@ -202,7 +202,7 @@ export default defineComponent({
     width: 347.5px;
     height: .5px;
     background-color: #1C1C1C;
-    margin-top: 37.2px;
+    margin-top: 30px;
     margin-bottom: 33px;
     flex-shrink: 0;
   }

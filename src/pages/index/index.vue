@@ -3,11 +3,12 @@
     <div class="section">
       <div class="cover">
         <div class="titles">
-          <img class="text-1" src="../../static/img/cover-text-1.png" alt="text1">
-          <img class="text-2" src="../../static/img/cover-text-2.png" alt="text2">
+          <!-- <img class="text-1" src="../../static/img/cover-text-1.png" alt="text1">
+          <img class="text-2" src="../../static/img/cover-text-2.png" alt="text2"> -->
+          <img class="text-logo" src="../../static/img/cover-text-logo.png" alt="text2">
         </div>
         <img class="logo" src="../../static/img/cover-logo.png" alt="logo">
-        <div class="tips">下滑进入</div>
+        <!-- <div class="tips">下滑进入</div> -->
         <img class="icon-arrow-down" src="../../static/img/icon-arrow-down.svg" alt="down">
       </div>
     </div>
@@ -54,8 +55,8 @@
     </div>
     <div class="cell cell" @click="handleClick(3)" ref="cell-2">
       <div class="left">
-        <div class="title">关于 AIAIC</div>
-        <div class="eng">About AIAIC</div>
+        <div class="title">关于 AIAF</div>
+        <div class="eng">About AIAF</div>
       </div>
       <img class="arrow" src="../../static/img/icon-arrow.svg" alt="arrow">
     </div>
@@ -287,9 +288,10 @@ export default {
   position: relative;
 
   .titles {
-    width: 100%;
+    padding-top: 8vh;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
+    margin: 0 auto;
 
     .text-1 {
       width: 120px;
@@ -298,13 +300,17 @@ export default {
     .text-2 {
       width: 145px;
     }
+
+    .text-logo {
+      width: 200px;
+    }
   }
 
   .logo {
-    width: 248px;
-
+    width: 100%;
+    padding: 0 15px 0 15px;
     position: absolute;
-    bottom: 122px;
+    bottom: 70px;
   }
 
   .tips {

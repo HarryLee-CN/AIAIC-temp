@@ -63,13 +63,13 @@ export default defineComponent({
     //width: 327.5px;
     padding-left: 47px;
     padding-right: 40px;
-    margin-top: 6.5px;
+    margin-top: 16px;
   }
 
   .text {
     width: 100%;
-    padding: 19px 50.5px 0 51.5px;
-    margin-top: 45px;
+    padding: 0px 50.5px 0 51.5px;
+    margin-top: 40px;
     position: relative;
 
     font-family: Source Han Serif CN;
