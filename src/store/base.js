@@ -78,7 +78,7 @@ export const useBaseStore = defineStore("base", {
       this.isShowModalSwiper = isShowModalSwiper
     },
     updateMyWorks(myWorks) {
-      this.myWorks = this.myWorks.concat(myWorks)
+      this.myWorks = myWorks
     },
     updateIsShowPagePoster(isShowPagePoster) {
       this.isShowPagePoster = isShowPagePoster

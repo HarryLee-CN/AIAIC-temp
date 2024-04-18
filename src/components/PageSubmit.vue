@@ -62,7 +62,7 @@ export default defineComponent({
       const res = await activityAigcGetUserCollectionFeedList({last_item_id})
       const {item_list, last_item_id: new_last_item_id} = res.data.result
       useBaseStore().updateMyWorks(item_list)
-      if (new_last_item_id) await this.getUserWorks(new_last_item_id)
+      // if (new_last_item_id) await this.getUserWorks(new_last_item_id)
       // 设为最后一个作品是海报内容
       const myWorks = useBaseStore().getterMyWorks
       useBaseStore().updatePosterContent(myWorks[myWorks.length - 1])

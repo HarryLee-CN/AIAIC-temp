@@ -56,10 +56,10 @@ export default defineComponent({
     async getUserWorks(last_item_id = "") {
       const res = await activityAigcGetUserCollectionFeedList({last_item_id})
       const {item_list, last_item_id: new_last_item_id} = res.data.result
+      useBaseStore().updateMyWorks(item_list)
       // 没有作品的则打开提交页
       if (!item_list.length) return useBaseStore().updateIsShowPageSubmit(true)
-      useBaseStore().updateMyWorks(item_list)
-      if (new_last_item_id) await this.getUserWorks(new_last_item_id)
+      // if (new_last_item_id) await this.getUserWorks(new_last_item_id)
     },
     async register() {
       try {
