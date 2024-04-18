@@ -156,13 +156,13 @@ export default defineComponent({
         const lineSpace = 6
         const firstY = 128 + lineHeight
         ctx.fillStyle = 'white'
-        if (this.posterContent.title.length > 10) {
-          ctx.fillText(`作品名：《${this.posterContent.title.slice(0, 10)}...》`, marginLeft, firstY)
+        if (this.posterContent.title.length > 17) {
+          ctx.fillText(`作品名：《${this.posterContent.title.slice(0, 17)}...`, marginLeft, firstY)
         } else {
           ctx.fillText(`作品名：《${this.posterContent.title}》`, marginLeft, firstY)
         }
-        if (this.posterContent.nick.length > 10) {
-          ctx.fillText(`创作者：${this.posterContent.nick.slice(0, 10)}...`, marginLeft, firstY + lineSpace + lineHeight)
+        if (this.posterContent.nick.length > 18) {
+          ctx.fillText(`创作者：${this.posterContent.nick.slice(0, 18)}...`, marginLeft, firstY + lineSpace + lineHeight)
         } else {
           ctx.fillText(`创作者：${this.posterContent.nick}`, marginLeft, firstY + lineSpace + lineHeight)
         }
