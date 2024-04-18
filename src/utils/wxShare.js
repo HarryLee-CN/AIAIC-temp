@@ -41,7 +41,7 @@ export const wxShareInit = async () => {
         },
         link: window.location.href,
         text: "在科技发展过程中，探索「人类精神」的不可替代性",
-        title: "新世相「爱恨情仇」AI影像创作计划",
+        title: "首届AI艺术节-「爱恨情仇」",
       };
       updateWxShareData(DEFAULT_SHARE_INFO);
       wx.error(function (res) {
