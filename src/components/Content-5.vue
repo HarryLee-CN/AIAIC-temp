@@ -53,7 +53,7 @@ export default defineComponent({
     }
 
     .img2 {
-      width: 364px;
+      width: 372px;
       margin-top: 28px;
       margin-left: 10px;
     }
