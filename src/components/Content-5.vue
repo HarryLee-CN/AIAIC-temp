@@ -59,9 +59,10 @@ export default defineComponent({
     }
 
     .img3 {
-      width: 372px;
+      width: 348px;
       margin-top: 27px;
       margin-bottom: 50px;
+      margin-left: -16px;
     }
 
     //.block {
