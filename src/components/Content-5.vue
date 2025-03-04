@@ -10,7 +10,7 @@ export default defineComponent({
   <div class="content-5">
     <img class="bg" src="../static/img/bg-support.png" alt="bg">
     <div class="text">
-      <img class="img1" src="../static/img/guwentuandui-24.10.11.png" alt="guwentuandui">
+      <img class="img1" src="../static/img/guwentuandui-25.03.04.png" alt="guwentuandui">
       <img class="img2" src="../static/img/teyaochuangzuojiabin.png" alt="teyaochuangzuojiabin">
       <img class="img3" src="../static/img/lianhefaqi.png" alt="lianhefaqi">
 <!--      <div class="block" style="margin-top: 9px">-->
